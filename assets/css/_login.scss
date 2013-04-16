@@ -1,0 +1,26 @@
+.login {
+	width: 300px;
+	margin: 0 auto;
+	text-align: center;
+	font-weight: bold;
+	margin-top: 50px;
+	.fields{
+		text-align: center;
+	}
+	.btn{
+		width:280px;
+	}
+	.signupLink{
+		margin-top: 40px;
+		font-size: 15px;
+		font-weight: 400;
+		width: 100%;
+		color:#333;
+	}
+	.signupLink a {
+		background: #333;
+		padding:3px;
+		margin-left:10px;
+		border-radius: 5px;
+	}
+}

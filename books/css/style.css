@@ -1,0 +1,106 @@
+/* Content Flip Style */
+
+
+
+*{
+	 -webkit-tap-highlight-color:rgba(0,0,0,0);
+    -webkit-user-select: none;
+}
+.bookEdit {
+  height: 70%; }
+  .bookEdit .single {
+    position: relative;
+    width: 100%;
+    height: 100%; }
+  .bookEdit .double {
+    position: relative;
+    width: 50%;
+    float: left;
+    height: 1px; }
+  .bookEdit .right .page, .bookEdit .right .bottomPage, .bookEdit .right .middlePage, .bookEdit .right .topPage, .bookEdit .right .grad {
+    left: 0px; }
+  .bookEdit .left .page, .bookEdit .left .bottomPage, .bookEdit .left .middlePage, .bookEdit .left .topPage, .bookEdit .left .grad {
+    right: 0px; }
+  .bookEdit .height {
+    height: 100%;
+    width: 100%; }
+  .bookEdit .no {
+    margin: 0px !important; }
+  .bookEdit .block, .bookEdit .block:hover, .bookEdit .col1, .bookEdit .lastCol1, .bookEdit .lastCol2, .bookEdit .col2, .bookEdit .col3 {
+    background: #eee;
+    box-sizing: border-box;
+    float: left; }
+  .bookEdit .block:hover, .bookEdit .block:hover, .bookEdit .col1:hover, .bookEdit .lastCol1:hover, .bookEdit .lastCol2:hover, .bookEdit .col2:hover, .bookEdit .col3:hover {
+    background: #ddd; }
+  .bookEdit .col1 {
+    width: 30.3%;
+    margin-right: 3.3%; }
+  .bookEdit .lastCol1 {
+    width: 33.3%; }
+  .bookEdit .lastCol2 {
+    width: 66.3%; }
+  .bookEdit .col2 {
+    width: 63.3%;
+    margin-right: 3.3%; }
+  .bookEdit .col3 {
+    width: 100%; }
+  .bookEdit .row1 {
+    height: 30.3%;
+    margin-bottom: 3.3%; }
+  .bookEdit .row2 {
+    height: 63.3%;
+    margin-bottom: 3.3%; }
+  .bookEdit .row3 {
+    height: 100%; }
+  .bookEdit .shadow {
+    -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); }
+  .bookEdit .border-radius-none {
+    border-radius: 0px; }
+  .bookEdit .border-radius-small {
+    border-radius: 25px; }
+  .bookEdit .border-radius-round {
+    border-radius: 360px; }
+  .bookEdit .border-colour-white {
+    -webkit-box-shadow: inset 0px 0px 1px 10px white; }
+  .bookEdit .border-colour-black {
+    -webkit-box-shadow: inset 0px 0px 10px 10px black; }
+  .bookEdit .border-colour-red {
+    -webkit-box-shadow: inset 0px 0px 1px 10px red; }
+  .bookEdit .border-colour-blue {
+    -webkit-box-shadow: inset 0px 0px 1px 10px blue; }
+  .bookEdit .border-colour-green {
+    -webkit-box-shadow: inset 0px 0px 1px 10px green; }
+  .bookEdit .border-colour-yellow {
+    -webkit-box-shadow: inset 0px 0px 1px 10px yellow; }
+  .bookEdit .page, .bookEdit .bottomPage, .bookEdit .middlePage, .bookEdit .topPage, .bookEdit .grad {
+    float: left;
+    border: 1px solid #919191;
+    background: #fff;
+    position: absolute;
+    padding: 20px; }
+  .bookEdit .bottomPage {
+    left: 20px;
+    right: 20px;
+    top: 24px;
+    height: 492px;
+    z-index: 1; }
+  .bookEdit .middlePage {
+    left: 22px;
+    right: 22px;
+    top: 22px;
+    height: 496px;
+    z-index: 2; }
+  .bookEdit .topPage {
+    left: 24px;
+    right: 24px;
+    top: 20px;
+    height: 500px;
+    z-index: 3; }
+  .bookEdit .grad {
+    left: 24px;
+    right: 24px;
+    top: 20px;
+    height: 500px;
+    z-index: 3; }
+
+    

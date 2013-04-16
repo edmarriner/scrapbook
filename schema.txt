@@ -1,0 +1,54 @@
+scrapbook = {
+	id: "eiowfhiewghiewf",
+	title: "my book",
+	description: "my nice book",
+	owners: [47472478],
+	authors: [53344,443434,434343],
+	recent: {[
+		{ user : "na948423484848-94me", date : "23/01/12", desc : " Has uploaded a new photo to the scrapbook!" },
+	]},
+	status: {
+		access : "locked",
+		last_changed_by_user : "jfejnf34nr"
+	},
+	last_updated: "23/01/12",
+	created: "20/01/12"
+}
+
+sales = {
+	user: "dfmlf",
+	scrapbook: "4324234",
+	date_created: "23/01/12",
+	cost: "23",
+	currency: "GBP"
+}
+
+page = {
+	id: "fojfo"
+	page_number : "2"
+	scrapbook_id : "nffffvdsf",
+	template: "template-01",
+	content: {
+		"blocks":[
+			{"type": "text", "content": "fnifiew"},
+			{"type": "text","content": "fnifiew"},
+			{"type": "image","content": "url.com/images/myNiceImage"}
+		]},
+	last_updated: "23/01/12",
+	created: "20/01/12"
+}
+
+user = {
+	username: "fsfwf",
+	password : "gdgerg",
+	first_name : "osfof",
+	last_name : "mvofo",
+	picture : "mvdnoermgr",
+	description: "mofofm",
+	friends : [44423442,2344242,42424242,24323213],
+	settings: {
+		push: no,
+		email: yes,
+		currency: "GBP"
+	},
+}

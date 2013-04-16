@@ -1,0 +1,53 @@
+#activity
+{
+    position: fixed;
+    width: 260px;
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom:0;
+    background-color: #131313;
+    background-image: #666;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    -webkit-transition-property: -webkit-transform;
+    -webkit-transition-duration: 200ms;
+    -webkit-transition-timing-function: linear;
+}
+    .show-activity
+    {
+        -webkit-transform: translate3d(0, 0, 0);
+
+    }
+
+    .hide-activity
+    {
+        -webkit-transform: translate3d(260px, 0, 0);
+
+    }
+    .activityHeader
+    {
+        box-sizing: border-box;
+        width: 100%;
+        height: 50px;
+        background: #333;
+        line-height: 50px;
+        padding-left: 20px;
+        font-family: roboto;
+        font-size: 16px;
+        color: #bbb;
+    }
+    #activity li
+    {
+        position: relative;
+        display: block;
+        list-style: none;
+        min-height: 50px;
+        padding: 15px;    
+        line-height: 22px; 
+        border-bottom: 1px solid #282828;
+        font-size: 16px;
+        color: #bbb;
+        width:100%;
+        box-sizing: border-box;
+    }

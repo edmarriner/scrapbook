@@ -1,0 +1,200 @@
+.bookEdit {
+
+	height:70%;
+	
+	.single {
+		position: relative;
+		width:100%;
+		height: 100%;
+	}
+
+	.double {
+		position: relative;
+		width:50%;
+		float: left;
+		height: 1px;
+	}
+
+	.right {
+		.page {
+				left: 0px;
+			}
+		
+	}
+
+	.left {
+		.page {
+				right: 0px;
+		}
+	}
+
+	.height
+	{
+		height: 100%;
+		width: 100%;
+	}
+			
+			.no { margin: 0px !important; }
+			.block {
+				background:#eee;
+				box-sizing: border-box;
+				float: left;
+			}
+			.block:hover {
+				@extend .block;
+				background:#ddd;
+			}
+			.col1 {
+				@extend .block;
+				width:30.3%;
+				margin-right: 3.3%;
+			}
+			.lastCol1 {
+				@extend .block;
+				width:33.3%;
+			}
+			.lastCol2 {
+				@extend .block;
+				width:66.3%;
+			}
+			.col2 {
+			 	@extend .block;
+				width:63.3%;
+				margin-right:3.3%;
+			}
+			.col3 {
+				@extend .block;
+				width:100%;
+			}
+			.row1 {
+				height:30.3%;
+				margin-bottom: 3.3%;
+			}
+			.row2 {
+				height:63.3%;
+				margin-bottom: 3.3%;
+			}
+			.row3 {
+				height:100%;
+			}
+
+	.shadow
+	{
+		 -webkit-box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+	}
+
+    .border-radius-none
+    {
+    	border-radius:0px;
+    }
+     .border-radius-small
+    {
+        border-radius: 25px;
+    }
+    .border-radius-round
+    {
+        border-radius: 360px;
+    }
+
+    .border-colour-white
+    {
+        -webkit-box-shadow: inset 0px 0px 1px 10px rgba(255, 255, 255, 1);
+    }
+    .border-colour-black
+    {
+        -webkit-box-shadow: inset 0px 0px 10px 10px rgba(0, 0, 0, 1);
+    }
+
+    .border-colour-red
+    {
+        -webkit-box-shadow: inset 0px 0px 1px 10px red;
+    }
+    .border-colour-blue
+    {
+        -webkit-box-shadow: inset 0px 0px 1px 10px blue;
+    }
+    .border-colour-green
+    {
+        -webkit-box-shadow: inset 0px 0px 1px 10px green;
+    }
+    .border-colour-yellow
+    {
+        -webkit-box-shadow: inset 0px 0px 1px 10px yellow;
+    }
+
+		.page {
+			float: left;
+			border: 1px solid #919191;
+			background: #fff;
+			position: absolute;
+			padding: 20px;
+
+
+		}
+
+		.bottomPage {
+			@extend .page;
+			left:20px;
+			right:20px;
+			top:24px;
+			height:492px;
+			z-index: 1;
+		}
+		.middlePage {
+			@extend .page;
+			left:22px;
+			right:22px;
+			top:22px;
+			height:496px;
+			z-index: 2;
+		}
+		.topPage {
+			@extend .page;
+			left:24px;
+			right:24px;
+			top:20px;
+			height:500px;
+			z-index: 3;
+		}		
+		.grad {
+			@extend .page;
+			left:24px;
+			right:24px;
+			top:20px;
+			height:500px;
+			z-index: 3;
+		}		
+
+		.actionBar
+		{
+			width:100%;
+			height: 50px;
+			background: #34434A;
+			padding: 8px;
+			box-sizing: border-box;
+		}
+
+		.navButton
+		{
+			width:90px;
+			text-align: center;
+			background: #72A38D;
+			height: 34px;
+			float: left;
+			margin-right: 8px;
+			line-height: 34px;
+		}
+
+		.settingButton
+		{
+			width:100px;
+			text-align: center;
+			background: #5A6B73;
+			height: 34px;
+			float: right;
+			line-height: 34px;
+		}
+
+
+
+}

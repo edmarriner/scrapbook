@@ -1,0 +1,109 @@
+.dialog
+{
+  height: 70%;
+  width: 70%;
+  min-width:300px;
+  min-height:300px;
+  max-width:600px;
+  max-height:600px;
+  box-shadow:  0px 0px 12px 4px rgb(49, 49, 49);;  
+  background: #fff;
+  border-radius: 5px;
+  position: absolute;
+  margin: 0;
+  left:0;
+  top:0;
+  z-index: 99;
+
+  .header
+  {
+    height: 40px;
+    line-height: 40px;
+    border-radius: 5px 5px 0 0;
+    background: #eaeaea;
+    text-align: center;
+    display: block;
+    color: #333;
+    font-size: 19px;
+    text-transform: uppercase;
+  }
+
+  .inner
+  {
+    overflow-y: auto;
+    height: 100%;
+    padding:20px;
+  }
+
+  h1
+  {
+    margin-bottom:20px;
+    text-align: center;
+    color: #888;
+    font-size: 20px;
+    display: block;
+  }
+
+  .blockType
+  {
+    float: left;
+    width: 47%;
+    margin-right: 5%;
+    display: block;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    box-shadow: inset 0px 5px 25px -10px #000;
+    text-shadow: 0px 0px 1px rgba(0,0,0,0.5);
+  }
+
+  .blockType:nth-child(odd)
+  {
+     margin-right: 0;
+  }
+
+  .takePhoto
+  {
+    background: #ed8063;
+  }
+
+  .library
+  {
+    background:#ebcd4d;
+  }
+
+  .writeText
+  {
+    background:#6acdc2;
+  }
+
+  .map
+  {
+    background:#b6d782;
+  }
+
+
+  .colour
+  {
+    background:#eeb769;
+  }
+
+  .blank
+  {
+    background:#bebebe;
+  }
+
+
+}
+.dialogMask
+{
+position: fixed;
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+z-index: 8;
+background-color: rgba(0,0,0,0.7);
+}

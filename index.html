@@ -1,0 +1,395 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <title>Scrapbooks</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+    <meta name='viewport' content='width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no'>
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <style type="text/css">
+    @import 'assets/css/main.css';
+    </style>
+</head>
+<body>
+
+<!-- ****** Backbone templates ****** -->
+
+<!-- app view -->
+<script type="text/html" id="template-app">
+  <nav id="menu" class='hide-nav'>
+    <div class='menuUser'>Main Menu</div>
+    <a href='#/' data-icon="&#xe02a;" >Home</a>
+    <a href='#/create' data-icon="&#xe00f;">Create Scrapbook</a>
+    <a href='#/friends' data-icon="&#xe002;">Friends</a>
+    <a href='#/profile' data-icon="&#xe007;">Profile</a>
+    <a href='#/purchases' data-icon="&#xe02e;">Purchases</a>
+    <!--<a href='#/settings' data-icon="&#xe000;">Settings</a>-->
+    <!--<a href='#/logout' data-icon="&#xe000;">Log out</a>-->
+  </nav>
+
+  <div id="activity" class='hide-activity'>
+    <ul>
+    <li class='activityHeader'>Friends Activities</li>
+    </ul>
+  </div>
+
+  <div id="page" class='menu-closed activity-closed'>
+    <div id="mask"></div>
+    <header>
+      <div id="menuTrigger">
+        <div class='menu-bar'></div>
+        <div class='menu-bar'></div>
+        <div class='menu-bar'></div>
+      </div>
+      <div id="activityTrigger">
+        <div class='activity-square'></div>
+      </div>
+      <div class='appTitle'>Scrapbooks</div>
+    </header>
+    <div id="fb-root"></div>
+    <div id="content"></div>
+  </div>
+  
+</script>
+
+<!-- signup Screen -->
+    <script type="text/html" id="template-signup">  
+    
+      <div class='form'>
+        <input type="text" id='signUpEmail' placeholder="Email" class="textbox">
+      </div>
+      <div class='form'>
+        <input type="password" id='signUpPassword' placeholder="Password" class="textbox">
+      </div>
+      <div class='form'>
+        <input type="text" id='signUpFirstName' placeholder="First name" class="textbox">
+      </div>
+      <div class='form'>
+        <input type="text" id='signUpLastName' placeholder="Last name" class="textbox">
+      </div>
+       <div class='form'>
+          <a id='signUpButton' class="btn">Sign up!</a>
+          <div class='clear'></div>
+          <div class='loginLink'>
+            Already got an account? <a href='#/login'>Login with facebook!</a>
+          </div>
+        </div>
+      </div>
+    </script>
+
+    <!-- login Screen -->
+    <script type="text/html" id="template-login">  
+          <a id='loginButton' class="btn">Login with facebook!</a>
+    </script>
+
+ 
+
+    <!-- Home Screen -->
+    <script type="text/html" id="template-home">  
+      <div class='home'>
+      </div>
+    </script>
+
+    <!-- Edit Screen -->
+    <script type="text/html" id="template-edit">
+      <div class='actionBar'>
+       <a class='navButton' id='prevPage'>Previous</a>
+        <a class='navButton' id='nextPage'>Next</a>
+        <a class='settingButton' id='settings'>Settings</a>
+      </div>
+        <div class='single'>
+          <div class='bottomPage'></div>
+          <div class='middlePage'></div>
+          <div id="bb-bookblock" class="bb-bookblock"></div> <!-- added -->
+        </div>
+        <div class='clear'></div>
+       
+    </script>
+
+    <!-- single item -->
+    <script type="text/html" id="template-home-item">
+        <a class='boxInner' href='#/book/edit/<%= id %>'>
+          <div class='boxTitleWrap'>
+            <div class='boxTitle'><%= title %></div>
+          </div>
+        </a>
+    </script>
+
+    <!-- single page layout -->
+    <script type="text/html" id="template-book-single">
+
+      <img src='' class='block col3 row3' data-block-id='<%= blocks[0].id %>' id='<%= blocks[0].id %>' style="background:url('http://scrapbook.uk.to/files/<%= blocks[0].content %>') no-repeat center center;  background-size: cover; -webkit-box-shadow: inset 0px 0px <%= blocks[0].borderFeather %>px <%= blocks[0].borderSize %>px <%= blocks[0].borderColour %>; " />
+     
+    </script>
+
+    <!-- double page layout -->
+    <script type="text/html" id="template-book-double">
+    <div class='double left'>
+      <div class='bottomPage'></div>
+      <div class='middlePage'></div>
+      <div class='topPage'>
+        <div class='col3 row1' ></div>
+        <div class='col1 row2' ></div>
+        <div class='lastCol2 row2' ></div>
+      </div>
+    </div>
+
+    <div class='double right'>
+      <div class='bottomPage'></div>
+      <div class='middlePage'></div>
+      <div class='topPage'>
+        <div class='col1 row3' data-toggle="modal" href="#full-width"></div>
+        <div class='lastCol2 row1' data-toggle="modal" href="#full-width"></div>
+        <div class='lastCol2 row1' data-toggle="modal" href="#full-width"></div>
+        <div class='lastCol2 row1' data-toggle="modal" href="#full-width"></div>
+
+      </div>
+    </div>
+
+    </script>
+
+    <!-- Book Edit Screen -->
+    <script type="text/html" id="template-book-edit">
+
+        <a class='btn' id='prevPage'>Previous page</a>
+        <a class='btn' id='nextPage'>Next page</a>
+
+      <div class='bookEdit padding'>
+
+        <div class='clear'></div>
+      </div>
+    </script>
+
+
+    <!-- Book Creation screen -->
+    <script type="text/html" id="template-create">
+      <div class='create padding'>
+        <div class='form'>
+          <p class="description">Name of the scrapbook</p>
+          <input id='createScrapbookTitle' type="text" placeholder="Enter the scrapbook name..." class="textbox">
+        </div>
+        <div class='form'>
+          <p class="description">Description of the scrapbook</p>
+          <textarea id='createScrapbookDescription' class="textarea" placeholder="Enter a description of the scrapbook..."></textarea>
+        </div>
+        <div class='form'>
+          <a id='createScrapbookButton' class="btn">Create Scrapbook!</a>
+        </div>
+      </div>
+    </script>
+
+
+    <!-- Past Purchases screen -->
+    <script type="text/html" id="template-purchases">
+
+    <h1>No purchases</h1>
+    <h2>Why not buy one your your scrapbooks?</h2>
+
+
+    </script>
+
+
+    <!-- Modal / Dialog screen -->
+    <script type="text/html" id="template-dialog">
+
+    <div class='dialog'>
+      <div class='header'>close</div>
+      <div class='inner'>
+        <h1>Set the content of this block</h1>
+        <div class='blockType takePhoto'>Take Photo</div>
+        <div class='blockType library'>From Library</div>
+        <div class='blockType writeText'>Write Text</div>
+        <div class='blockType map'>From Map</div>
+        <div class='blockType colour'>Block Of Colour</div>
+        <div class='blockType blank'>Leave Blank</div>
+      </div>
+    </div>
+    <div class='dialogMask'></div>
+
+    </script>
+
+
+    <!-- Profile screen -->
+    <script type="text/html" id="template-profile">
+      <div class='profile padding'>
+        <div class='form'>
+          <p class="description">First name</p>
+          <input id='profileFirstName' type="text" value='<%= firstName %>' placeholder="Enter your first name..." class="textbox">
+        </div>
+        <div class='form'>
+          <p class="description">Last name</p>
+          <input id='profileLastName' type="text" value='<%= lastName %>' placeholder="Enter your last name..." class="textbox">
+        </div>
+        <div class='form'>
+          <p class="description">Email adress</p>
+          <input type="text" id='profileEmail' value='<%= email %>' placeholder="Enter your email address..." class="textbox">
+        </div>
+        <div class='form'>
+          <p class="description">Where you live</p>
+          <input type="text" id='profileLocation' value='<%= location %>' placeholder="Enter your location..." class="textbox">
+        </div>
+         <div class='form'>
+          <a id='profileSave' class="btn">Update</a>
+        </div>
+      </div>
+    </script>
+
+
+    <!-- Friends screen -->
+    <script type="text/html" id="template-friends">
+
+        <div class='form'>
+          <input type="text" id='friendsEmail' placeholder="Add a friend by thier email address..." class="textbox email"><a id='friendsSearch' class="btn search">Add...</a>
+        </div>
+
+
+    </script>
+
+
+    <!-- timeline screen -->
+    <script type="text/html" id="template-timeline">
+    <div data-icon="<%= icon %>"><%= name %> <%= message %> on page <%= pageNumber %> of <%= title %></div>
+       
+    </script>
+
+    <!-- Single friend element screen -->
+    <script type="text/html" id="template-single-friend">
+      <div class='pic'></div>
+      <div class='name'><%= firstName %> <%= lastName %></div>
+      <div id='removeFriend' class='btn'>Remove</div>
+    </script>
+            
+
+    <!-- Modal screens -->
+
+
+    <script type="text/html" id="template-modal-overview">
+
+        <h1>Customise a block</h1>
+        <div class='scroll'>
+          <h2>Content</h2>
+            <img class='content' src='test'/>
+            <div id='changeBlock' class='btn'>Change the block</div>
+            <div id='changeBorderStyle' class='btn'>Change the border styles</div>
+          <div class='clear'></div>
+          
+        </div>
+    </script>
+
+
+
+    <script type="text/html" id="template-modal-block-selection">
+
+        <h1>Block Type</h1>
+        <div class='scroll'>
+          <h2>Content</h2>
+            <div id='choosePhoto' class='btn'>Take a new photo</div>
+            <div id='chooseLibrary' class='btn'>Use a photo from your library</div>
+            <div id='chooseText' class='btn'>Make this a text box</div>
+            <div id='chooseEmpty' class='btn'>Make this block empty </div>
+          <div class='clear'></div>
+          
+        </div>
+    </script>
+
+    <script type="text/html" id="template-modal-edit-text">
+      <h1>Edit the text</h1>
+      <div class='scroll'>
+        <h2>Content</h2>
+          <p>Edit text here</p>
+        <div class='clear'></div>
+        
+      </div>
+    </script>    
+
+    <script type="text/html" id="template-modal-edit-camera">
+      <h1>Edit the text</h1>
+      <div class='scroll'>
+        <h2>Content</h2>
+          <p>Take a new photo...</p>
+        <div class='clear'></div>
+        
+      </div>
+    </script>    
+
+    <script type="text/html" id="template-modal-edit-library">
+      <h1>Edit the text</h1>
+      <div class='scroll'>
+        <h2>Content</h2>
+          <p>Upload an only photo...</p>
+        <div class='clear'></div>
+        
+      </div>
+    </script>
+
+
+<script type="text/html" id="template-modal-border">
+
+        <h1>Border Styles</h1>
+        <div class='scroll'>
+          <h2>Border Colour</h2>
+            <div class='border-colour white'><div class='active'></div></div>
+            <div class='border-colour black'></div>
+            <div class='border-colour red'></div>
+            <div class='border-colour green'></div>
+            <div class='border-colour blue'></div>
+          <div class='clear'></div>
+          <h2>Border size</h2>
+            <div class='border-style solid'></div>
+            <div class='border-style dashed'></div>
+            <div class='border-style dotted'></div>
+            <div class='border-style double'></div>
+            <div class='clear'></div>
+          <h2>Border Radius</h2>
+            <div class='border-radius square'></div>
+            <div class='border-radius small'><div class='active'></div></div>
+            <div class='border-radius round'></div>
+            <div class='clear'></div>
+          <h2>Border feather</h2>
+            <div class='border-style solid'></div>
+            <div class='border-style dashed'></div>
+            <div class='border-style dotted'></div>
+            <div class='border-style double'></div>
+            <div class='clear'></div>
+        </div>
+    </script>
+
+
+    <!-- Settings screen -->
+    <script type="text/html" id="template-settings">
+      <div class='settings padding'>
+        <div class='form'>
+          <p class="description">Send email notifications</p>
+          <input type="text" placeholder="Enter your first name..." class="textbox">          
+        </div>
+        <div class='form'>
+          <p class="description">Send push notifications</p>
+          <input type="text" placeholder="Enter your last name..." class="textbox">
+        </div>
+        <div class='form'>
+          <p class="description">Where you live</p>
+          <input type="text" placeholder="Enter your location..." class="textbox">
+        </div>
+      </div>
+    </script>
+
+    <script src="phonegap.js"></script>
+    <script src="cdv-plugin-fb-connect.js"></script> 
+    <script src="facebook-js-sdk.js"></script>
+    
+    <script type='application/javascript' src="assets/js/vendor/jquery/jquery.min.js"></script>
+    <script type='application/javascript' src="assets/js/vendor/underscore/underscore.min.js"></script>
+    <script type='application/javascript' src="assets/js/vendor/backbone/backbone.min.js"></script>
+    <script type='application/javascript' src="assets/js/vendor/touchSwipe/jquery.touchSwipe.min.js"></script>
+    <script type="text/javascript" src="assets/js/vendor/bookBlock/jquerypp.custom.js"></script>
+    <script type="text/javascript" src="assets/js/vendor/bookBlock/jquery.bookblock.js"></script>
+    
+    <script type='application/Javascript' src="app/app.js" ></script>
+    
+    <!-- <script src="http://debug.phonegap.com/target/target-script-min.js#scrapbookproject"></script> --> 
+
+</body>
+</html>
