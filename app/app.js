@@ -1,4 +1,4 @@
-$(document).ready(function(){
+document.addEventListener('deviceready', function() {
 
 	// JQUERY Functions
 
@@ -76,7 +76,7 @@ $(document).ready(function(){
                  // xfbml: true,
                   useCachedDialogs: false
               });
-			
+
 			this.appView = new App.Views.Chrome;
 			$('body').html(this.appView.render().el);			
 		}
@@ -1420,12 +1420,11 @@ $(document).ready(function(){
 
 	})
 
-
-	// start the application
-	App.Manager.start();
-
 	// Startup backbone...
 	App.router = new App.Router;
 	Backbone.history.start();
+
+	// start the application
+	App.Manager.start();
 
 });
