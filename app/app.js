@@ -240,6 +240,7 @@ document.addEventListener('deviceready', function() {
 		template: _.template($('#template-login').html()),
 
 	    render: function() {
+	    	alert("rendering login");
 	        this.$el.html(this.template());
 	        return this;
 	    },
