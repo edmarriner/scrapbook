@@ -273,27 +273,42 @@ document.addEventListener('deviceready', function() {
 
 	    login: function()
 	    {
+	    	console.log("about to request facebook login");
+
 	    	// login to facebook
-	    	FB.login(
-	    		function(response) {
+	    	 FB.login(function(response) {
 
-	    			console.log(response);
+			   if (response.authResponse) {
 
-                    if (response.session)
-                    	{
-                    		alert("success")
-                    		App.Manager.user = "yes";
-                    	}	
-                    	else
-                    	{
-                        	alert('not success');
-                        	App.Manager.user = null;
-                        }
-                },
-                {
-                	scope: "email"
-                }
-            );
+			     console.log('Login was successful');
+
+			     FB.api('/me', function(response) {
+
+			     	console.log(response);
+			       	console.log('user is' + response.name);
+
+				       App.Manager.user = new App.Models.User;
+				       App.Manager.user.fetch({
+						data: {
+							email: response.email;
+						},
+						dataType : 'jsonp',
+						success: function(result)
+						{
+							console.log(result);
+						},
+						error: function(collection, error)
+						{
+						    alert("There was an error with fetching the timeline of your friends.");
+						    console.log(error)
+						}
+					});
+
+			     });
+			   } else {
+			     console.log('User cancelled login or did not fully authorize.');
+			   }
+			 });
 
             // check if login worked
     		alert('getting timeline...!');
