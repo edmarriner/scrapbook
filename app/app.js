@@ -1,14 +1,8 @@
 document.addEventListener('deviceready', function() {
 
-	if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
-            if (typeof CDV == 'undefined') alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
-            if (typeof FB == 'undefined') alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
-
-
   try {
   alert('Device is ready! Make sure you set your app_id below this alert.');
   FB.init({ appId: "425907780826832", nativeInterface: CDV.FB, useCachedDialogs: false });
-  document.getElementById('data').innerHTML = "";
   } catch (e) {
   alert(e);
   }
@@ -282,37 +276,44 @@ document.addEventListener('deviceready', function() {
 	    	// login to facebook
 	    	FB.login(
 	    		function(response) {
+
+	    			console.log(response);
+
                     if (response.session)
                     	{
-                    		alert('welcome!');
-                    		this.activeCollections.timeline = new App.Collections.Timeline;
-								
-								this.activeCollections.timeline.fetch({
-									data: {
-										user: App.Manager.user.get('id')
-									},
-									dataType : 'jsonp',
-									success: function(collection)
-									{
-										App.Manager.appView.updateTimeline(collection);
-									},
-									error: function(collection, error)
-									{
-									    alert("There was an error with fetching the timeline of your friends.");
-									    console.log(error)
-									}
-								});
-
-                    	}
+                    		alert("success")
+                    		App.Manager.user = "yes";
+                    	}	
                     	else
                     	{
-                        	alert('not logged in');
+                        	alert('not success');
+                        	App.Manager.user = null;
                         }
                 },
                 {
                 	scope: "email"
                 }
             );
+
+            // check if login worked
+    		alert('getting timeline...!');
+    		this.activeCollections.timeline = new App.Collections.Timeline;
+				
+				this.activeCollections.timeline.fetch({
+					data: {
+						user: App.Manager.user.get('id')
+					},
+					dataType : 'jsonp',
+					success: function(collection)
+					{
+						App.Manager.appView.updateTimeline(collection);
+					},
+					error: function(collection, error)
+					{
+					    alert("There was an error with fetching the timeline of your friends.");
+					    console.log(error)
+					}
+				});
 	    }
 	});
 
