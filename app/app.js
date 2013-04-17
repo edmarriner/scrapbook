@@ -304,7 +304,7 @@ $(document).ready(function() {
 						    console.log(error)
 						}
 					});
-				    // });
+				});
 			   } else {
 			     console.log('User cancelled login or did not fully authorize.');
 			   }
@@ -329,7 +329,8 @@ $(document).ready(function() {
 					    console.log(error)
 					}
 				});
-	    }
+	    } // end FB.login()
+
 	});
 
 
@@ -1478,4 +1479,4 @@ $(document).ready(function() {
 
 	
 
- }, false);
+ });
