@@ -1,5 +1,16 @@
 $(document).ready(function(){
 
+	// show app view
+	alert("before init")
+	window.FB.init({
+          appId: '465374093524857',
+          nativeInterface: window.CDV.FB,
+          status     : true, // check login status
+          //cookie     : true, // enable cookies to allow the server to access the session
+         // xfbml: true,
+          useCachedDialogs: false
+      });
+	alert("init done");
 	// JQUERY Functions
 
 	// center a div in the middle of the page..
@@ -67,16 +78,6 @@ $(document).ready(function(){
 
 		start: function()
 		{
-			// show app view
-			FB.init({
-                  appId: '465374093524857',
-                  nativeInterface: CDV.FB,
-                  status     : true, // check login status
-                  //cookie     : true, // enable cookies to allow the server to access the session
-                 // xfbml: true,
-                  useCachedDialogs: false
-              });
-
 			this.appView = new App.Views.Chrome;
 			$('body').html(this.appView.render().el);			
 		}
@@ -1423,7 +1424,7 @@ $(document).ready(function(){
 	// start the application
 	App.Manager.start();
 
-	
+
 	// Startup backbone...
 	App.router = new App.Router;
 	Backbone.history.start();
