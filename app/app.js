@@ -288,9 +288,10 @@ document.addEventListener('deviceready', function() {
 			       	console.log('user is' + response.name);
 
 				       App.Manager.user = new App.Models.User;
+
 				       App.Manager.user.fetch({
 						data: {
-							email: response.email;
+							email: response.email
 						},
 						dataType : 'jsonp',
 						success: function(result)
