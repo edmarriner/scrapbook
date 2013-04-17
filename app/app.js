@@ -5,6 +5,7 @@ $(document).ready(function() {
   alert('Device is ready! Make sure you set your app_id below this alert.');
   FB.init({ appId: "425907780826832", nativeInterface: CDV.FB, useCachedDialogs: false });
   } catch (e) {
+  	alert("top error")
   alert(e);
   }
  
