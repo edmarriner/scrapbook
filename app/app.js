@@ -12,7 +12,7 @@ document.addEventListener('deviceready', function() {
   } catch (e) {
   alert(e);
   }
-  }, false);
+ 
 
 	FB.Event.subscribe('auth.login', function(response) {
                                alert('auth.login event');
@@ -33,12 +33,12 @@ document.addEventListener('deviceready', function() {
 
             function getLoginStatus() {
                 FB.getLoginStatus(function(response) {
-                                  if (response.status == 'connected') {
-                                  alert('logged in');
-                                  } else {
-                                  alert('not logged in');
-                                  }
-                                  });
+                  if (response.status == 'connected') {
+                  alert('logged in');
+                  } else {
+                  alert('not logged in');
+                  }
+                });
             }
 
 	alert("facebook done");
@@ -1462,4 +1462,4 @@ document.addEventListener('deviceready', function() {
 
 	
 
-});
+ }, false);
