@@ -278,34 +278,36 @@ document.addEventListener('deviceready', function() {
 	    	// login to facebook
 	    	 FB.login(function(response) {
 
+	    	 	console.log(response)
+
 			   if (response.authResponse) {
 
 			     console.log('Login was successful');
 
-			     FB.api('/me', function(response) {
-
-			     	console.log(response);
-			       	console.log('user is' + response.name);
-
-				       App.Manager.user = new App.Models.User;
-
-				       App.Manager.user.fetch({
-						data: {
-							email: response.email
-						},
-						dataType : 'jsonp',
-						success: function(result)
-						{
-							console.log(result);
-						},
-						error: function(collection, error)
-						{
-						    alert("There was an error with fetching the timeline of your friends.");
-						    console.log(error)
-						}
-					});
-
-			     });
+			    // FB.api('/me', function(response) {
+//
+			    // 	console.log(response);
+			    //   	console.log('user is' + response.name);
+//
+				//       App.Manager.user = new App.Models.User;
+//
+				//       App.Manager.user.fetch({
+				//		data: {
+				//			email: response.email
+				//		},
+				//		dataType : 'jsonp',
+				//		success: function(result)
+				//		{
+				//			console.log(result);
+				//		},
+				//		error: function(collection, error)
+				//		{
+				//		    alert("There was an error with fetching the timeline of your friends.");
+				//		    console.log(error)
+				//		}
+				//	});
+//
+			    // });
 			   } else {
 			     console.log('User cancelled login or did not fully authorize.');
 			   }
