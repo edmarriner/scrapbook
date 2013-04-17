@@ -41,7 +41,7 @@ document.addEventListener('deviceready', function() {
                                   });
             }
 
-	alert("init done");
+	alert("facebook done");
 	// JQUERY Functions
 
 	// center a div in the middle of the page..
