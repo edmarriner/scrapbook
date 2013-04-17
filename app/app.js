@@ -5,14 +5,7 @@ $(document).ready(function(){
             if (typeof CDV == 'undefined') alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
             if (typeof FB == 'undefined') alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
             
-	FB.init({
-          appId: '465374093524857',
-          nativeInterface: CDV.FB,
-          status     : true, // check login status
-          //cookie     : true, // enable cookies to allow the server to access the session
-         // xfbml: true,
-          useCachedDialogs: false
-      });
+	
 	alert("init done");
 	// JQUERY Functions
 
