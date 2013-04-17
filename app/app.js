@@ -1,10 +1,13 @@
 $(document).ready(function(){
 
 	// show app view
-	alert("before init")
-	window.FB.init({
+	if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
+            if (typeof CDV == 'undefined') alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
+            if (typeof FB == 'undefined') alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
+            
+	FB.init({
           appId: '465374093524857',
-          nativeInterface: window.CDV.FB,
+          nativeInterface: CDV.FB,
           status     : true, // check login status
           //cookie     : true, // enable cookies to allow the server to access the session
          // xfbml: true,
