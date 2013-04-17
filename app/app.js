@@ -1420,12 +1420,14 @@ $(document).ready(function(){
 	    },
 
 	})
+	// start the application
+	App.Manager.start();
 
+	
 	// Startup backbone...
 	App.router = new App.Router;
 	Backbone.history.start();
 
-	// start the application
-	App.Manager.start();
+	
 
 });
