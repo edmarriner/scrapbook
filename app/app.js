@@ -1,4 +1,4 @@
-document.addEventListener('deviceready', function() {
+$(document).ready(function(){
 
 	// JQUERY Functions
 
