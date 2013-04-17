@@ -1,4 +1,5 @@
-document.addEventListener('deviceready', function() {
+$(document).ready(function() {
+
 
   try {
   alert('Device is ready! Make sure you set your app_id below this alert.');
@@ -284,30 +285,26 @@ document.addEventListener('deviceready', function() {
 
 			     console.log('Login was successful');
 
-			    // FB.api('/me', function(response) {
-//
-			    // 	console.log(response);
-			    //   	console.log('user is' + response.name);
-//
-				//       App.Manager.user = new App.Models.User;
-//
-				//       App.Manager.user.fetch({
-				//		data: {
-				//			email: response.email
-				//		},
-				//		dataType : 'jsonp',
-				//		success: function(result)
-				//		{
-				//			console.log(result);
-				//		},
-				//		error: function(collection, error)
-				//		{
-				//		    alert("There was an error with fetching the timeline of your friends.");
-				//		    console.log(error)
-				//		}
-				//	});
-//
-			    // });
+			   	 FB.api('/me', function(response) {
+				   	 	console.log(response);
+			   	   	console.log('user is' + response.name);
+					       App.Manager.user = new App.Models.User;
+					       App.Manager.user.fetch({
+						data: {
+							user: response.id
+						},
+						dataType : 'jsonp',
+						success: function(result)
+						{
+							console.log(result);
+						},
+						error: function(collection, error)
+						{
+						    alert("There was an error with fetching the timeline of your friends.");
+						    console.log(error)
+						}
+					});
+				    // });
 			   } else {
 			     console.log('User cancelled login or did not fully authorize.');
 			   }
