@@ -604,10 +604,6 @@ nav img {
 
 .boxInner {
   position: absolute;
-  left: 10px;
-  right: 10px;
-  top: 10px;
-  bottom: 10px;
   overflow: hidden; }
 
 body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleBox {
@@ -634,6 +630,7 @@ body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleB
     width: 25%;
     padding-bottom: 25%; } }
 .tile {
+  display: block;
   width: 25%;
   background: #ccc;
   height: 25%;
@@ -645,7 +642,9 @@ body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleB
   font-family: 'Roboto Light';
   vertical-align: middle;
   width: 100%;
+  float: left;
   height: 25%;
+  background: red;
   text-align: center; }
 
 .bookSettings img {
