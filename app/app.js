@@ -589,8 +589,8 @@ $(document).ready(function() {
 
 			var data = newScrapbook.toJSON();
 			data.user = App.Manager.user.get('id');
-			newScrapbook.save(data, dataType : 'jsonp', {
-
+			newScrapbook.save(data, {
+				dataType : 'jsonp',
 				success: function(response)
 				{
 					App.Manager.activeCollections.scrapbooks.add(newScrapbook)
