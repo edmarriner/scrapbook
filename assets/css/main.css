@@ -663,17 +663,17 @@ body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleB
 .t1 {
   background: #ffbfbf;
   box-sizing: border-box;
-  border-right: 4px; }
+  border-right: 4px solid #fff; }
 
 .t2 {
   background: #ffa4a4;
   box-sizing: border-box;
-  border-right: 4px; }
+  border-right: 4px solid #fff; }
 
 .t3 {
   background: #ff9999;
   box-sizing: border-box;
-  border-right: 4px; }
+  border-right: 4px solid #fff; }
 
 .t4 {
   background: #ff8787; }
@@ -681,17 +681,17 @@ body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleB
 .t5 {
   background: #ffa9a9;
   box-sizing: border-box;
-  border-right: 4px; }
+  border-right: 4px solid #fff; }
 
 .t6 {
   background: #f16c6c;
   box-sizing: border-box;
-  border-right: 4px; }
+  border-right: 4px solid #fff; }
 
 .t7 {
   background: #ffbfbf;
   box-sizing: border-box;
-  border-right: 4px; }
+  border-right: 4px solid #fff; }
 
 .t8 {
   background: #ffa4a4; }
@@ -699,17 +699,17 @@ body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleB
 .t9 {
   background: #ff9999;
   box-sizing: border-box;
-  border-right: 4px; }
+  border-right: 4px solid #fff; }
 
 .t10 {
   background: #ff8787;
   box-sizing: border-box;
-  border-right: 4px; }
+  border-right: 4px solid #fff; }
 
 .t11 {
   background: #ffa9a9;
   box-sizing: border-box;
-  border-right: 4px; }
+  border-right: 4px solid #fff; }
 
 .t12 {
   background: #f16c6c; }
