@@ -285,7 +285,7 @@ $(document).ready(function() {
 						  		user: response.id,
 						  		firstName: response.first_name,
 						  		lastName: response.last_name,
-						  		location: 'plymouth',
+						  		location: response.location.name,
 						  		email: response.email
 							}
 
@@ -319,7 +319,7 @@ $(document).ready(function() {
 			},
 			{
 				// we want access to the email too. this request extra permission.. 
-            	scope: "email"
+            	scope: "email,user_location"
             });  // end FB.login()	
 		} // end login method	
  	}); // end login view
