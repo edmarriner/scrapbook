@@ -1246,17 +1246,12 @@ $(document).ready(function() {
 	    	'': 'home',
 	        'login' : 'login',
 	        'logout' : 'logout',
-	        'signup': 'signup',
 	        'book/edit/:id': 'edit',
 	        'purchases': 'purchases',
 	        'create': 'create',
 	        'profile': 'profile',
 	        'friends': 'friends',
 	        'settings': 'settings'
-	    },
-
-	    signup: function(){
-    		alert("not done");
 	    },
 
 	    login: function(){
@@ -1266,13 +1261,13 @@ $(document).ready(function() {
 	    },
 
 	    logout: function(){
-	        App.Manager.LogOut()
+	        App.Manager.LogOut();
 	    },
 
 	    home: function()
 	    {
 
-	    	if(this.user)
+	    	if(App.Manager.user)
 			{
 
 	    	App.Manager.activeCollections.scrapbooks = new App.Collections.Scrapbooks;
