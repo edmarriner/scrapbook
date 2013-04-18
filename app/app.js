@@ -599,6 +599,7 @@ $(document).ready(function() {
 				error: function(obj, error)
 				{
 				    alert("There was an error with saving the scrapbooks.");
+				    alert(JSON.stringify(error))
 				    console.log(error);
 				}
 			});
