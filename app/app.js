@@ -304,7 +304,7 @@ $(document).ready(function() {
 							this.Manager.user.set('location', response.location);
 							this.Manager.user.set('email', response.email);	
 
-							alert("welcome " + this.Manager.user.get('firstName') + this.Manager.user.get('lastName'));							
+							alert("welcome " + App.Manager.user.get('firstName') + App.Manager.user.get('lastName'));							
 
 						}).error(function(result, error) // bad request to scrapbook sever
 						{
@@ -358,7 +358,6 @@ $(document).ready(function() {
 	    		alert("error, friend not removed!"); 
 	    	});
 	    }
-
 	});
 
 	// Single friend
