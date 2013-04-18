@@ -297,8 +297,6 @@ $(document).ready(function() {
 								App.Manager.user.set('location', response.location);
 								App.Manager.user.set('email', response.email);	
 
-								alert("welcome " + App.Manager.user.get('firstName') + App.Manager.user.get('lastName'));							
-
 								App.router.navigate("", {trigger: true, replace: true});
 
 							}).error(function(result, error) // bad request to scrapbook sever
@@ -594,8 +592,6 @@ $(document).ready(function() {
 				success: function(model, response, options)
 				{
 					App.Manager.activeCollections.scrapbooks.add(newScrapbook)
-					alert(JSON.stringify(response));
-					alert("/book/edit/" + response.scrapbookID);
 					App.router.navigate("/book/edit/" +  response.scrapbookID, {trigger: true, replace: true});
 				},
 				error: function(model, error, options)
