@@ -642,12 +642,48 @@ body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleB
 .boxTitle {
   font-family: 'Roboto Light';
   width: 100%;
-  height: 22%;
+  height: 100%;
   float: left;
   background: red;
   text-align: center;
   line-height: 22%;
   display: block; }
+
+.t1 {
+  background: #ffbfbf; }
+
+.t2 {
+  background: #ffa4a4; }
+
+.t3 {
+  background: #ff9999; }
+
+.t4 {
+  background: #ff8787; }
+
+.t5 {
+  background: #ffa9a9; }
+
+.t6 {
+  background: #f16c6c; }
+
+.t7 {
+  background: #ffbfbf; }
+
+.t8 {
+  background: #ffa4a4; }
+
+.t9 {
+  background: #ff9999; }
+
+.t10 {
+  background: #ff8787; }
+
+.t11 {
+  background: #ffa9a9; }
+
+.t12 {
+  background: #f16c6c; }
 
 .bookSettings img {
   width: 90%;
