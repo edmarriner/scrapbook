@@ -298,11 +298,11 @@ $(document).ready(function() {
 					    	App.Manager.user = new App.Models.User;
 					   		
 					   		// set the details of the user to the local model
-							this.Manager.user.set('id', response.id);
-							this.Manager.user.set('firstName', response.first_name);
-							this.Manager.user.set('lastName', response.last_name);
-							this.Manager.user.set('location', response.location);
-							this.Manager.user.set('email', response.email);	
+							App.Manager.user.set('id', response.id);
+							App.Manager.user.set('firstName', response.first_name);
+							App.Manager.user.set('lastName', response.last_name);
+							App.Manager.user.set('location', response.location);
+							App.Manager.user.set('email', response.email);	
 
 							alert("welcome " + App.Manager.user.get('firstName') + App.Manager.user.get('lastName'));							
 
