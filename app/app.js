@@ -280,58 +280,51 @@ $(document).ready(function() {
 
 	    login: function()
 	    {
-	    	console.log("about to request facebook login");
-
 	    	// login to facebook
 	    	 FB.login(function(response) {
 
-	    	 	console.log(response)
+			   	if (response.authResponse) {
 
-			   if (response.authResponse) {
+			   	 	// save the access toekn
+				 	App.Manager.accessToken = response.authResponse.accessToken;
 
-			     console.log('Login was successful');
-
-			   	 FB.api('/me', function(response) {
-				   	 	console.log(response);
-			   	   		console.log('user is' + response.name);
+				 	// get detail about the new user
+			   	 	FB.api('/me', function(response) {
 
 					    App.Manager.user = new App.Collections.Users;
-					    App.Manager.user.fetch({
-						data: {
-							user: response.id
-						},
-						dataType : 'jsonp',
-						success: function(result)
+					    
+						$.ajax({
+						  url: App.Manager.serverURL + '/login',
+						  dataType : 'jsonp',
+						  data: 
+						  	{
+						  		user: response.id,
+						  		firstName: response.id,
+						  		lastName: response.id,
+						  		location: 'plymouth',
+						  		email: response.email
+							}
+						}).success(function(response)
 						{
-							$.ajax({
-							  url: App.Manager.serverURL + '/login',
-							  dataType : 'jsonp',
-							  data: 
-							  {
-							  	user: 1
-							  }
-							}).success(function(response)
-							{
+						  	
+					  		this.Manager.user = new App.Models.User;
+							
+							this.Manager.user.set('id', response.id);
+							this.Manager.user.set('firstName', response.first_name);
+							this.Manager.user.set('lastName', response.last_name);
+							this.Manager.user.set('location', response.location);
+							this.Manager.user.set('email', response.email);								
 
-								alert("yay");
-							  	alert(response.hasAccount);
-
-							}).error(function(result, error)
-							{
-
-								alert("nope");
-								alert(error);
-
-							});
-						},
-						error: function(collection, error)
+						}).error(function(result, error)
 						{
-						    alert("There was an error with fetching the timeline of your friends.");
-						    console.log(error)
-						}
+
+							alert("error signing into scrapbook app");
+							alert(error);
+
+						});
+						
 					});
-				}
-				);
+
 			   } else {
 			     console.log('User cancelled login or did not fully authorize.');
 			   }
@@ -341,28 +334,34 @@ $(document).ready(function() {
               scope: "email"
             }
             );
-
-            // check if login worked
-    		alert('getting timeline...!');
-    		this.activeCollections.timeline = new App.Collections.Timeline;
-				
-				this.activeCollections.timeline.fetch({
-					data: {
-						user: App.Manager.user.get('id')
-					},
-					dataType : 'jsonp',
-					success: function(collection)
-					{
-						App.Manager.appView.updateTimeline(collection);
-					},
-					error: function(collection, error)
-					{
-					    alert("There was an error with fetching the timeline of your friends.");
-					    console.log(error)
-					}
-				});
 	    } // end FB.login()
 
+	    // check if login worked
+        if(App.Manager.user)
+        {
+		alert('getting timeline...!');
+		this.activeCollections.timeline = new App.Collections.Timeline;
+			
+			this.activeCollections.timeline.fetch({
+				data: {
+					user: App.Manager.user.get('id')
+				},
+				dataType : 'jsonp',
+				success: function(collection)
+				{
+					App.Manager.appView.updateTimeline(collection);
+				},
+				error: function(collection, error)
+				{
+				    alert("There was an error with fetching the timeline of your friends.");
+				    console.log(error)
+				}
+			});
+		}
+		else
+		{
+			alert("There was an error logging in [1000]");
+		}
 	});
 
 
