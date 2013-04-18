@@ -1317,10 +1317,11 @@ $(document).ready(function() {
 					//var dialog = new App.Views.Dialog;
 					//dialog.render();
 				},
-				error: function(collection, error)
+				error: function(response, error)
 				{
 				    alert("There was an error with fetching the collection of pages for this scrapbook.")
 				    alert(JSON.stringify(error));
+				    alert(JSON.stringify(response))
 				    console.log(error)
 				}
 			});
