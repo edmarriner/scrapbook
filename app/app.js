@@ -281,18 +281,18 @@ $(document).ready(function() {
 	    login: function()
 	    {
 	    	// login to facebook
-	    	 FB.login(function(response) {
+	    	FB.login(function(response) {
 
+	    		// check to see if the request was valid
 			   	if (response.authResponse) {
 
-			   	 	// save the access toekn
+			   	 	// save the access token for use later
 				 	App.Manager.accessToken = response.authResponse.accessToken;
 
 				 	// get detail about the new user
 			   	 	FB.api('/me', function(response) {
 
-					    App.Manager.user = new App.Collections.Users;
-					    
+					    // login or register the user to the server backend
 						$.ajax({
 						  url: App.Manager.serverURL + '/login',
 						  dataType : 'jsonp',
@@ -304,139 +304,46 @@ $(document).ready(function() {
 						  		location: 'plymouth',
 						  		email: response.email
 							}
-						}).success(function(response)
+
+						}).success(function(response) // request to scrapbook server is good
 						{
 						  	
-					  		this.Manager.user = new App.Models.User;
-							
+						  	// create a model to store the user
+					    	App.Manager.user = new App.Models.User;
+					   		
+					   		// set the details of the user to the local model
 							this.Manager.user.set('id', response.id);
 							this.Manager.user.set('firstName', response.first_name);
 							this.Manager.user.set('lastName', response.last_name);
 							this.Manager.user.set('location', response.location);
-							this.Manager.user.set('email', response.email);								
+							this.Manager.user.set('email', response.email);	
 
-						}).error(function(result, error)
+							alert("welcome " + this.Manager.user.get('firstName') + this.Manager.user.get('lastName'));							
+
+						}).error(function(result, error) // bad request to scrapbook sever
 						{
-
-							alert("error signing into scrapbook app");
-							alert(error);
+							alert("error sending request to scrapbook server app [1001]");
 
 						});
 						
 					});
 
-			   } else {
-			     console.log('User cancelled login or did not fully authorize.');
 			   }
-			 }
-			 ,
+			   else
+			   {
+			     alert('User cancelled login or did not fully authorize. [1002]');
+			   }
+			},
 			{
-              scope: "email"
-            }
-            );
-	    } // end FB.login()
-
-	    // check if login worked
-        if(App.Manager.user)
-        {
-		alert('getting timeline...!');
-		this.activeCollections.timeline = new App.Collections.Timeline;
-			
-			this.activeCollections.timeline.fetch({
-				data: {
-					user: App.Manager.user.get('id')
-				},
-				dataType : 'jsonp',
-				success: function(collection)
-				{
-					App.Manager.appView.updateTimeline(collection);
-				},
-				error: function(collection, error)
-				{
-				    alert("There was an error with fetching the timeline of your friends.");
-				    console.log(error)
-				}
-			});
-		}
-		else
-		{
-			alert("There was an error logging in [1000]");
-		}
-	});
-
-
-	// App sign up view
-	// ----------------------------------------------------------------------
-
-	App.Views.Home = Backbone.View.extend({
-
-		className: 'home',
-
-		tagName: 'div',
-
-	    render: function() {
-	        this.$el.html($('#template-signup').html());
-	        return this;
-	    },
-
-	});
-
-
-	// App sign up view
-	// ----------------------------------------------------------------------
-
-	App.Views.Signup = Backbone.View.extend({
-
-		className: 'signup',
-
-		tagName: 'div',
-
-		events: {
-
-			"click #signUpButton" : "createUser"
-
-		},
-
-		// Cache the template function for a single item.
-		//template: _.template($('#template-home-item').html()),
-
-	    render: function() {
-	        this.$el.html($('#template-signup').html());
-	        return this;
-	    },
-
-	    createUser: function()
-	    {
-
-	    	var email = $('#signUpEmail').val();
-	    	var password = $('#signUpPassword').val()
-	    	var first_name = $('#signUpFirstName').val();
-	    	var last_name = $('#signUpLastName').val();
-
-	    	var user = new Parse.User();
-			user.set("username", email);
-			user.set("password", password);
-			user.set("email", email);
-			user.set("first_name", first_name);
-			user.set("last_name", last_name);
-			
-			user.signUp(null, {
-			  success: function(user) {
-			  	
-			  	App.router.navigate("home", {trigger: true, replace: true});
-			  },
-			  error: function(user, error) {
-			    // Show the error message somewhere and let the user try again.
-			    alert("Error: " + error.code + " " + error.message);
-			  }
-			});
-	    }
-
-	});
+				// we want access to the email too. this request extra permission.. 
+            	scope: "email"
+            });  // end FB.login()	
+		} // end login method	
+ 	}); // end login view
+	
 	
 	// Single friend
 	// ----------------------------------------------------------------------
-
 	App.Views.Friend = Backbone.View.extend({
 
 		className: 'frame',
@@ -1379,12 +1286,10 @@ $(document).ready(function() {
 
 	    	var loginView = new App.Views.Login;
 	        App.Manager.setView(loginView); 
-
-    		
 	    },
 
 	    logout: function(){
-	        App.Manager.LogOut();
+	        App.Manager.LogOut()
 	    },
 
 	    home: function()
