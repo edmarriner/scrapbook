@@ -293,9 +293,10 @@ $(document).ready(function() {
 
 			   	 FB.api('/me', function(response) {
 				   	 	console.log(response);
-			   	   	console.log('user is' + response.name);
-					       App.Manager.user = new App.Models.User;
-					       App.Manager.user.fetch({
+			   	   		console.log('user is' + response.name);
+			   	   		
+					    App.Manager.user = new App.Collections.Users;
+					    App.Manager.user.fetch({
 						data: {
 							user: response.id
 						},
