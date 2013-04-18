@@ -604,7 +604,9 @@ nav img {
 
 .boxInner {
   position: absolute;
-  overflow: hidden; }
+  overflow: hidden;
+  height: 100%;
+  width: 100%; }
 
 body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleBox {
   margin-bottom: 0; }
@@ -631,6 +633,7 @@ body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleB
     padding-bottom: 25%; } }
 .tile {
   display: block;
+  float: left;
   width: 25%;
   background: #ccc;
   height: 25%;

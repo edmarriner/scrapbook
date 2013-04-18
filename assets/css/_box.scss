@@ -7,6 +7,8 @@
     .boxInner {
        position: absolute;
        overflow: hidden;
+       height: 100%;
+       width: 100%;
     }
     body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleBox {
        margin-bottom: 0;
@@ -42,6 +44,7 @@
 
     .tile {
       display: block;
+      float:left;
       width:25%;
       background: #ccc;
       height: 25%;
