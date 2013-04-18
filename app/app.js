@@ -1298,6 +1298,8 @@ $(document).ready(function() {
 
 	    edit: function(id){
 
+	    	alert("id of scrapbook: " + id);
+
 	        var pageCollection = new App.Collections.Pages;
 			pageCollection.fetch({
 				data: {
