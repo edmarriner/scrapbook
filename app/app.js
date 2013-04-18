@@ -1,49 +1,35 @@
+document.addEventListener('deviceready', function() {
+	
+	if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
+	if (typeof CDV == 'undefined') alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
+	if (typeof FB == 'undefined') alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
 
-
-if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
-            if (typeof CDV == 'undefined') alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
-            if (typeof FB == 'undefined') alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
-
-	document.addEventListener('deviceready', function() {
-		try {
-		alert('Device is ready! Make sure you set your app_id below this alert.');
+	// handshake the facebook API
+	try {
 		FB.init({ appId: "425907780826832", nativeInterface: CDV.FB, useCachedDialogs: false });
-		//document.getElementById('data').innerHTML = "";
-		} catch (e) {
+	} catch (e) {
 		alert(e);
-		}
-	}, false);
+	}
+
+}, false);
  
 $(document).ready(function() {
+
 	FB.Event.subscribe('auth.login', function(response) {
-                               alert('auth.login event');
-                               });
+    	alert('auth.login event'); 
+   	});
             
-            FB.Event.subscribe('auth.logout', function(response) {
-                               alert('auth.logout event');
-                               });
-            
-            FB.Event.subscribe('auth.sessionChange', function(response) {
-                               alert('auth.sessionChange event');
-                               });
-            
-            FB.Event.subscribe('auth.statusChange', function(response) {
-                               alert('auth.statusChange event');
-                               });
-
-
-            function getLoginStatus() {
-                FB.getLoginStatus(function(response) {
-                  if (response.status == 'connected') {
-                  alert('logged in');
-                  } else {
-                  alert('not logged in');
-                  }
-                });
-            }
-
-	alert("facebook done");
-	// JQUERY Functions
+    FB.Event.subscribe('auth.logout', function(response) {
+    	alert('auth.logout event');
+    });
+    
+    FB.Event.subscribe('auth.sessionChange', function(response) {
+    	alert('auth.sessionChange event');
+    });
+    
+    FB.Event.subscribe('auth.statusChange', function(response) {
+    	alert('auth.statusChange event');
+    });
 
 	// center a div in the middle of the page..
 	$.fn.center = function () {
@@ -261,30 +247,26 @@ $(document).ready(function() {
 		events: {
 
 			"click #loginButton" : "login"
-
-		},
-
-		initialize: function()
-		{
-			alert("loginning in view")
 		},
 
 		// Cache the template function for a single item.
 		template: _.template($('#template-login').html()),
 
 	    render: function() {
-	    	alert("rendering login");
 	        this.$el.html(this.template());
 	        return this;
 	    },
 
 	    login: function()
 	    {
+	    	alert("in login method..");
 	    	// login to facebook
 	    	FB.login(function(response) {
 
 	    		// check to see if the request was valid
 			   	if (response.authResponse) {
+
+	    		alert("auth was recieved");
 
 			   	 	// save the access token for use later
 				 	App.Manager.accessToken = response.authResponse.accessToken;
@@ -292,6 +274,8 @@ $(document).ready(function() {
 				 	// get detail about the new user
 			   	 	FB.api('/me', function(response) {
 
+	    			alert("response is back from /me");
+					
 					    // login or register the user to the server backend
 						$.ajax({
 						  url: App.Manager.serverURL + '/login',
@@ -307,6 +291,8 @@ $(document).ready(function() {
 
 						}).success(function(response) // request to scrapbook server is good
 						{
+
+	    					alert("request to my server all good");
 						  	
 						  	// create a model to store the user
 					    	App.Manager.user = new App.Models.User;
@@ -323,11 +309,8 @@ $(document).ready(function() {
 						}).error(function(result, error) // bad request to scrapbook sever
 						{
 							alert("error sending request to scrapbook server app [1001]");
-
 						});
-						
 					});
-
 			   }
 			   else
 			   {
@@ -341,7 +324,7 @@ $(document).ready(function() {
 		} // end login method	
  	}); // end login view
 	
-	
+
 	// Single friend
 	// ----------------------------------------------------------------------
 	App.Views.Friend = Backbone.View.extend({
