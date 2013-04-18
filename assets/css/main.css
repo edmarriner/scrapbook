@@ -599,9 +599,9 @@ nav img {
 .box {
   float: left;
   position: relative;
-  width: 19%;
-  padding-bottom: 19%;
-  margin-right: 1%;
+  width: 15%;
+  padding-bottom: 15%;
+  margin-left: 5%;
   margin-bottom: 20px; }
 
 .boxInner {
@@ -617,23 +617,23 @@ body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleB
   /* Smartphone view: 1 tile */
   .box {
     width: 100%;
-    margin-right: 0;
+    margin-left: 0;
     padding-bottom: 100%; } }
 @media only screen and (max-width: 650px) and (min-width: 481px) {
   /* Tablet view: 2 tiles */
   .box {
-    width: 49%;
+    width: 45%;
     padding-bottom: 49%; } }
 @media only screen and (max-width: 1050px) and (min-width: 651px) {
   /* Small desktop / ipad view: 3 tiles */
   .box {
-    width: 32.3%;
-    padding-bottom: 32.3%; } }
+    width: 28.3%;
+    padding-bottom: 28.3%; } }
 @media only screen and (max-width: 1290px) and (min-width: 1051px) {
   /* Medium desktop: 4 tiles */
   .box {
-    width: 24%;
-    padding-bottom: 24%; } }
+    width: 20%;
+    padding-bottom: 20%; } }
 .tile {
   display: block;
   float: left;
@@ -659,7 +659,9 @@ body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleB
   margin: auto; }
 
 .t1 {
-  background: #ffbfbf; }
+  background: #ffbfbf;
+  box-sizing: border-box;
+  padding-right: 4px; }
 
 .t2 {
   background: #ffa4a4; }
