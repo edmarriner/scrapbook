@@ -590,16 +590,17 @@ $(document).ready(function() {
 			var data = newScrapbook.toJSON();
 			data.user = App.Manager.user.get('id');
 			newScrapbook.save(data, {
-				
+
 				success: function(response)
 				{
 					App.Manager.activeCollections.scrapbooks.add(newScrapbook)
 					App.router.navigate("/book/edit/" + response.scrapbookID , {trigger: true, replace: true});
 				},
-				error: function(obj, error)
+				error: function(response, error)
 				{
 				    alert("There was an error with saving the scrapbooks.");
-				    alert(JSON.stringify(error))
+				    alert(JSON.stringify(error));
+				    alert(JSON.stringify(response));
 				    console.log(error);
 				}
 			});
