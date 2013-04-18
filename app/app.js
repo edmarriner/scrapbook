@@ -314,14 +314,14 @@ $(document).ready(function() {
 							{
 
 								alert("yay");
-							  	alert(response);
+							  	alert(response.hasAccount);
 
 							}).error(function(result, error)
 							{
 
 								alert("nope");
 								alert(error);
-								
+
 							});
 						},
 						error: function(collection, error)
