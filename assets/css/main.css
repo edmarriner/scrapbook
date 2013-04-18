@@ -600,7 +600,8 @@ nav img {
   float: left;
   position: relative;
   width: 20%;
-  padding-bottom: 20%; }
+  padding-bottom: 20%;
+  border: 1px dashed green; }
 
 .boxInner {
   position: absolute;
