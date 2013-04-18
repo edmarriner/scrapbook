@@ -608,9 +608,7 @@ nav img {
   right: 10px;
   top: 10px;
   bottom: 10px;
-  overflow: hidden;
-  background: url("http://www.dwuser.com/education/content/creating-responsive-tiled-layout-with-pure-css/images/demo/7.jpg");
-  background-size: contain; }
+  overflow: hidden; }
 
 body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleBox {
   margin-bottom: 0; }
@@ -640,6 +638,7 @@ body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleB
   background: #ccc;
   height: 25%;
   float: left;
+  background-size: contain;
   padding: 1%; }
 
 .boxTitle {

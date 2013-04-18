@@ -11,8 +11,6 @@
        top: 10px;
        bottom: 10px;
        overflow: hidden;
-       background: url('http://www.dwuser.com/education/content/creating-responsive-tiled-layout-with-pure-css/images/demo/7.jpg');
-       background-size: contain;
     }
     body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleBox {
        margin-bottom: 0;
@@ -51,6 +49,7 @@
       background: #ccc;
       height: 25%;
       float: left;
+      background-size: contain;
       padding:1%;
     }
     
