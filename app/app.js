@@ -294,7 +294,7 @@ $(document).ready(function() {
 			   	 FB.api('/me', function(response) {
 				   	 	console.log(response);
 			   	   		console.log('user is' + response.name);
-			   	   		
+
 					    App.Manager.user = new App.Collections.Users;
 					    App.Manager.user.fetch({
 						data: {
@@ -303,7 +303,16 @@ $(document).ready(function() {
 						dataType : 'jsonp',
 						success: function(result)
 						{
-							console.log(result);
+							$.ajax({
+							  url: App.Manager.serverURL + '/login',
+							  dataType : 'jsonp',
+							  data: 
+							  {
+							  	user: result.id
+							  }
+							}).done(function(response) {
+							  alert(response);
+							});
 						},
 						error: function(collection, error)
 						{
