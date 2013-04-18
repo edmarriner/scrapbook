@@ -591,11 +591,10 @@ $(document).ready(function() {
 			data.user = App.Manager.user.get('id');
 			newScrapbook.save(data, {
 
-				success: function(obj)
+				success: function(response)
 				{
 					App.Manager.activeCollections.scrapbooks.add(newScrapbook)
-					alert("saved!");
-					App.router.navigate("/book/edit/id", {trigger: true, replace: true});
+					App.router.navigate("/book/edit/" + response.scrapbookID , {trigger: true, replace: true});
 				},
 				error: function(obj, error)
 				{
@@ -1293,7 +1292,6 @@ $(document).ready(function() {
 			else
 			{
 				// The user is not logged in so show the login screen
-				alert("login required..");
 				App.router.navigate("login", {trigger: true, replace: true});
 			}
 	    },
