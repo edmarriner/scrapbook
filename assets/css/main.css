@@ -600,8 +600,7 @@ nav img {
   float: left;
   position: relative;
   width: 20%;
-  padding-bottom: 20%;
-  border: 1px dashed green; }
+  padding-bottom: 20%; }
 
 .boxInner {
   position: absolute;
@@ -637,7 +636,7 @@ body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleB
   float: left;
   width: 25%;
   background: #ccc;
-  height: 22%; }
+  height: 25%; }
 
 .boxTitle {
   font-family: 'Roboto Light';
