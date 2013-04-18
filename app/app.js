@@ -1318,7 +1318,7 @@ $(document).ready(function() {
 				error: function(collection, error)
 				{
 				    alert("There was an error with fetching the collection of pages for this scrapbook.")
-				    alert(JSON.stringify(error);
+				    alert(JSON.stringify(error));
 				    console.log(error)
 				}
 			});
