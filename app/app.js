@@ -15,21 +15,21 @@ document.addEventListener('deviceready', function() {
  
 $(document).ready(function() {
 
-	FB.Event.subscribe('auth.login', function(response) {
-    	alert('auth.login event'); 
-   	});
-            
-    FB.Event.subscribe('auth.logout', function(response) {
-    	alert('auth.logout event');
-    });
-    
-    FB.Event.subscribe('auth.sessionChange', function(response) {
-    	alert('auth.sessionChange event');
-    });
-    
-    FB.Event.subscribe('auth.statusChange', function(response) {
-    	alert('auth.statusChange event');
-    });
+	//FB.Event.subscribe('auth.login', function(response) {
+    //	alert('auth.login event'); 
+   	//});
+    //        
+    //FB.Event.subscribe('auth.logout', function(response) {
+    //	alert('auth.logout event');
+    //});
+    //
+    //FB.Event.subscribe('auth.sessionChange', function(response) {
+    //	alert('auth.sessionChange event');
+    //});
+    //
+    //FB.Event.subscribe('auth.statusChange', function(response) {
+    //	alert('auth.statusChange event');
+    //});
 
 	// center a div in the middle of the page..
 	$.fn.center = function () {
@@ -259,22 +259,17 @@ $(document).ready(function() {
 
 	    login: function()
 	    {
-	    	alert("in login method..");
 	    	// login to facebook
 	    	FB.login(function(response) {
 
 	    		// check to see if the request was valid
 			   	if (response.authResponse) {
 
-	    		alert("auth was recieved");
-
 			   	 	// save the access token for use later
 				 	App.Manager.accessToken = response.authResponse.accessToken;
 
 				 	// get detail about the new user
 			   	 	FB.api('/me', function(response) {
-
-	    			alert("response is back from /me");
 					
 					    // login or register the user to the server backend
 						$.ajax({
@@ -291,8 +286,6 @@ $(document).ready(function() {
 
 							}).success(function(response) // request to scrapbook server is good
 							{
-
-		    					alert("request to my server all good");
 							  	
 							  	// create a model to store the user
 						    	App.Manager.user = new App.Models.User;
@@ -305,6 +298,8 @@ $(document).ready(function() {
 								App.Manager.user.set('email', response.email);	
 
 								alert("welcome " + App.Manager.user.get('firstName') + App.Manager.user.get('lastName'));							
+
+								App.router.navigate("", {trigger: true, replace: true});
 
 							}).error(function(result, error) // bad request to scrapbook sever
 							{
