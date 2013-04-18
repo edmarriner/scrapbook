@@ -595,6 +595,7 @@ $(document).ready(function() {
 				{
 					App.Manager.activeCollections.scrapbooks.add(newScrapbook)
 					alert(JSON.stringify(response));
+					alert("/book/edit/" + response.scrapbookID);
 					App.router.navigate("/book/edit/" + response.scrapbookID , {trigger: true, replace: true});
 				},
 				error: function(response, error)
