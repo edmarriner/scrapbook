@@ -53,15 +53,22 @@
     
     .boxTitle
     {
-      font-family: 'Roboto Light';
+      
+      position: relative;
       width: 100%;
       height:25%;
       float: left;
       background: #ffd7d7;
-      text-align: center;
-      line-height: 100%;
       display: block;
     }
+      .centerTitle
+      {
+        position:absolute;
+        font-family: 'Roboto Light';
+        //text-align: center;
+        top:0; left:0; bottom:0; right:0;
+        margin: auto;
+      }
 
     .t1
     {
