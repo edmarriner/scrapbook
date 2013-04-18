@@ -635,10 +635,9 @@ body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleB
 .tile {
   display: block;
   float: left;
-  width: 24%;
+  width: 25%;
   background: #ccc;
-  height: 22%;
-  border: 1px solid blue; }
+  height: 22%; }
 
 .boxTitle {
   font-family: 'Roboto Light';
