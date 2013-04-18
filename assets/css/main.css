@@ -652,6 +652,7 @@ body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleB
 .centerTitle {
   position: absolute;
   font-family: 'Roboto Light';
+  text-align: center;
   top: 0;
   left: 0;
   bottom: 0;
@@ -661,37 +662,53 @@ body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleB
 .t1 {
   background: #ffbfbf;
   box-sizing: border-box;
-  padding-right: 4px; }
+  border-right: 4px; }
 
 .t2 {
-  background: #ffa4a4; }
+  background: #ffa4a4;
+  box-sizing: border-box;
+  border-right: 4px; }
 
 .t3 {
-  background: #ff9999; }
+  background: #ff9999;
+  box-sizing: border-box;
+  border-right: 4px; }
 
 .t4 {
   background: #ff8787; }
 
 .t5 {
-  background: #ffa9a9; }
+  background: #ffa9a9;
+  box-sizing: border-box;
+  border-right: 4px; }
 
 .t6 {
-  background: #f16c6c; }
+  background: #f16c6c;
+  box-sizing: border-box;
+  border-right: 4px; }
 
 .t7 {
-  background: #ffbfbf; }
+  background: #ffbfbf;
+  box-sizing: border-box;
+  border-right: 4px; }
 
 .t8 {
   background: #ffa4a4; }
 
 .t9 {
-  background: #ff9999; }
+  background: #ff9999;
+  box-sizing: border-box;
+  border-right: 4px; }
 
 .t10 {
-  background: #ff8787; }
+  background: #ff8787;
+  box-sizing: border-box;
+  border-right: 4px; }
 
 .t11 {
-  background: #ffa9a9; }
+  background: #ffa9a9;
+  box-sizing: border-box;
+  border-right: 4px; }
 
 .t12 {
   background: #f16c6c; }
