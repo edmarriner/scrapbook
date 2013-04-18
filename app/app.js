@@ -591,14 +591,14 @@ $(document).ready(function() {
 			data.user = App.Manager.user.get('id');
 			newScrapbook.save(data, {
 
-				success: function(response)
+				success: function(model, response, options)
 				{
 					App.Manager.activeCollections.scrapbooks.add(newScrapbook)
 					alert(JSON.stringify(response));
 					alert("/book/edit/" + response.scrapbookID);
 					App.router.navigate("/book/edit/" + 53 , {trigger: true, replace: true});
 				},
-				error: function(response, error)
+				error: function(model, error, options)
 				{
 				    alert("There was an error with saving the scrapbooks.");
 				    alert(JSON.stringify(error));
