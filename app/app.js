@@ -855,8 +855,6 @@ $(document).ready(function() {
 
 	        //while($('.bb-item').length == 0){}
 
-
-
 	        return this;
 	    },
 
