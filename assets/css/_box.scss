@@ -46,22 +46,39 @@
        }
     }
 
-    .boxTitleWrap
-    {
-      height: 100%;
-      width: 100%;
-      display: table;
-      padding: 8%;
-      box-sizing: border-box;
-      font-size: 16px;
+    .tile {
+      width:25%;
+      background: #ccc;
+      height: 25%;
+      float: left;
+      padding:1%;
     }
+    
     .boxTitle
       {
       font-family: 'Roboto Light';
-      font-size: 100%;
-      display: table-cell;
       vertical-align: middle;
       width: 100%;
-      margin: 0 auto;
+      height:25%;
       text-align: center;
     }
+
+    //.boxTitleWrap
+    //{
+    //  height: 100%;
+    //  width: 100%;
+    //  display: table;
+    //  padding: 8%;
+    //  box-sizing: border-box;
+    //  font-size: 16px;
+    //}
+    //.boxTitle
+    //  {
+    //  font-family: 'Roboto Light';
+    //  font-size: 100%;
+    //  display: table-cell;
+    //  vertical-align: middle;
+    //  width: 100%;
+    //  margin: 0 auto;
+    //  text-align: center;
+    //}
