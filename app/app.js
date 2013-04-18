@@ -283,33 +283,33 @@ $(document).ready(function() {
 						  data: 
 						  	{
 						  		user: response.id,
-						  		firstName: response.id,
-						  		lastName: response.id,
+						  		firstName: response.first_name,
+						  		lastName: response.last_name,
 						  		location: 'plymouth',
 						  		email: response.email
 							}
 
-						}).success(function(response) // request to scrapbook server is good
-						{
+							}).success(function(response) // request to scrapbook server is good
+							{
 
-	    					alert("request to my server all good");
-						  	
-						  	// create a model to store the user
-					    	App.Manager.user = new App.Models.User;
-					   		
-					   		// set the details of the user to the local model
-							App.Manager.user.set('id', response.id);
-							App.Manager.user.set('firstName', response.first_name);
-							App.Manager.user.set('lastName', response.last_name);
-							App.Manager.user.set('location', response.location);
-							App.Manager.user.set('email', response.email);	
+		    					alert("request to my server all good");
+							  	
+							  	// create a model to store the user
+						    	App.Manager.user = new App.Models.User;
+						   		
+						   		// set the details of the user to the local model
+								App.Manager.user.set('id', response.id);
+								App.Manager.user.set('firstName', response.firstName);
+								App.Manager.user.set('lastName', response.lastName);
+								App.Manager.user.set('location', response.location);
+								App.Manager.user.set('email', response.email);	
 
-							alert("welcome " + App.Manager.user.get('firstName') + App.Manager.user.get('lastName'));							
+								alert("welcome " + App.Manager.user.get('firstName') + App.Manager.user.get('lastName'));							
 
-						}).error(function(result, error) // bad request to scrapbook sever
-						{
-							alert("error sending request to scrapbook server app [1001]");
-						});
+							}).error(function(result, error) // bad request to scrapbook sever
+							{
+								alert("error sending request to scrapbook server app [1001]");
+							});
 					});
 			   }
 			   else
