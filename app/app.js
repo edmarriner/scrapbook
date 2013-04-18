@@ -720,7 +720,7 @@ $(document).ready(function() {
 	    
 	    tagName: 'div',
 
-	    className: 'home padding',
+	    className: 'home',
 
 	    setCoverSizes: function()
 	    {
