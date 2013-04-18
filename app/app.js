@@ -308,10 +308,20 @@ $(document).ready(function() {
 							  dataType : 'jsonp',
 							  data: 
 							  {
-							  	user: result.id
+							  	user: 1
 							  }
-							}).done(function(response) {
-							  alert(response);
+							}).success(function(response)
+							{
+
+								alert("yay");
+							  	alert(response);
+
+							}).error(function(result, error)
+							{
+
+								alert("nope");
+								alert(error);
+								
 							});
 						},
 						error: function(collection, error)
