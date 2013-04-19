@@ -127,6 +127,7 @@
         <div class='tile red t11'></div>
         <div class='tile red t12'></div>
         </a>
+        updated 20/02/2012
     </script>
 
     <!-- single page layout -->
@@ -178,17 +179,29 @@
     <!-- Book Creation screen -->
     <script type="text/html" id="template-create">
       <div class='create padding'>
-        <div class='form'>
-          <p class="description">Name of the scrapbook</p>
-          <input id='createScrapbookTitle' type="text" placeholder="Enter the scrapbook name..." class="textbox">
-        </div>
-        <div class='form'>
-          <p class="description">Description of the scrapbook</p>
-          <textarea id='createScrapbookDescription' class="textarea" placeholder="Enter a description of the scrapbook..."></textarea>
-        </div>
-        <div class='form'>
+
+        <div class='section'>
+          <div class='heading'>About the book</div>
+          <div class='infomation'>
+            <div class="description">Name of the scrapbook</div>
+            <input id='createScrapbookTitle' type="text" class="textbox">
+            <div class="description">Description of the scrapbook</div>
+            <textarea id='createScrapbookDescription' class="textarea noMarginBottom"></textarea>
+          </div>
+        </div> 
+
+        <div class='section'>
+          <div class='heading'>About the book</div>
+          <div class='infomation'>
+            <div class="description">Name of the scrapbook</div>
+            <input id='createScrapbookTitle' type="text" class="textbox">
+            <div class="description">Description of the scrapbook</div>
+            <textarea id='createScrapbookDescription' class="textarea"></textarea>
+          </div>
+        </div>  
+
           <a id='createScrapbookButton' class="btn">Create Scrapbook!</a>
-        </div>
+        
       </div>
     </script>
 

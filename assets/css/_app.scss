@@ -128,3 +128,23 @@ body {
         -webkit-overflow-scrolling: touch;
         z-index: 1;
     }
+
+    .section
+    {
+        background:#fff;
+        margin-bottom: 10px;
+
+        .heading
+        {
+            height: 50px;
+            background: rgb(233, 233, 233);
+            line-height: 50px;
+            padding-left: 15px;
+            color: #333;
+        }
+
+        .infomation
+        {
+            padding:15px;
+        }
+    }
