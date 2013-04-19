@@ -969,11 +969,6 @@ body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleB
   left: 0;
   display: none; }
 
-.profile img {
-  width: 90%;
-  margin-left: 0.625em;
-  margin-top: 0.625em; }
-
 .friends .frame {
   float: left;
   margin-right: 20px;
