@@ -191,12 +191,11 @@
         </div> 
 
         <div class='section'>
-          <div class='heading'>About the book</div>
+          <div class='heading'>People</div>
           <div class='infomation'>
-            <div class="description">Name of the scrapbook</div>
-            <input id='createScrapbookTitle' type="text" class="textbox">
-            <div class="description">Description of the scrapbook</div>
-            <textarea id='createScrapbookDescription' class="textarea"></textarea>
+            <p>There are current no other editors for this scrapbook</p>
+            <a id='chooseFriends' class="btn greenButton">Choose friends</a>
+            <div class='clear'></div>
           </div>
         </div>  
 
@@ -209,8 +208,36 @@
     <!-- Past Purchases screen -->
     <script type="text/html" id="template-purchases">
 
-    <h1>No purchases</h1>
-    <h2>Why not buy one your your scrapbooks?</h2>
+        <div class='section'>
+          <div class='heading'>My trip to New York</div>
+          <div class='infomation'>
+            <div class='cover'>
+               <a class='boxInner' href='#/book/edit/#'>
+              <div class='tile red t1'></div>
+              <div class='tile red t2'></div>
+              <div class='tile red t3'></div>
+              <div class='tile red t4'></div>
+              <div class='boxTitle'><div class='centerTitle'>title</div></div>
+              <div class='tile red t5'></div>
+              <div class='tile red t6'></div>
+              <div class='tile red t7'></div>
+              <div class='tile red t8'></div>
+              <div class='tile red t9'></div>
+              <div class='tile red t10'></div>
+              <div class='tile red t11'></div>
+              <div class='tile red t12'></div>
+              </a>
+            </div>
+            <div class='date'>24th February 2013</div>
+            <div class='desc'>A trip around the city of New York!</div>
+            <div class='people'>You, Sam and 3 others</div>
+            <div class='pages'>24 pages</div>
+            <div class='clear'></div>
+          </div>
+        </div> 
+
+          <div class='extraInfo'>The scrapbooks you make can be purchased through the actions menu on each book.</div>
+  
 
 
     </script>
@@ -239,25 +266,23 @@
     <!-- Profile screen -->
     <script type="text/html" id="template-profile">
       <div class='profile padding'>
-        <div class='form'>
-          <p class="description">First name</p>
-          <input id='profileFirstName' type="text" value='<%= firstName %>' placeholder="Enter your first name..." class="textbox">
+
+      <div class='section'>
+         <div class='heading'>About you</div>
+         <div class='infomation'>
+          <div class="description">First name</div>
+          <input id='profileFirstName' value='<%= firstName %>' type="text" class="textbox">
+          <div class="description">Last name</div>
+          <input id='profileLastName' value='<%= lastName %>' class="textbox" >
+          <div class="description">Email address</div>
+          <input id='profileEmail' value='<%= email %>' class="textbox" >
+          <div class="description">Your location</div>
+          <input id='profileLocation' value='<%= location %>' class="textbox" >
         </div>
-        <div class='form'>
-          <p class="description">Last name</p>
-          <input id='profileLastName' type="text" value='<%= lastName %>' placeholder="Enter your last name..." class="textbox">
-        </div>
-        <div class='form'>
-          <p class="description">Email adress</p>
-          <input type="text" id='profileEmail' value='<%= email %>' placeholder="Enter your email address..." class="textbox">
-        </div>
-        <div class='form'>
-          <p class="description">Where you live</p>
-          <input type="text" id='profileLocation' value='<%= location %>' placeholder="Enter your location..." class="textbox">
-        </div>
-         <div class='form'>
-          <a id='profileSave' class="btn">Update</a>
-        </div>
+      </div> 
+        <a id='profileSave' class="btn greenButton">Update profile!</a>
+      </div>
+
       </div>
     </script>
 

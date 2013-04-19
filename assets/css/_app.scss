@@ -146,5 +146,21 @@ body {
         .infomation
         {
             padding:15px;
+
+            p
+            {
+                color: #333;
+                line-height: 21px;
+                margin-bottom: 10px;
+            }
         }
     }
+
+    .extraInfo
+        {
+            min-height: 50px;
+            background: rgb(233, 233, 233);
+            line-height: 21px;
+            padding: 15px;
+            color: #333;
+        }

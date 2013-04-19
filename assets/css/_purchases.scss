@@ -1,14 +1,46 @@
 .purchases
 {
-	h1
+	.cover
 	{
-		font-size: 45px;
-		line-height: 50px;
-	}	
-
-	h2
-	{
-		font-size: 28px;
-		line-height: 45px;
+		padding-bottom: 25%;
+		width:24%;
+		position: relative;
+		float: left;
+		margin-right: 10px;
 	}
+
+	.date
+	{
+		font-size: 17px;
+		font-weight: bold;
+		float: left;
+		margin-bottom: 10px;
+		clear: right;
+		color: #222;
+	}
+	.desc
+	{
+		font-size: 15px;
+		float: left;
+		color: #222;
+		clear: right;
+		margin-bottom: 10px;
+	}
+	.people
+	{
+		font-size: 15px;
+		float: left;
+		clear: right;
+		color: #222;
+		margin-bottom: 10px;
+	}
+	.pages
+	{
+		font-size: 15px;
+		float: left;
+		clear: both;
+		color: #222;
+		clear: right;
+	}
+
 }

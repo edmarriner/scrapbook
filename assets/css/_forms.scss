@@ -44,19 +44,20 @@
 
 .btn {
     color:#333;
-    display: block; 
-    height: 40px;
+    display: block;
+    height: 35px;
+    line-height: 35px;
     text-align: center;
-    line-height: 40px;
-    border-radius:5px;
-    background: red;
     padding-left:10px;
     padding-right:10px;
     background: rgb(248,248,248);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(248,248,248,1)), color-stop(99%,rgba(222,222,222,1)));
-    border: 1px solid #aaa;
     float: left;
-    margin-right: 10px;
+  }
+
+  .greenButton
+  {
+    background: #94ba2d;
+    color: #fff;
   }
 
   .noMarginBottom
