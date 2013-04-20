@@ -393,10 +393,25 @@ $(document).ready(function() {
 
 		findByFacebook: function()
 		{
-		 // /fql&q=SELECT uid, name, is_app_user, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1
-		 FB.api('/me/friends', function(response) {
-		 	alert(response.data.length);
- 		 });
+			var carys;
+			 // /fql&q=SELECT uid, name, is_app_user, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1
+			 FB.api('/me/friends', function(response) {
+			 	if(response.data.name == "Carys Morgan")
+			 	{
+			 		carys = response.data.uid;
+			 	}
+	 		 });
+
+			 alert(carys);
+
+ 		 	FB.ui({method: 'apprequests',
+				to: carys,
+				title: 'My Great Invite',
+				message: 'Check out this Awesome App!',
+			}, function(response) {
+			   alert(JSON.stringify(response));
+			});
+
 		},
 
 		add: function()
