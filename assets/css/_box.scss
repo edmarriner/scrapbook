@@ -70,16 +70,18 @@
       box-sizing: border-box;
        border-top:2px solid #fff;
         border-bottom:2px solid #fff;
+
     }
       .centerTitle
       {
-        position:absolute;
+        font-size:15px;
+        margin-top:-10px; //half the font-size (or (font-size*number of lines)/2)
+        position: relative;
+        top: 50%;
         font-family: 'Roboto Light';
-        font-size: 15px;
         color: #666;
         text-align: center;
-        top:0; left:0; bottom:0; right:0;
-        margin: auto;
+        display: block;
       }
 
     .t1

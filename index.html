@@ -117,7 +117,7 @@
         <div class='tile red t2'></div>
         <div class='tile red t3'></div>
         <div class='tile red t4'></div>
-        <div class='boxTitle'><div class='centerTitle'><%= title %></div></div>
+        <div class='boxTitle'><span class='centerTitle'><%= title %></span></div>
         <div class='tile red t5'></div>
         <div class='tile red t6'></div>
         <div class='tile red t7'></div>
@@ -207,6 +207,7 @@
 
     <!-- Past Purchases screen -->
     <script type="text/html" id="template-purchases">
+        <div class='extraInfo'>The scrapbooks you make can be purchased through the actions menu on each book.</div>
 
         <div class='section'>
           <div class='heading'>My trip to New York</div>
@@ -235,10 +236,6 @@
             <div class='clear'></div>
           </div>
         </div> 
-
-          <div class='extraInfo'>The scrapbooks you make can be purchased through the actions menu on each book.</div>
-  
-
 
     </script>
 
@@ -277,7 +274,7 @@
           <div class="description">Email address</div>
           <input id='profileEmail' value='<%= email %>' class="textbox" >
           <div class="description">Your location</div>
-          <input id='profileLocation' value='<%= location %>' class="textbox" >
+          <input id='profileLocation' value='<%= location %>' class="textbox noMarginBottom" >
         </div>
       </div> 
         <a id='profileSave' class="btn">Update profile!</a>

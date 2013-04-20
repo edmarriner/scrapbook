@@ -724,7 +724,7 @@ $(document).ready(function() {
 
 	    setCoverSizes: function()
 	    {
-			$('.cover').height($('.cover').width());
+			$('.box span').css('font-size', ($('.box').width()/11));
 	    },
 
 	    initialize: function()
