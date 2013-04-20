@@ -299,43 +299,24 @@
       <div class='section'>
         <div class='heading'>Your friends</div>
         <div class='infomation'>
-
-        <div class='friend'>
-         <div class='friendPicture'>img</div>
-         <div class='friendInfo'>
-            <div>Edward Marriner</div>
-            <div>Member since 23/02/13</div>
-            <div>Editor of 2 scrapbooks</div>
-            <div>Bournemouth</div>
-         </div>
         </div>
-
-        <div class='friend'>
-         <div class='friendPicture'>img</div>
-         <div class='friendInfo'>
-            <div>Edward Marriner</div>
-            <div>Member since 23/02/13</div>
-            <div>Editor of 2 scrapbooks</div>
-            <div>Bournemouth</div>
-         </div>
-        </div>
-
-        <div class='friend'>
-         <div class='friendPicture'>img</div>
-         <div class='friendInfo'>
-            <div>Edward Marriner</div>
-            <div>Member since 23/02/13</div>
-            <div>Editor of 2 scrapbooks</div>
-            <div>Bournemouth</div>
-         </div>
-        </div>
-
         <div class='clear'></div>
-        </div>
       </div> 
         
     </script>
 
+    <!-- Friends screen -->
+    <script type="text/html" id="template-single-friend">
+
+      <div class='friend'>
+         <div class='friendPicture'>img</div>
+         <div class='friendInfo'>
+            <div><%= name %></div>
+            <div><%= location %></div>
+         </div>
+        </div>
+
+    </script>
 
     <!-- timeline screen -->
     <script type="text/html" id="template-timeline">
@@ -343,12 +324,6 @@
        
     </script>
 
-    <!-- Single friend element screen -->
-    <script type="text/html" id="template-single-friend">
-      <div class='pic'></div>
-      <div class='name'><%= firstName %> <%= lastName %></div>
-      <div id='removeFriend' class='btn'>Remove</div>
-    </script>
             
 
     <!-- Modal screens -->

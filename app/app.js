@@ -318,12 +318,6 @@ $(document).ready(function() {
 	// ----------------------------------------------------------------------
 	App.Views.Friend = Backbone.View.extend({
 
-		className: 'frame',
-
-		events: {
-			'click #removeFriend' : 'remove'
-		},
-
 		// Cache the template function for a single item.
 		template: _.template($('#template-single-friend').html()),
 
@@ -331,21 +325,6 @@ $(document).ready(function() {
 	    {
 	        this.$el.html(this.template(this.model.toJSON()));
 	        return this;
-	    },
-
-	    remove: function()
-	    {  	
-	    	
-	    	var removeFriend = $.get(App.Manager.serverURL + '/removeFriend', {user: App.Manager.user.get('id'), friend: this.model.get('id')})
-	    	.done(function()
-	    	{
-	    		App.Manager.activeCollections.friends.remove(this.model);
-	    		alert("removed!")
-	    	})
-	    	.fail(function()
-	    	{
-	    		alert("error, friend not removed!"); 
-	    	});
 	    }
 	});
 
@@ -380,7 +359,8 @@ $(document).ready(function() {
 	    events: 
 	    {
 	    	'click #friendsSearch' : 'add',
-	    	'click #addFriendFacebook' : 'findByFacebook'
+	    	'click #addFriendFacebook' : 'findByFacebook',
+	    	'click #addFriendEmail' : 'findByFacebook'
 	    },
 
 	    // Cache the template function for a single item.
@@ -393,25 +373,11 @@ $(document).ready(function() {
 
 		findByFacebook: function()
 		{
-			App.Manager.RequestPeople = '';
-			 // 
-			 FB.api('/fql&q=SELECT uid, name, is_app_user, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 0', function(response) {
-			 	for(var i = 0; i < response.data.length; i++)
-			 	{
-			 		if(response.data[i].name == "Carys Morgan")
-			 		{
-			 			App.Manager.RequestPeople = response.data[i].uid + ',';
-			 		}
-			 	}
-	 		 });
-
-
  		 	FB.ui({method: 'apprequests',
 				to: App.Manager.RequestPeople,
 				title: 'My Great Invite',
 				message: 'Check out this App!',
 			}, function() { });
-
 		},
 
 		add: function()
@@ -429,6 +395,19 @@ $(document).ready(function() {
 
 	    render: function()
 	    {
+	    	FB.api('/fql&q=SELECT uid, name, location, is_app_user, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1', function(response)
+	    	{
+				for(var i = 0; i < response.data.length; i++)
+				{
+					var facebookFriend = new App.Models.User;
+					facebookFriend.set('firstName', response.data[i].name);
+					facebookFriend.set('location', response.data[i].location);
+					facebookFriend.set('picture', response.data[i].pic_square);
+
+					var view = new App.Views.Friend({ model: facebookFriend });
+	            	this.$el.append(view.render().el);
+			    }
+			});
 
 	    	this.$el.html(this.template());
 	    	console.log(this.collection)
