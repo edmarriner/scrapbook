@@ -3,8 +3,9 @@
 	.friend{
 		float: left;
 		margin-right: 10px;
-		width: 270px;
-		height: 116px;
+		width: 145px;
+		height: 200px;
+		overflow: hidden;
 	}
 
 	.friendPicture
@@ -25,5 +26,9 @@
 		color: #666;
 		font-size: 13px;
 		line-height: 20px;
+	}
+	.friendInfo div:nth-child(1)
+	{
+		font-weight: bold;
 	}
 }
