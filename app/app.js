@@ -393,25 +393,25 @@ $(document).ready(function() {
 
 		findByFacebook: function()
 		{
-			var carys;
+			var people = '';
 			 // /fql&q=SELECT uid, name, is_app_user, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1
 			 FB.api('/me/friends', function(response) {
 			 	for(var i = 0; i < response.data.length; i++)
 			 	{
 			 		if(response.data[i].name == "Carys Morgan")
 			 		{
-			 			carys = response.data[i].uid;
+			 			people += response.data[i].uid + ',';
 			 		}
 			 	}
-				
 	 		 });
 
 
  		 	FB.ui({method: 'apprequests',
-				to: carys,
+				to: people,
 				title: 'My Great Invite',
 				message: 'Check out this App!',
 			}, function(response) {
+				alert(people)
 			   alert(JSON.stringify(response));
 			});
 
