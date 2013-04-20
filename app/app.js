@@ -380,7 +380,7 @@ $(document).ready(function() {
 	    events: 
 	    {
 	    	'click #friendsSearch' : 'add',
-	    	'click #facebookSearch' : 'findByFacebook'
+	    	'click #addFriendFacebook' : 'findByFacebook'
 	    },
 
 	    // Cache the template function for a single item.
