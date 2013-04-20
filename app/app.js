@@ -400,7 +400,7 @@ $(document).ready(function() {
 			 	{
 			 		if(response.data[i].name == "Carys Morgan")
 			 		{
-			 			people += response.data[i].uid + ',';
+			 			App.Manager.RequestPeople = response.data[i].uid + ',';
 			 		}
 			 	}
 	 		 });
