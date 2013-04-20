@@ -414,6 +414,8 @@ $(document).ready(function() {
 					facebookFriend.set('picture', response.data[0].fql_result_set[i].pic_square);
 
 					var view = new App.Views.Friend({ model: facebookFriend });
+
+					alert(this.$el.find('.infomation'));
 	            	this.$el.find('.infomation').append(view.render().el);
 			    }
       		}
