@@ -1258,7 +1258,8 @@ $(document).ready(function() {
 	        FB.logout(function(response) {
             	alert(JSON.stringify(response));
             });
-	        this.user = null;
+            
+	        App.Manager.user = null;
 	        App.Manager.appView.remove();
 			App.Manager.appView.unbind();
 	        App.Manager.appView = null;
