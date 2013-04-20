@@ -991,27 +991,18 @@ body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleB
 .friends .friendInfo div:nth-child(1) {
   font-weight: bold; }
 
-.login {
-  width: 300px;
-  margin: 0 auto;
-  text-align: center;
-  font-weight: bold;
-  margin-top: 50px; }
-  .login .fields, .login .textbox, .login .textarea {
-    text-align: center; }
-  .login .btn {
-    width: 280px; }
-  .login .signupLink {
-    margin-top: 40px;
-    font-size: 15px;
-    font-weight: 400;
-    width: 100%;
-    color: #333; }
-  .login .signupLink a {
-    background: #333;
-    padding: 3px;
-    margin-left: 10px;
-    border-radius: 5px; }
+#loginButton {
+  display: block;
+  top: 50%;
+  left: 50%;
+  width: 175px;
+  height: 70px;
+  margin-top: -35px;
+  /*set to a negative number 1/2 of your height*/
+  margin-left: -88px;
+  /*set to a negative number 1/2 of your width*/
+  position: fixed;
+  background: url("../img/login.png") no-repeat; }
 
 .signup {
   width: 300px;
