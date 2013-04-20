@@ -85,16 +85,7 @@ $(document).ready(function() {
 			
 		},
 
-		logOut: function()
-		{
-			FB.logout(function(response) {
-            	alert('logged out');
-            });
-	        this.user = null;
-	        App.router.navigate("", {trigger: true, replace: true});
-		},
-
-		start: function()
+		drawChrome: function()
 		{
 			this.appView = new App.Views.Chrome;
 			$('body').html(this.appView.render().el);			
@@ -1254,11 +1245,19 @@ $(document).ready(function() {
 	    login: function(){
 
 	    	var loginView = new App.Views.Login;
-	        App.Manager.setView(loginView); 
+	        $('body').html(loginView.render().el);
 	    },
 
 	    logout: function(){
-	        App.Manager.LogOut();
+
+	        FB.logout(function(response) {
+            	alert('logged out');
+            });
+	        this.user = null;
+	        App.Manager.appView.remove();
+			App.Manager.appView.unbind();
+	        App.Manager.appView = null;
+	        App.router.navigate("", {trigger: true, replace: true});
 	    },
 
 	    home: function()
@@ -1267,24 +1266,28 @@ $(document).ready(function() {
 	    	if(App.Manager.user)
 			{
 
-	    	App.Manager.activeCollections.scrapbooks = new App.Collections.Scrapbooks;
-			App.Manager.activeCollections.scrapbooks.fetch({
-				data: {
-					user: App.Manager.user.get('id')
-				},
-				dataType : 'jsonp',
-				success: function(collection)
+				if(!App.Manager.appView)
 				{
-					var collectionView = new App.CollectionViews.Scrapbooks({ collection: collection });
-					App.Manager.setView(collectionView);
-					collectionView.setCoverSizes();
-				},
-				error: function(collection, error)
-				{
-				    alert("There was an error with fetching the collection of scrapbooks.");
-				    console.log(error)
+					App.Manager.drawChrome();
 				}
-			});
+		    	App.Manager.activeCollections.scrapbooks = new App.Collections.Scrapbooks;
+				App.Manager.activeCollections.scrapbooks.fetch({
+					data: {
+						user: App.Manager.user.get('id')
+					},
+					dataType : 'jsonp',
+					success: function(collection)
+					{
+						var collectionView = new App.CollectionViews.Scrapbooks({ collection: collection });
+						App.Manager.setView(collectionView);
+						collectionView.setCoverSizes();
+					},
+					error: function(collection, error)
+					{
+					    alert("There was an error with fetching the collection of scrapbooks.");
+					    console.log(error)
+					}
+				});
 
 			}
 			else
@@ -1376,9 +1379,6 @@ $(document).ready(function() {
 	    },
 
 	})
-	// start the application
-	App.Manager.start();
-
 
 	// Startup backbone...
 	App.router = new App.Router;
