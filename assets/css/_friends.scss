@@ -1,56 +1,29 @@
 .friends
 {
-
-	.frame
-	{
+	.friend{
 		float: left;
-		margin-right: 20px;
-		margin-bottom: 20px;
-		width:150px;
-		height: 220px;
-		background: #eee;
-		padding:3px;
-		border-radius: 10px;
-		color:#333;
-
-		.btn
-		{
-			width: 85%;
-			height: 29px;
-			border-radius: 10px;
-			line-height: 29px;
-		}
-
+		margin-right: 10px;
+		width: 270px;
+		height: 116px;
 	}
 
-	.pic
+	.friendPicture
 	{
+		width:100px;
+		height:100px;
+		position: relative;
+		float: left;
+		margin-right: 10px;
 		background: url("../#{img}/friends/face1.png");
 		background-size:cover; 
-		border-radius: 10px;
-		height: 150px;
-		width: 150px;
 	}
 
-	.name
+	.friendInfo
 	{
-		font-size: 16px;
-		text-align: center;
-		line-height: 25px;
-		margin-top: 7px;
-		margin-bottom: 7px;
-	}
-
-	
-	.search
-	{
-		float: right;
-		height: 50px;
-		line-height: 50px;
-	}
-
-	.email
-	{
-		width: 92%;
+		float: left;
+		width: 160px;
+		color: #666;
+		font-size: 13px;
+		line-height: 20px;
 	}
 }
