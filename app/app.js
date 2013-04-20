@@ -401,12 +401,8 @@ $(document).ready(function() {
 	    render: function()
 	    {
 	    	this.$el.html(this.template());
-	    	
-	    	FB.api(
-		    {
-        		method: 'fql.query',
-        		query: 'SELECT uid , name, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1'
-      		},
+
+	    	FB.api('fql?q=SELECT uid , name, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1',
 			function(response)
 			{
         		alert(JSON.stringify(response));
