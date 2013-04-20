@@ -406,6 +406,8 @@ $(document).ready(function() {
 			function(response)
 			{
         		alert(JSON.stringify(response));
+        		alert("length: " + response.data[0].fql_result_set.length);
+
 				for(var i = 0; i < response.data[0].fql_result_set.length; i++)
 				{
 					var facebookFriend = new App.Models.User;
@@ -413,9 +415,13 @@ $(document).ready(function() {
 					facebookFriend.set('location', response.data[0].fql_result_set[i].location);
 					facebookFriend.set('picture', response.data[0].fql_result_set[i].pic_square);
 
+					alert("model: " + JSON.stringify(facebookFriend));
+
 					var view = new App.Views.Friend({ model: facebookFriend });
 
-					alert(this.$el.find('.infomation'));
+					alert("view: " + JSON.stringify(view));
+
+					alert(".info: " + this.$el.find('.infomation'));
 	            	this.$el.find('.infomation').append(view.render().el);
 			    }
       		}
