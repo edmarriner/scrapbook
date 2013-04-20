@@ -321,6 +321,10 @@ $(document).ready(function() {
 		// Cache the template function for a single item.
 		template: _.template($('#template-single-friend').html()),
 
+		initialize: function()
+		{
+			alert('starting friend')
+		},
 	    render: function()
 	    {
 	        this.$el.html(this.template(this.model.toJSON()));
