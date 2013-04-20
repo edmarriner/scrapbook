@@ -429,7 +429,9 @@ $(document).ready(function() {
 
 					alert(view.render().el);
 
-	            	//this.$el.find('.infomation').append(view.render().el);
+					alert(view.render().el);
+
+	            	this.$el.find('.infomation');
 			    }
       		}
    	 		);
