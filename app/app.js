@@ -87,6 +87,7 @@ $(document).ready(function() {
 
 		drawChrome: function()
 		{
+
 			this.appView = new App.Views.Chrome;
 			$('body').html(this.appView.render().el);			
 		}
@@ -143,9 +144,12 @@ $(document).ready(function() {
 	        return this;
 		},
 
+		// Cache the template function for a single item.
+		template: _.template($('#template-login').html()),
+
 	    render: function()
 	    {
-	        this.$el.html($('#template-app').html());
+	        this.$el.html(this.template());
 	        $("#home").swipe( {
 		        //Generic swipe handler for all directions
 		        swipeLeft:function(event, direction, distance, duration, fingerCount) {
@@ -1265,6 +1269,7 @@ $(document).ready(function() {
 
 	    	if(App.Manager.user)
 			{
+				alert("there is now a user...");
 
 				if(App.Manager.appView == null)
 				{
@@ -1379,7 +1384,7 @@ $(document).ready(function() {
 	    },
 
 	})
-
+	
 	// Startup backbone...
 	App.router = new App.Router;
 	Backbone.history.start();
