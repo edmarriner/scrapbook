@@ -87,7 +87,8 @@ $(document).ready(function() {
 
 		drawChrome: function()
 		{
-
+			App.Manager.loginView.remove();
+			App.Manager.loginView.unbind();
 			this.appView = new App.Views.Chrome;
 			$('body').html(this.appView.render().el);			
 		}
@@ -1248,8 +1249,8 @@ $(document).ready(function() {
 
 	    login: function(){
 
-	    	var loginView = new App.Views.Login;
-	        $('body').html(loginView.render().el);
+	    	var App.Manager.loginView = new App.Views.Login;
+	        $('body').html(App.Manager.loginView.render().el);
 	    },
 
 	    logout: function(){
@@ -1269,8 +1270,6 @@ $(document).ready(function() {
 
 	    	if(App.Manager.user)
 			{
-				alert("there is now a user...");
-
 				if(App.Manager.appView == null)
 				{
 					App.Manager.drawChrome();
