@@ -406,7 +406,7 @@ $(document).ready(function() {
 			function(response)
 			{
         		alert(JSON.stringify(response));
-				for(var i = 0; i < response.data.fql_result_set.length; i++)
+				for(var i = 0; i < response.data[0].fql_result_set.length; i++)
 				{
 					var facebookFriend = new App.Models.User;
 					facebookFriend.set('firstName', response.data[0].fql_result_set[i].name);
