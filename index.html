@@ -213,15 +213,15 @@
     <!-- Past Purchases screen -->
     <script type="text/html" id="template-purchase-single">
        <div class='section'>
-          <div class='heading'>My trip to New York</div>
+          <div class='heading'><%= title %></div>
           <div class='infomation'>
             <div class='cover'>
-               <a class='boxInner' href='#/book/edit/#'>
+               <a class='boxInner'>
               <div class='tile red t1'></div>
               <div class='tile red t2'></div>
               <div class='tile red t3'></div>
               <div class='tile red t4'></div>
-              <div class='boxTitle'><div class='centerTitle'>title</div></div>
+              <div class='boxTitle'><div class='centerTitle'><%= title %></div></div>
               <div class='tile red t5'></div>
               <div class='tile red t6'></div>
               <div class='tile red t7'></div>
@@ -232,10 +232,8 @@
               <div class='tile red t12'></div>
               </a>
             </div>
-            <div class='date'>24th February 2013</div>
-            <div class='desc'>A trip around the city of New York!</div>
-            <div class='people'>You, Sam and 3 others</div>
-            <div class='pages'>24 pages</div>
+            <div class='date'><%= date %></div>
+            <div class='desc'><%= description %></div>
             <div class='clear'></div>
           </div>
         </div> 

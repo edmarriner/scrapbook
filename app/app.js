@@ -379,7 +379,8 @@ $(document).ready(function() {
 
 	    events: 
 	    {
-	    	'click #friendsSearch' : 'add'
+	    	'click #friendsSearch' : 'add',
+	    	'click #facebookSearch' : 'findByFacebook'
 	    },
 
 	    // Cache the template function for a single item.
@@ -388,6 +389,14 @@ $(document).ready(function() {
 		initialize: function()
 		{
 			App.Manager.appView.updateHeader('Friends');
+		},
+
+		findByFacebook: function()
+		{
+		 // First get the list of friends for this user with the Graph API
+		 FB.api('/me/friends', function(response) {
+		 	alert(response.data.length);
+ 
 		},
 
 		add:function()
@@ -1381,9 +1390,6 @@ $(document).ready(function() {
 	    },
 
 	    purchases: function(id){
-
-			var purchasesView = new App.CollectionViews.Purchases;
-	        App.Manager.setView(purchasesView); 
 
 	        App.Manager.activeCollections.purchases = new App.Collections.Purchases;
 			App.Manager.activeCollections.purchases.fetch({
