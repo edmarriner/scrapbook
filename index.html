@@ -280,7 +280,7 @@
           <input id='profileLocation' value='<%= location %>' class="textbox" >
         </div>
       </div> 
-        <a id='profileSave' class="btn greenButton">Update profile!</a>
+        <a id='profileSave' class="btn">Update profile!</a>
       </div>
 
       </div>
@@ -289,11 +289,23 @@
 
     <!-- Friends screen -->
     <script type="text/html" id="template-friends">
-        <div class='form'>
-          <input type="text" id='friendsEmail' placeholder="Add a friend by thier email address..." class="textbox email"><a id='friendsSearch' class="btn search">Add...</a>
+      <div class='section'>
+        <div class='heading'>Find friends</div>
+        <div class='infomation'>
+          <p>Before you can add people to become editors in your scrapbooks you must first add them as a friend. Friend friends using the actions below.</p>
+          <a id='addFriendEmail' class="btn greenButton" style='float:left'>Search by email</a>
+          <a id='addFriendFacebook' class="btn greenButton" style='float:left; margin-left:20px;'>Facebook friends</a>
+          <div class='clear'></div>
         </div>
+      </div> 
 
-
+      <div class='section'>
+        <div class='heading'>Your friends</div>
+        <div class='infomation'>
+         
+        </div>
+      </div> 
+        
     </script>
 
 
