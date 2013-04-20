@@ -393,13 +393,13 @@ $(document).ready(function() {
 
 		findByFacebook: function()
 		{
-		 // First get the list of friends for this user with the Graph API
+		 // /fql&q=SELECT uid, name, is_app_user, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1
 		 FB.api('/me/friends', function(response) {
 		 	alert(response.data.length);
- 
+ 		 });
 		},
 
-		add:function()
+		add: function()
 		{
 			var findFriend = $.get(App.Manager.serverURL + '/addFriend', {user: App.Manager.user.get('id'), email: this.$el.find('#friendsEmail').val()})
 	    	.done(function()
