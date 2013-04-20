@@ -406,12 +406,12 @@ $(document).ready(function() {
 			function(response)
 			{
         		alert(JSON.stringify(response));
-				for(var i = 0; i < response.data.length; i++)
+				for(var i = 0; i < response.data.fql_result_set.length; i++)
 				{
 					var facebookFriend = new App.Models.User;
-					facebookFriend.set('firstName', response.data[i].name);
-					facebookFriend.set('location', response.data[i].location);
-					facebookFriend.set('picture', response.data[i].pic_square);
+					facebookFriend.set('firstName', response.data[0].fql_result_set[i].name);
+					facebookFriend.set('location', response.data[0].fql_result_set[i].location);
+					facebookFriend.set('picture', response.data[0].fql_result_set[i].pic_square);
 
 					var view = new App.Views.Friend({ model: facebookFriend });
 	            	this.$el.find('.infomation').append(view.render().el);
