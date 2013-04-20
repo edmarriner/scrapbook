@@ -324,10 +324,14 @@ $(document).ready(function() {
 		initialize: function()
 		{
 			alert('starting friend')
+			alert('model... ' + JSON.stringify(this.model.toJSON()))
 		},
+
 	    render: function()
 	    {
+	    	alert('render start')
 	        this.$el.html(this.template(this.model.toJSON()));
+	        alert('render done')
 	        return this;
 	    }
 	});
