@@ -145,7 +145,7 @@ $(document).ready(function() {
 		},
 
 		// Cache the template function for a single item.
-		template: _.template($('#template-login').html()),
+		template: _.template($('#template-app').html()),
 
 	    render: function()
 	    {
