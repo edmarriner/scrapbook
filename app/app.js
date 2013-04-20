@@ -417,7 +417,7 @@ $(document).ready(function() {
 					facebookFriend.set('picture', response.data[i].pic_square);
 
 					var view = new App.Views.Friend({ model: facebookFriend });
-	            	this.$el.append(view.render().el);
+	            	this.$el.find('.infomation').append(view.render().el);
 			    }
       		}
    	 		);
@@ -429,7 +429,7 @@ $(document).ready(function() {
 	        {
 	        	//create a new view for the current scrapbook model
 	            var view = new App.Views.Friend({ model: tempFriend });
-	            this.$el.append(view.render().el);
+	            this.$el.find('.infomation').append(view.render().el);
 	        }, this);
 
 	        return this;
