@@ -396,21 +396,24 @@ $(document).ready(function() {
 			var carys;
 			 // /fql&q=SELECT uid, name, is_app_user, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1
 			 FB.api('/me/friends', function(response) {
-			 	if(response.data.name == "Carys Morgan")
+			 	for(var i = 0; i < response.data.length; i++)
 			 	{
-			 		carys = response.data.uid;
+			 		if(response.data[i].name == "Carys Morgan")
+			 		{
+			 			alert(response.data.uid);
+			 		}
 			 	}
+				
 	 		 });
 
-			 alert(carys);
 
- 		 	FB.ui({method: 'apprequests',
-				to: carys,
-				title: 'My Great Invite',
-				message: 'Check out this Awesome App!',
-			}, function(response) {
-			   alert(JSON.stringify(response));
-			});
+ 		 	//FB.ui({method: 'apprequests',
+			//	to: carys,
+			//	title: 'My Great Invite',
+			//	message: 'Check out this Awesome App!',
+			//}, function(response) {
+			//   alert(JSON.stringify(response));
+			//});
 
 		},
 
