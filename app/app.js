@@ -1249,7 +1249,7 @@ $(document).ready(function() {
 
 	    login: function(){
 
-	    	var App.Manager.loginView = new App.Views.Login;
+	    	App.Manager.loginView = new App.Views.Login;
 	        $('body').html(App.Manager.loginView.render().el);
 	    },
 
