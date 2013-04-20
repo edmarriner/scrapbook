@@ -1034,6 +1034,8 @@ body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleB
     margin-left: 10px;
     border-radius: 5px; }
 
+.purchases .extraInfo {
+  margin-bottom: 10px; }
 .purchases .cover {
   padding-bottom: 25%;
   width: 24%;
