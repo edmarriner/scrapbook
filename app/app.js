@@ -1266,7 +1266,7 @@ $(document).ready(function() {
 	    	if(App.Manager.user)
 			{
 
-				if(!App.Manager.appView)
+				if(App.Manager.appView == null)
 				{
 					App.Manager.drawChrome();
 				}
