@@ -394,8 +394,8 @@ $(document).ready(function() {
 		findByFacebook: function()
 		{
 			App.Manager.RequestPeople = '';
-			 // /fql&q=SELECT uid, name, is_app_user, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1
-			 FB.api('/me/friends', function(response) {
+			 // 
+			 FB.api('/fql&q=SELECT uid, name, is_app_user, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 0', function(response) {
 			 	for(var i = 0; i < response.data.length; i++)
 			 	{
 			 		if(response.data[i].name == "Carys Morgan")
@@ -410,10 +410,7 @@ $(document).ready(function() {
 				to: App.Manager.RequestPeople,
 				title: 'My Great Invite',
 				message: 'Check out this App!',
-			}, function(response) {
-				alert(App.Manager.RequestPeople);
-			   alert(JSON.stringify(response));
-			});
+			}, function() { });
 
 		},
 
