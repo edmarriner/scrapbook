@@ -400,7 +400,8 @@ $(document).ready(function() {
 
 	    render: function()
 	    {
-
+	    	this.$el.html(this.template());
+	    	
 	    	FB.api(
 		    {
         		method: 'fql.query',
@@ -422,8 +423,6 @@ $(document).ready(function() {
       		}
    	 		);
 
-
-	    	this.$el.html(this.template());
 	    	console.log(this.collection)
 	        this.collection.each(function(tempFriend)
 	        {
