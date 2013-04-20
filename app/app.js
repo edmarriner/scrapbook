@@ -393,11 +393,22 @@ $(document).ready(function() {
 	    	});
 		},
 
+
+
+		   
+
+
 	    render: function()
 	    {
-	    	FB.api('/fql&q=SELECT uid, name, is_app_user, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1', function(response)
-	    	{
-	    		alert(JSON.stringify(response))
+	    	
+	    	 FB.api(
+		    {
+        		method: 'fql.query',
+        		query: 'SELECT uid , name, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1'
+      		},
+			function(response)
+			{
+        		alert(JSON.stringify(response))
 				for(var i = 0; i < response.data.length; i++)
 				{
 					var facebookFriend = new App.Models.User;
@@ -408,7 +419,9 @@ $(document).ready(function() {
 					var view = new App.Views.Friend({ model: facebookFriend });
 	            	this.$el.append(view.render().el);
 			    }
-			});
+      		}
+   	 		);
+
 
 	    	this.$el.html(this.template());
 	    	console.log(this.collection)
