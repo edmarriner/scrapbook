@@ -416,7 +416,7 @@ $(document).ready(function() {
 				{
 					var facebookFriend = new App.Models.User;
 					facebookFriend.set('firstName', response.data[0].fql_result_set[i].name);
-					facebookFriend.set('location', response.data[0].fql_result_set[i].location);
+					facebookFriend.set('lastName', '');
 					facebookFriend.set('picture', response.data[0].fql_result_set[i].pic_square);
 
 					alert("model: " + JSON.stringify(facebookFriend));
