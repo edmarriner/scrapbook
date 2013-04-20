@@ -400,7 +400,8 @@ $(document).ready(function() {
 			 	{
 			 		if(response.data[i].name == "Carys Morgan")
 			 		{
-			 			alert(response.data.uid);
+			 			alert(i);
+			 			alert(JSON.stringify(response.data[i]));
 			 		}
 			 	}
 				
