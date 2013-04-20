@@ -427,11 +427,7 @@ $(document).ready(function() {
 
 					var view = new App.Views.Friend({ model: facebookFriend });
 
-					alert(view.render().el);
-
-					alert(view.render().el);
-
-	            	this.$el.find('.infomation');
+	            	alert("model: " + JSON.stringify(this.$el.find('.infomation')));
 			    }
       		}
    	 		);
