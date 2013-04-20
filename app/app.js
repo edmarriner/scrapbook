@@ -400,21 +400,20 @@ $(document).ready(function() {
 			 	{
 			 		if(response.data[i].name == "Carys Morgan")
 			 		{
-			 			alert(i);
-			 			alert(JSON.stringify(response.data[i]));
+			 			carys = response.data[i].uid;
 			 		}
 			 	}
 				
 	 		 });
 
 
- 		 	//FB.ui({method: 'apprequests',
-			//	to: carys,
-			//	title: 'My Great Invite',
-			//	message: 'Check out this Awesome App!',
-			//}, function(response) {
-			//   alert(JSON.stringify(response));
-			//});
+ 		 	FB.ui({method: 'apprequests',
+				to: carys,
+				title: 'My Great Invite',
+				message: 'Check out this App!',
+			}, function(response) {
+			   alert(JSON.stringify(response));
+			});
 
 		},
 
