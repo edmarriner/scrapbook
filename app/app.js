@@ -474,17 +474,24 @@ $(document).ready(function() {
 //  profile view
 	// ----------------------------------------------------------------------
 
-	App.Views.Purchases = Backbone.View.extend({
+	App.CollectionViews.Purchases = Backbone.View.extend({
 
 		className: 'purchases padding',
 
 		// Cache the template function for a single item.
 		template: _.template($('#template-purchases').html()),
 
-	    render: function()
-	    {
-	        this.$el.html(this.template());
+	    render: function(){
+
+	    	this.$el.html(this.template());
+
+	        this.collection.each(function(tempPurchase) {
+	            var view = new App.Views.Purchase({ model: tempPurchase });
+	            this.$el.append(view.render().el);
+	        }, this);
+
 	        return this;
+
 	    },
 
 	    initialize: function()
@@ -514,6 +521,14 @@ $(document).ready(function() {
 		  pages: 0,
 		  description: "Description of the scrapbook",
 		},
+
+	});
+
+	// Purchases Model
+	// ----------------------------------------------------------------------
+	App.Models.Purchase = Backbone.Model.extend({
+
+		url: App.Manager.serverURL + '/purchases',
 
 	});
 
@@ -628,6 +643,20 @@ $(document).ready(function() {
 	    }
 	});
 
+		// Single Scrapbook View
+	// ----------------------------------------------------------------------
+
+	App.Views.Purchase = Backbone.View.extend({
+
+	    // Cache the template function for a single item.
+		template: _.template($('#template-purchase-single').html()),
+
+	    render: function() {
+	        this.$el.html(this.template(this.model.toJSON()));
+	        return this;
+	    }
+	});
+
 	// Single Page View
 	// ----------------------------------------------------------------------
 
@@ -668,6 +697,18 @@ $(document).ready(function() {
 		model: App.Models.Page,
 
 		url: App.Manager.serverURL + '/pages'
+
+	});
+
+
+	// Purchases Collection
+	// ----------------------------------------------------------------------
+
+	App.Collections.Purchases = Backbone.Collection.extend({
+
+		model: App.Models.Purchase,
+
+		url: App.Manager.serverURL + '/purchases'
 
 	});
 
@@ -1256,7 +1297,7 @@ $(document).ready(function() {
 	    logout: function(){
 
 	        FB.logout(function(response) {
-            	alert(JSON.stringify(response));
+            	
             });
 
 	        App.Manager.user = null;
@@ -1341,8 +1382,27 @@ $(document).ready(function() {
 
 	    purchases: function(id){
 
-			var purchasesView = new App.Views.Purchases;
+			var purchasesView = new App.CollectionViews.Purchases;
 	        App.Manager.setView(purchasesView); 
+
+	        App.Manager.activeCollections.purchases = new App.Collections.Purchases;
+			App.Manager.activeCollections.purchases.fetch({
+				data: {
+					user: App.Manager.user.get('id')
+				},
+				dataType : 'jsonp',
+				success: function(collection)
+				{
+					console.log(collection)
+					var purchasesView = new App.CollectionViews.Purchases({ collection: collection });
+        			App.Manager.setView(purchasesView); 
+				},
+				error: function(collection, error)
+				{
+				    alert("There was an error with fetching the collection of purchases.");
+				    console.log(error)
+				}
+			});
 
 	    },
 
