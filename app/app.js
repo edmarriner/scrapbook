@@ -393,10 +393,12 @@ $(document).ready(function() {
 	    	FB.api('/fql', { q:{"query1":"SELECT uid , first_name, last_name pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1"} },
 			function(response)
 			{
+				alert("there are " + response.data[0].fql_result_set.length + " friends!");
+				
 				if(response.data[0].fql_result_set.length > 0)
 				{
 					this.$el.find('.information').html("");
-					alert("there are " + response.data[0].fql_result_set.length + " friends!");
+					
 				}
 				for(var i = 0; i < response.data[0].fql_result_set.length; i++)
 				{
