@@ -385,7 +385,7 @@ $(document).ready(function() {
 				to: App.Manager.RequestPeople,
 				title: 'My Great Invite',
 				message: 'Check out this App!',
-			}, function() { });
+			}, function(response) { });
 		},
 
 		add: function()
