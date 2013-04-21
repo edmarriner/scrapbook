@@ -791,7 +791,7 @@ $(document).ready(function() {
 
 	    insertNewShortcut: function()
 	    {
-	    	this.$el.prepend("<a class='box'>new...</a>")
+	    	this.$el.prepend("<div class='box' style='height:16px;'><a href='#/create' class='boxInner'><div class='homeCreateScrapbook'>+</div></a><div>");
 	    },
 
 	    initialize: function()
