@@ -395,7 +395,8 @@ $(document).ready(function() {
 			{
 				if(response.data[0].fql_result_set.length > 0)
 				{
-					this.$el.find('.infomation').html("");
+					this.$el.find('.information').html("");
+					alert("there are " + response.data[0].fql_result_set.length + " friends!");
 				}
 				for(var i = 0; i < response.data[0].fql_result_set.length; i++)
 				{
@@ -406,7 +407,9 @@ $(document).ready(function() {
 
 					var view = new App.Views.Friend({ model: facebookFriend });
 
-	            	this.$el.find('.infomation').append(view.render.el());
+					alert(JSON.stringify(view.render.el()))
+
+	            	this.$el.find('.information').append(view.render.el());
 			    }
       		}
    	 		);
