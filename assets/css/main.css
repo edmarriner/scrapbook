@@ -634,9 +634,8 @@ body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleB
 @media only screen and (max-width: 480px) {
   /* Smartphone view: 1 tile */
   .box {
-    width: 100%;
-    margin-left: 20px;
-    margin-right: 20px;
+    width: 95%;
+    margin-left: 3%;
     padding-bottom: 100%; } }
 @media only screen and (max-width: 650px) and (min-width: 481px) {
   /* Tablet view: 2 tiles */

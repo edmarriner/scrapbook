@@ -789,6 +789,11 @@ $(document).ready(function() {
 			$('.box span').css('font-size', ($('.box').width()/11));
 	    },
 
+	    insertNewShortcut: function()
+	    {
+	    	this.$el.prepend("<a class='box'>new...</a>")
+	    },
+
 	    initialize: function()
 	    {
 			App.Manager.appView.updateHeader('Scrapbooks');
@@ -1352,6 +1357,7 @@ $(document).ready(function() {
 						var collectionView = new App.CollectionViews.Scrapbooks({ collection: collection });
 						App.Manager.setView(collectionView);
 						collectionView.setCoverSizes();
+						collectionView.insertNewShortcut();
 					},
 					error: function(collection, error)
 					{
