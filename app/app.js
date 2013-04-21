@@ -346,10 +346,7 @@ $(document).ready(function() {
 
 	});
 
-	// Scrapbook collection view
-	// Used on the home screen to display all the scrapbooks as a collection
-	// ----------------------------------------------------------------------
-
+	// FRIENDS VIEW
 	App.CollectionViews.Friends = Backbone.View.extend({
 	    
 	    tagName: 'div',
@@ -381,7 +378,7 @@ $(document).ready(function() {
 	    render: function()
 	    {
 	    	this.$el.html(this.template());
-
+	    	alert(this.collection.length + " number friends")
 	    	this.collection.each(function(friendView) {
 	            var view = new App.Views.Friend({ model: friendView });
 	            this.$el.find('.information').append(view.render().el);
@@ -1395,7 +1392,6 @@ $(document).ready(function() {
 	    	FB.api('/fql', { q:{"query1":"SELECT uid , first_name, last_name, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1"} },
 			function(response)
 			{
-				alert("there are " + response.data[0].fql_result_set.length + " friends!");
 				for(var i = 0; i < response.data[0].fql_result_set.length; i++)
 					{
 						var facebookFriend = new App.Models.User;
