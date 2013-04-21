@@ -390,33 +390,26 @@ $(document).ready(function() {
 	    {
 	    	this.$el.html(this.template());
 
-	    	FB.api('/fql', { q:{"query1":"SELECT uid , name, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1"} },
+	    	FB.api('/fql', { q:{"query1":"SELECT uid , first_name, last_name pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1"} },
 			function(response)
 			{
-        		alert(JSON.stringify(response));
-        		alert("length: " + response.data[0].fql_result_set.length);
-
+				if(response.data[0].fql_result_set.length > 0)
+				{
+					this.$el.find('.infomation').html("");
+				}
 				for(var i = 0; i < response.data[0].fql_result_set.length; i++)
 				{
 					var facebookFriend = new App.Models.User;
-					facebookFriend.set('firstName', response.data[0].fql_result_set[i].name);
-					facebookFriend.set('lastName', '');
+					facebookFriend.set('firstName', response.data[0].fql_result_set[i].first_name);
+					facebookFriend.set('lastName', response.data[0].fql_result_set[i].last_name);
 					facebookFriend.set('picture', response.data[0].fql_result_set[i].pic_square);
 
 					var view = new App.Views.Friend({ model: facebookFriend });
 
-	            	this.$el.find('.infomation').append("test")
+	            	this.$el.find('.infomation').append("test");
 			    }
       		}
    	 		);
-
-	    	console.log(this.collection)
-	        this.collection.each(function(tempFriend)
-	        {
-	        	//create a new view for the current scrapbook model
-	            var view = new App.Views.Friend({ model: tempFriend });
-	            this.$el.find('.infomation').append(view.render().el);
-	        }, this);
 
 	        return this;
 	    }
