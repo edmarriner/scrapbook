@@ -383,9 +383,9 @@ $(document).ready(function() {
 	    	this.$el.html(this.template());
 	    	alert(this.collection.length + " number friends")
 	    	this.collection.each(function(friendView) {
+	    		alert("test")
 	            var view = new App.Views.Friend({ model: friendView });
 	            alert(JSON.stringify(view.render().el))
-
 	            this.$el.find('.information').append(view.render().el);
 	        }, this);
 
