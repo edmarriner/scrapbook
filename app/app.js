@@ -406,7 +406,7 @@ $(document).ready(function() {
 
 					var view = new App.Views.Friend({ model: facebookFriend });
 
-	            	this.$el.find('.infomation').append("test");
+	            	this.$el.find('.infomation').append(view.render.el());
 			    }
       		}
    	 		);
