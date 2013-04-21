@@ -976,7 +976,7 @@ body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleB
   left: 0;
   display: none; }
 
-.friends .infomation {
+.friends .infomation:nth-child(2) {
   min-height: 150px; }
 .friends .friend {
   float: left;

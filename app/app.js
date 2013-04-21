@@ -366,9 +366,7 @@ $(document).ready(function() {
 
 	    events: 
 	    {
-	    	'click #friendsSearch' : 'add',
-	    	'click #addFriendFacebook' : 'findByFacebook',
-	    	'click #addFriendEmail' : 'findByFacebook'
+	    	'click #addFriendFacebook' : 'findByFacebook'
 	    },
 
 	    // Cache the template function for a single item.
@@ -388,24 +386,6 @@ $(document).ready(function() {
 			}, function(response) { });
 		},
 
-		add: function()
-		{
-			var findFriend = $.get(App.Manager.serverURL + '/addFriend', {user: App.Manager.user.get('id'), email: this.$el.find('#friendsEmail').val()})
-	    	.done(function()
-	    	{
-	    		alert("added!")
-	    	})
-	    	.fail(function()
-	    	{
-	    		alert("error, friend not found!"); 
-	    	});
-		},
-
-
-
-		   
-
-
 	    render: function()
 	    {
 	    	this.$el.html(this.template());
@@ -423,11 +403,9 @@ $(document).ready(function() {
 					facebookFriend.set('lastName', '');
 					facebookFriend.set('picture', response.data[0].fql_result_set[i].pic_square);
 
-					alert("model: " + JSON.stringify(facebookFriend));
-
 					var view = new App.Views.Friend({ model: facebookFriend });
 
-	            	alert("model: " + JSON.stringify(this.$el.find('.infomation')));
+	            	this.$el.find('.infomation').append("test")
 			    }
       		}
    	 		);
