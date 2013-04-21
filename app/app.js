@@ -380,7 +380,7 @@ $(document).ready(function() {
 		findByFacebook: function()
 		{
  		 	FB.ui({method: 'apprequests',
-				to: App.Manager.RequestPeople,
+				to: '',
 				title: 'My Great Invite',
 				message: 'Check out this App!',
 			}, function(response) { });
@@ -390,31 +390,10 @@ $(document).ready(function() {
 	    {
 	    	this.$el.html(this.template());
 
-	    	FB.api('/fql', { q:{"query1":"SELECT uid , first_name, last_name, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1"} },
-			function(response)
-			{
-				alert("there are " + response.data[0].fql_result_set.length + " friends!");
-
-				if(response.data[0].fql_result_set.length > 0)
-				{
-					this.$el.find('.information').html("");
-					
-				}
-				for(var i = 0; i < response.data[0].fql_result_set.length; i++)
-				{
-					var facebookFriend = new App.Models.User;
-					facebookFriend.set('firstName', response.data[0].fql_result_set[i].first_name);
-					facebookFriend.set('lastName', response.data[0].fql_result_set[i].last_name);
-					facebookFriend.set('picture', response.data[0].fql_result_set[i].pic_square);
-
-					var view = new App.Views.Friend({ model: facebookFriend });
-
-					alert(JSON.stringify(view.render.el()))
-
-	            	this.$el.find('.information').append(view.render.el());
-			    }
-      		}
-   	 		);
+	    	this.collection.each(function(friendView) {
+	            var view = new App.Views.Friend({ model: friendView });
+	            this.$el.find('.information').append(view.render().el);
+	        }, this);
 
 	        return this;
 	    }
@@ -1420,23 +1399,27 @@ $(document).ready(function() {
 	    friends: function(){
 
 	    	App.Manager.activeCollections.friends = new App.Collections.Users;
-			App.Manager.activeCollections.friends.fetch({
-				data: {
-					user: App.Manager.user.get('id')
-				},
-				dataType : 'jsonp',
-				success: function(collection)
-				{
-					console.log(collection)
-					var friendsView = new App.CollectionViews.Friends({ collection: collection });
-        			App.Manager.setView(friendsView); 
-				},
-				error: function(collection, error)
-				{
-				    alert("There was an error with fetching the collection of friends.");
-				    console.log(error)
-				}
-			});
+
+	    	//FB.api('/fql', { q:{"query1":"SELECT uid , first_name, last_name, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1"} },
+			//function(response)
+			//{
+			//	alert("there are " + response.data[0].fql_result_set.length + " friends!");
+//
+			//	for(var i = 0; i < response.data[0].fql_result_set.length; i++)
+			//	{
+			//		var facebookFriend = new App.Models.User;
+			//		facebookFriend.set('firstName', response.data[0].fql_result_set[i].first_name);
+			//		facebookFriend.set('lastName', response.data[0].fql_result_set[i].last_name);
+			//		facebookFriend.set('picture', response.data[0].fql_result_set[i].pic_square);
+//
+			//		App.Manager.activeCollections.friends.push(facebookFriend);
+			//    }
+      		//}
+   	 		//);
+
+			var friendsView = new App.CollectionViews.Friends({ collection: App.Manager.activeCollections.friends });
+			App.Manager.setView(friendsView); 
+				
 
 	    },
 
