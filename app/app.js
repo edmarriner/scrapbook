@@ -849,7 +849,14 @@ $(document).ready(function() {
 			'click .share': 'share',
 			'click .deleteScrapbook': 'deleteScrapbook',
 			'click .editors': 'editors',
-			'click .buy': 'buy'
+			'click .buy': 'buy',
+			'click .tpl1': 'selectTemplate1',
+			'click .tpl2': 'selectTemplate2',
+			'click .tpl3': 'selectTemplate3',
+			'click .tpl4': 'selectTemplate4',
+			'click .tpl5': 'selectTemplate5',
+			'click .tpl6': 'selectTemplate6',
+			'click .deletePageRequest':'deletePageRequest'
 		},
 
 		initialize: function()
@@ -881,6 +888,349 @@ $(document).ready(function() {
 		    });
 		},
 
+		selectTemplate1: function()
+		{
+			var myPage = App.Manager.activeCollections.pages.findWhere({'pageNumber': ''+App.Manager.currentView.currentPage+''});
+			var PageNumber = myPage.get('pageNumber');
+			var PageID = myPage.get('id');
+
+			$.ajax({
+				  url: App.Manager.serverURL + '/changeTemplate',
+				  dataType : 'jsonp',
+				  data: 
+				  	{
+				  		page: PageID,
+				  		template: '1'
+					}
+
+					})
+					.success(function(result){
+						alert("success")
+						App.Manager.activeCollections.pages = new App.Collections.Pages;
+						App.Manager.activeCollections.pages.fetch({
+							data: {
+								scrapbook: App.Manager.scrapbookId
+							},
+							dataType : 'jsonp',
+							success: function(collection)
+							{
+								alert("colletion time")
+								var view = new App.CollectionViews.Pages({ collection: collection });
+								App.Manager.setView(view);
+								$('#bb-bookblock').append("<div class='bb-item' style='display: none;'><div class='topPage'><div class='newPage' style='color: #999; font-size: 33px;text-align: center;padding-top: 43%; height: 57%;'>tap to start new page</div></div></div>")
+								$('#page_1').show();
+								view.animate();
+								view.setBookSizes();
+								App.Manager.PageTurn.jump(PageNumber)
+								App.Manager.currentView.currentPage = PageNumber;
+								//var dialog = new App.Views.Dialog;
+								//dialog.render();
+							},
+							error: function(response, error)
+							{
+							    alert("There was an error with the template for this page.")
+							    alert(JSON.stringify(error));
+							    alert(JSON.stringify(response))
+							    console.log(error)
+							}
+
+						});
+						
+						
+					})
+					.error(function(result, error) // bad request to scrapbook sever
+					{
+						alert("Error adding page !");
+					});
+					this.close()
+		},
+
+		selectTemplate2: function()
+		{
+			var myPage = App.Manager.activeCollections.pages.findWhere({'pageNumber': ''+App.Manager.currentView.currentPage+''});
+			var PageNumber = myPage.get('pageNumber');
+			var PageID = myPage.get('id');
+
+			$.ajax({
+				  url: App.Manager.serverURL + '/changeTemplate',
+				  dataType : 'jsonp',
+				  data: 
+				  	{
+				  		page: PageID,
+				  		template: '2'
+					}
+
+					})
+					.success(function(result){
+						alert("success")
+						App.Manager.activeCollections.pages = new App.Collections.Pages;
+						App.Manager.activeCollections.pages.fetch({
+							data: {
+								scrapbook: App.Manager.scrapbookId
+							},
+							dataType : 'jsonp',
+							success: function(collection)
+							{
+								alert("colletion time")
+								var view = new App.CollectionViews.Pages({ collection: collection });
+								App.Manager.setView(view);
+								$('#bb-bookblock').append("<div class='bb-item' style='display: none;'><div class='topPage'><div class='newPage' style='color: #999; font-size: 33px;text-align: center;padding-top: 43%; height: 57%;'>tap to start new page</div></div></div>")
+								$('#page_1').show();
+								view.animate();
+								view.setBookSizes();
+								App.Manager.PageTurn.jump(PageNumber)
+								App.Manager.currentView.currentPage = PageNumber;
+								//var dialog = new App.Views.Dialog;
+								//dialog.render();
+							},
+							error: function(response, error)
+							{
+							    alert("There was an error with the template for this page.")
+							    alert(JSON.stringify(error));
+							    alert(JSON.stringify(response))
+							    console.log(error)
+							}
+
+						});
+						
+						
+					})
+					.error(function(result, error) // bad request to scrapbook sever
+					{
+						alert("Error adding page !");
+					});
+					this.close()
+		},
+
+		selectTemplate3: function()
+		{
+			var myPage = App.Manager.activeCollections.pages.findWhere({'pageNumber': ''+App.Manager.currentView.currentPage+''});
+			var PageNumber = myPage.get('pageNumber');
+			var PageID = myPage.get('id');
+
+			$.ajax({
+				  url: App.Manager.serverURL + '/changeTemplate',
+				  dataType : 'jsonp',
+				  data: 
+				  	{
+				  		page: PageID,
+				  		template: '3'
+					}
+
+					})
+					.success(function(result){
+						alert("success")
+						App.Manager.activeCollections.pages = new App.Collections.Pages;
+						App.Manager.activeCollections.pages.fetch({
+							data: {
+								scrapbook: App.Manager.scrapbookId
+							},
+							dataType : 'jsonp',
+							success: function(collection)
+							{
+								alert("colletion time")
+								var view = new App.CollectionViews.Pages({ collection: collection });
+								App.Manager.setView(view);
+								$('#bb-bookblock').append("<div class='bb-item' style='display: none;'><div class='topPage'><div class='newPage' style='color: #999; font-size: 33px;text-align: center;padding-top: 43%; height: 57%;'>tap to start new page</div></div></div>")
+								$('#page_1').show();
+								view.animate();
+								view.setBookSizes();
+								App.Manager.PageTurn.jump(PageNumber)
+								App.Manager.currentView.currentPage = PageNumber;
+								//var dialog = new App.Views.Dialog;
+								//dialog.render();
+							},
+							error: function(response, error)
+							{
+							    alert("There was an error with the template for this page.")
+							    alert(JSON.stringify(error));
+							    alert(JSON.stringify(response))
+							    console.log(error)
+							}
+
+						});
+						
+						
+					})
+					.error(function(result, error) // bad request to scrapbook sever
+					{
+						alert("Error adding page !");
+					});
+					this.close()
+		},
+
+		selectTemplate4: function()
+		{
+			var myPage = App.Manager.activeCollections.pages.findWhere({'pageNumber': ''+App.Manager.currentView.currentPage+''});
+			var PageNumber = myPage.get('pageNumber');
+			var PageID = myPage.get('id');
+
+			$.ajax({
+				  url: App.Manager.serverURL + '/changeTemplate',
+				  dataType : 'jsonp',
+				  data: 
+				  	{
+				  		page: PageID,
+				  		template: '4'
+					}
+
+					})
+					.success(function(result){
+						alert("success")
+						App.Manager.activeCollections.pages = new App.Collections.Pages;
+						App.Manager.activeCollections.pages.fetch({
+							data: {
+								scrapbook: App.Manager.scrapbookId
+							},
+							dataType : 'jsonp',
+							success: function(collection)
+							{
+								alert("colletion time")
+								var view = new App.CollectionViews.Pages({ collection: collection });
+								App.Manager.setView(view);
+								$('#bb-bookblock').append("<div class='bb-item' style='display: none;'><div class='topPage'><div class='newPage' style='color: #999; font-size: 33px;text-align: center;padding-top: 43%; height: 57%;'>tap to start new page</div></div></div>")
+								$('#page_1').show();
+								view.animate();
+								view.setBookSizes();
+								App.Manager.PageTurn.jump(PageNumber)
+								App.Manager.currentView.currentPage = PageNumber;
+								//var dialog = new App.Views.Dialog;
+								//dialog.render();
+							},
+							error: function(response, error)
+							{
+							    alert("There was an error with the template for this page.")
+							    alert(JSON.stringify(error));
+							    alert(JSON.stringify(response))
+							    console.log(error)
+							}
+
+						});
+						
+						
+					})
+					.error(function(result, error) // bad request to scrapbook sever
+					{
+						alert("Error adding page !");
+					});
+					this.close()
+		},
+
+		selectTemplate5: function()
+		{
+			var myPage = App.Manager.activeCollections.pages.findWhere({'pageNumber': ''+App.Manager.currentView.currentPage+''});
+			var PageNumber = myPage.get('pageNumber');
+			var PageID = myPage.get('id');
+
+			$.ajax({
+				  url: App.Manager.serverURL + '/changeTemplate',
+				  dataType : 'jsonp',
+				  data: 
+				  	{
+				  		page: PageID,
+				  		template: '5'
+					}
+
+					})
+					.success(function(result){
+						alert("success")
+						App.Manager.activeCollections.pages = new App.Collections.Pages;
+						App.Manager.activeCollections.pages.fetch({
+							data: {
+								scrapbook: App.Manager.scrapbookId
+							},
+							dataType : 'jsonp',
+							success: function(collection)
+							{
+								alert("colletion time")
+								var view = new App.CollectionViews.Pages({ collection: collection });
+								App.Manager.setView(view);
+								$('#bb-bookblock').append("<div class='bb-item' style='display: none;'><div class='topPage'><div class='newPage' style='color: #999; font-size: 33px;text-align: center;padding-top: 43%; height: 57%;'>tap to start new page</div></div></div>")
+								$('#page_1').show();
+								view.animate();
+								view.setBookSizes();
+								App.Manager.PageTurn.jump(PageNumber)
+								App.Manager.currentView.currentPage = PageNumber;
+								//var dialog = new App.Views.Dialog;
+								//dialog.render();
+							},
+							error: function(response, error)
+							{
+							    alert("There was an error with the template for this page.")
+							    alert(JSON.stringify(error));
+							    alert(JSON.stringify(response))
+							    console.log(error)
+							}
+
+						});
+						
+						
+					})
+					.error(function(result, error) // bad request to scrapbook sever
+					{
+						alert("Error adding page !");
+					});
+					this.close()
+		},
+
+		selectTemplate6: function()
+		{
+			var myPage = App.Manager.activeCollections.pages.findWhere({'pageNumber': ''+App.Manager.currentView.currentPage+''});
+			var PageNumber = myPage.get('pageNumber');
+			var PageID = myPage.get('id');
+
+			$.ajax({
+				  url: App.Manager.serverURL + '/changeTemplate',
+				  dataType : 'jsonp',
+				  data: 
+				  	{
+				  		page: PageID,
+				  		template: '6'
+					}
+
+					})
+					.success(function(result){
+						alert("success")
+						App.Manager.activeCollections.pages = new App.Collections.Pages;
+						App.Manager.activeCollections.pages.fetch({
+							data: {
+								scrapbook: App.Manager.scrapbookId
+							},
+							dataType : 'jsonp',
+							success: function(collection)
+							{
+								alert("colletion time")
+								var view = new App.CollectionViews.Pages({ collection: collection });
+								App.Manager.setView(view);
+								$('#bb-bookblock').append("<div class='bb-item' style='display: none;'><div class='topPage'><div class='newPage' style='color: #999; font-size: 33px;text-align: center;padding-top: 43%; height: 57%;'>tap to start new page</div></div></div>")
+								$('#page_1').show();
+								view.animate();
+								view.setBookSizes();
+								App.Manager.PageTurn.jump(PageNumber)
+								App.Manager.currentView.currentPage = PageNumber;
+								//var dialog = new App.Views.Dialog;
+								//dialog.render();
+							},
+							error: function(response, error)
+							{
+							    alert("There was an error with the template for this page.")
+							    alert(JSON.stringify(error));
+							    alert(JSON.stringify(response))
+							    console.log(error)
+							}
+
+						});
+						
+						
+					})
+					.error(function(result, error) // bad request to scrapbook sever
+					{
+						alert("Error adding page !");
+					});
+					this.close()
+		},
+
+
 		showSettings: function()
 		{
 			$('.dialog .inner').html(this.template_settings())
@@ -888,21 +1238,40 @@ $(document).ready(function() {
 
 		buy: function()
 		{
-			<a title="Peecho" href="http://www.peecho.com/" class="peecho-print-button" data-filetype="pdf" data-width="150" data-height="150" data-pages="22" data-src="http://www.gladwell.com/pdf/paper.pdf" data-currency="EUR" data-locale="en_EN" data-style="true" data-title="My scrapbook" data-redirect-thankyou="http://scrapbooka.com" data-text="Order">Print</a>
-
-			(function() {
-			var p=document.createElement("script");p.type="text/javascript";p.async=true;
-			var h=("https:"==document.location.protocol?"https://":"http://");
-			p.src=h+"d3aln0nj58oevo.cloudfront.net/button/script/13484044514530.js";
-			var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(p,s);
-			}).call(this);
-
 			window.plugins.childBrowser.showWebPage('http://www.google.com', { showLocationBar: true });
 		},
 
 		changeTemplate: function()
 		{
+
 			$('.dialog .inner').html(this.template_settings_change_template())
+			var myPage = App.Manager.activeCollections.pages.findWhere({'pageNumber': ''+App.Manager.currentView.currentPage+''});
+			var template = myPage.get('templateId');
+			$('.templateButton').removeClass('templateButtonActive')
+			switch(template)
+			{
+				case '1':
+					$('.tpl1').addClass('templateButtonActive');
+					break;
+				case '2':
+					$('.tpl2').addClass('templateButtonActive');
+					break;
+				case '3':
+					$('.tpl3').addClass('templateButtonActive');
+					break;
+				case '4':
+					$('.tpl4').addClass('templateButtonActive');
+					break;
+				case '5':
+					$('.tpl5').addClass('templateButtonActive');
+					break;
+				case '6':
+					$('.tpl6').addClass('templateButtonActive');
+					break;
+				default:
+					alert("No template selected!");
+					break;
+			}
 		},
 
 		removePage: function()
@@ -910,6 +1279,71 @@ $(document).ready(function() {
 			$('.dialog .inner').html(this.template_settings_remove())
 		},
 
+		deletePageRequest: function()
+		{
+			var myPage = App.Manager.activeCollections.pages.findWhere({'pageNumber': ''+App.Manager.currentView.currentPage+''});
+			var PageNumber = myPage.get('pageNumber');
+			var scrapbook = myPage.get('scrapbookId')
+			var PageID = myPage.get('id');
+
+			$.ajax({
+				  url: App.Manager.serverURL + '/removePage',
+				  dataType : 'jsonp',
+				  data: 
+				  	{
+				  		page: PageID,
+				  		scrapbook: scrapbook
+					}
+
+					})
+					.success(function(result){
+						alert("success")
+						App.Manager.activeCollections.pages = new App.Collections.Pages;
+						App.Manager.activeCollections.pages.fetch({
+							data: {
+								scrapbook: App.Manager.scrapbookId
+							},
+							dataType : 'jsonp',
+							success: function(collection)
+							{
+								alert("colletion time")
+								var view = new App.CollectionViews.Pages({ collection: collection });
+								App.Manager.setView(view);
+								$('#bb-bookblock').append("<div class='bb-item' style='display: none;'><div class='topPage'><div class='newPage' style='color: #999; font-size: 33px;text-align: center;padding-top: 43%; height: 57%;'>tap to start new page</div></div></div>")
+								$('#page_1').show();
+								view.animate();
+								view.setBookSizes();
+								
+								if(PageNumber > 1)
+								{
+									App.Manager.currentView.currentPage = PageNumber - 1;
+									App.Manager.PageTurn.jump(PageNumber - 1)
+								} else
+								{
+									App.Manager.currentView.currentPage = 1;
+									App.Manager.PageTurn.jump(1)
+								} 
+								//var dialog = new App.Views.Dialog;
+								//dialog.render();
+							},
+							error: function(response, error)
+							{
+							    alert("There was an error with the template for this page.")
+							    alert(JSON.stringify(error));
+							    alert(JSON.stringify(response))
+							    console.log(error)
+							}
+
+						});
+						
+						
+					})
+					.error(function(result, error) // bad request to scrapbook sever
+					{
+						alert("Error adding page !");
+					});
+					this.close()
+		},
 
 		editDetails: function()
 		{
@@ -1921,6 +2355,7 @@ $(document).ready(function() {
 					collectionPageView.animate();
 					collectionPageView.setBookSizes();
 					App.activePage = 1;
+
 					//var dialog = new App.Views.Dialog;
 					//dialog.render();
 				},
