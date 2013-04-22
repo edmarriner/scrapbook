@@ -848,7 +848,8 @@ $(document).ready(function() {
 			'click .editDetails': 'editDetails',
 			'click .share': 'share',
 			'click .deleteScrapbook': 'deleteScrapbook',
-			'click .editors': 'editors'
+			'click .editors': 'editors',
+			'click .buy': 'buy'
 		},
 
 		initialize: function()
@@ -883,6 +884,20 @@ $(document).ready(function() {
 		showSettings: function()
 		{
 			$('.dialog .inner').html(this.template_settings())
+		},
+
+		buy: function()
+		{
+			<a title="Peecho" href="http://www.peecho.com/" class="peecho-print-button" data-filetype="pdf" data-width="150" data-height="150" data-pages="22" data-src="http://www.gladwell.com/pdf/paper.pdf" data-currency="EUR" data-locale="en_EN" data-style="true" data-title="My scrapbook" data-redirect-thankyou="http://scrapbooka.com" data-text="Order">Print</a>
+
+			(function() {
+			var p=document.createElement("script");p.type="text/javascript";p.async=true;
+			var h=("https:"==document.location.protocol?"https://":"http://");
+			p.src=h+"d3aln0nj58oevo.cloudfront.net/button/script/13484044514530.js";
+			var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(p,s);
+			}).call(this);
+
+			window.plugins.childBrowser.showWebPage('http://www.google.com', { showLocationBar: true });
 		},
 
 		changeTemplate: function()
