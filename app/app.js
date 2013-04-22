@@ -934,7 +934,7 @@ $(document).ready(function() {
 					.success(function(result){
 
 						$('img[data-block-id]').css('background', App.Manager.serverURL + filename + '.jpeg')
-						this.context.hasImage();
+						context.hasImage();
 						//this.hasImage();
 					})
 					.error(function(result, error) // bad request to scrapbook sever
@@ -1007,8 +1007,8 @@ $(document).ready(function() {
 					})
 					.success(function(result){
 						alert("uploaded!")
-						alert(this.context.hasImage)
-						this.context.hasImage();
+						//alert(this.context.hasImage)
+						context.hasImage();
 					})
 					.error(function(result, error) // bad request to scrapbook sever
 					{
