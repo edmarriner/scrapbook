@@ -919,6 +919,7 @@ $(document).ready(function() {
 
 	        function win(returned)
 	        {
+	        	this.hasImage();
 				alert("success!")
 	        }
 
@@ -974,7 +975,7 @@ $(document).ready(function() {
 	        function win(returned)
 	        {
 
-
+	        	this.hasImage();
 				alert("success!")
 	        }
 
