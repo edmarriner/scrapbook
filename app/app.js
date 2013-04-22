@@ -825,6 +825,7 @@ $(document).ready(function() {
 	    close: function()
 	    {
 			this.unbind();
+			this.undelegateEvents()
 	    	$('.dialog').remove();
 	    	$('.dialogMask').remove();
 	    },
