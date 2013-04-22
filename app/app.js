@@ -792,14 +792,23 @@ $(document).ready(function() {
 		// Cache the template function for a single item.
 		template: _.template($('#template-dialog').html()),
 
+		template_select_options: _.template($('#template-dialog-options').html()),
+
+		template_colour: _.template($('#template-dialog-has-colour').html()),
+		template_map: _.template($('#template-dialog-has-map').html()),
+		template_text: _.template($('#template-dialog-has-text').html()),
+		template_image: _.template($('#template-dialog-has-image').html()),
+
 		events: 
 		{
-			'click .dialogMask': 'close'
+			'click .dialogMask': 'close',
+			'click .removeEle' : 'removeElement'
 		},
 
 		initialize: function()
 		{
 			console.log(this.$el)
+
 		},
 
 	    render: function()
@@ -807,6 +816,7 @@ $(document).ready(function() {
 	        this.$el.append(this.template());
 	        this.$el.find('.dialog').center();
 	        this.alwaysCenter();
+	        this.checkOptions();
 	        return this;
 	    },
 
@@ -822,6 +832,75 @@ $(document).ready(function() {
 			$(window).resize(function(){ // whatever the screen size this
 		       $('.dialog').center();       // this will make it center when 
 		    });
+		},
+
+		checkOptions: function()
+		{
+			if(this.options.hasContent)
+			{
+				
+				var pageModel = App.Manager.currentView.collection.get(App.Manager.currentView.pageId)
+
+				block = pageModel.get('blocks');
+				for(var i = 0; i < block.length; i++)
+				{
+					if(block[i].id == App.Manager.currentView.blockId)
+					{
+						block = block[i]
+					}
+				}
+
+				switch(this.options.contentType)
+				{
+					case "image": 
+						this.hasImage(block);
+					case "text": 
+						this.hasImage(block);
+					case "colour": 
+						this.hasImage(block);
+					case "map": 
+						this.hasImage(block);
+				}
+			}
+			else
+			{
+				this.showSelectType()
+			}
+		},
+
+		hasImage: function(block)
+		{
+			$('.dialog .inner').html(this.template_image(block))
+		},
+
+		removeElement: function()
+		{
+
+			$.ajax({
+			  url: App.Manager.serverURL + '/removeBlock',
+			  dataType : 'jsonp',
+			  data: 
+			  	{
+			  		id: App.Manager.currentView.blockId,
+				}
+
+				}).error(function(result, error) // bad request to scrapbook sever
+				{
+					alert("Error removing block!");
+				});
+
+			$('.removeEle').unbind();
+			$('.removeEle').remove();
+			$('.dialog .inner').unbind();
+			$('.dialog .inner').empty();
+
+			
+			this.showSelectType()
+		},
+
+		showSelectType: function()
+		{
+			$('.dialog .inner').html(this.template_select_options())
 		}
 
 	});
@@ -889,7 +968,6 @@ $(document).ready(function() {
 				
 	            this.$el.find('.bb-bookblock').append(fragment)
 	            
-	            //this.$el.append();
 	        }, this);
 
 	        //while($('.bb-item').length == 0){}
@@ -897,9 +975,30 @@ $(document).ready(function() {
 	        return this;
 	    },
 
-	    dialog: function()
+	    dialog: function(e)
 	    {
-	    	var dialog = new App.Views.Dialog;
+	    	console.log(e)
+	    	// see which block was clicked on and store for reference
+			this.blockId = e.target.attributes[2].value;
+
+			this.blockType =  e.target.attributes[4].value;
+
+			this.blockNumber = e.target.attributes[5].value;
+
+			// see which PAGE the bloack is from and store for reference
+			this.pageId = e.target.parentElement.attributes[3].value;
+
+			alert("here")
+			var options = {};
+
+			if(this.blockType != "")
+			{
+				options.hasContent = true,
+				options.contentType = this.blockType
+			}
+
+			// open the dialog
+			var dialog = new App.Views.Dialog(options);
 			dialog.render();
 	    },
 
@@ -1359,7 +1458,7 @@ $(document).ready(function() {
 					//console.log(collection)
 					var collectionPageView = new App.CollectionViews.Pages({ collection: collection });
 					App.Manager.setView(collectionPageView);
-					$('.single').append("<div class='topPage'><div style='color:red; fonr-size:50px;'>add new page?</div></div>")
+					$('#bb-bookblock').append("<div class='bb-item' style='display: none;'><div class='topPage'><div style='color:red; fonr-size:50px;'>add new page?</div></div></div>")
 					$('#page_1').show();
 					collectionPageView.animate();
 					collectionPageView.setBookSizes();

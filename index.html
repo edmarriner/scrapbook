@@ -132,14 +132,39 @@
     <!-- single page layout -->
     <script type="text/html" id="template-book-single-one">
 
-      <img src='' class='block col3 row3' data-block-id='<%= blocks[0].id %>' id='<%= blocks[0].id %>' style="background:url('http://scrapbook.uk.to/files/<%= blocks[0].content %>') no-repeat center center;  background-size: cover; -webkit-box-shadow: inset 0px 0px <%= blocks[0].borderFeather %>px <%= blocks[0].borderSize %>px <%= blocks[0].borderColour %>; " />
+      <img src='' class='block col3 row3' data-block-id='<%= blocks[0].id %>' id='<%= blocks[0].id %>' data-block-type='<%= blocks[0].type %>' data-block-number='<%= blocks[0].blockNumber %>' style="background:url('http://scrapbook.uk.to/files/<%= blocks[0].content %>') no-repeat center center;  background-size: cover; -webkit-box-shadow: inset 0px 0px <%= blocks[0].borderFeather %>px <%= blocks[0].borderSize %>px <%= blocks[0].borderColour %>; " />
      
     </script>
     <script type="text/html" id="template-book-single-two">
 
-      <img src='' class='block col2 row2' data-block-id='<%= blocks[0].id %>' id='<%= blocks[0].id %>' style="background:url('http://scrapbook.uk.to/files/<%= blocks[0].content %>') no-repeat center center;  background-size: cover; -webkit-box-shadow: inset 0px 0px <%= blocks[0].borderFeather %>px <%= blocks[0].borderSize %>px <%= blocks[0].borderColour %>; " />
+      <img src='' class='block col2 row2' data-block-id='<%= blocks[0].id %>' id='<%= blocks[0].id %>' data-block-type='<%= blocks[0].type %>' data-block-number='<%= blocks[0].blockNumber %>' style="background:url('http://scrapbook.uk.to/files/<%= blocks[0].content %>') no-repeat center center;  background-size: cover; -webkit-box-shadow: inset 0px 0px <%= blocks[0].borderFeather %>px <%= blocks[0].borderSize %>px <%= blocks[0].borderColour %>; " />
 
-      <img src='' class='block col2 row2' data-block-id='<%= blocks[1].id %>' id='<%= blocks[1].id %>' style="background:url('http://scrapbook.uk.to/files/<%= blocks[1].content %>') no-repeat center center;  background-size: cover; -webkit-box-shadow: inset 0px 0px <%= blocks[1].borderFeather %>px <%= blocks[1].borderSize %>px <%= blocks[1].borderColour %>; " />
+      <img src='' class='block col2 row2' data-block-id='<%= blocks[1].id %>' id='<%= blocks[1].id %>' data-block-type='<%= blocks[1].type %>' data-block-number='<%= blocks[1].blockNumber %>' style="background:url('http://scrapbook.uk.to/files/<%= blocks[1].content %>') no-repeat center center;  background-size: cover; -webkit-box-shadow: inset 0px 0px <%= blocks[1].borderFeather %>px <%= blocks[1].borderSize %>px <%= blocks[1].borderColour %>; " />
+     
+    </script>
+
+     <script type="text/html" id="template-dialog-has-image">
+     <div style='text-align:center;'>
+      <img style='width:260px; height:260px;' src='http://scrapbook.uk.to/files/<%= content %>' />
+     </div>
+     <div class='btn removeEle' style='background: rgb(255, 178, 178); width: 240px; margin:0 auto; float: none;'>Remove this image</div>
+    </script>
+
+     <script type="text/html" id="template-dialog-has-text">
+
+      i have an image
+     
+    </script>
+
+     <script type="text/html" id="template-dialog-has-map">
+
+      i have a map
+     
+    </script>
+
+     <script type="text/html" id="template-dialog-has-colour">
+
+      i have a colour
      
     </script>
 
@@ -253,18 +278,26 @@
     <div class='dialog'>
       <div class='header'>close</div>
       <div class='inner'>
-        <h1>Set the content of this block</h1>
+       
+      </div>
+    </div>
+    <div class='dialogMask'></div>
+
+    </script>
+
+ <!-- Modal / Dialog screen options -->
+    <script type="text/html" id="template-dialog-options">
+
+    <h1>Set the content of this block</h1>
         <div class='blockType takePhoto'>Take Photo</div>
         <div class='blockType library'>From Library</div>
         <div class='blockType writeText'>Write Text</div>
         <div class='blockType map'>From Map</div>
         <div class='blockType colour'>Block Of Colour</div>
         <div class='blockType blank'>Leave Blank</div>
-      </div>
-    </div>
-    <div class='dialogMask'></div>
 
     </script>
+     
 
 
     <!-- Profile screen -->
