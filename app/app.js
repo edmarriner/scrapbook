@@ -919,8 +919,26 @@ $(document).ready(function() {
 
 	        function win(returned)
 	        {
-	        	this.hasImage();
-				alert("success!")
+	        	$.ajax({
+				  url: App.Manager.serverURL + '/removeBlock',
+				  dataType : 'jsonp',
+				  data: 
+				  	{
+				  		id: App.Manager.currentView.blockId,
+				  		type: 'image',
+				  		content: filename + '.jpeg',
+					}
+
+					})
+					.success(function(result){
+
+						$('img[data-block-id]').css('background', App.Manager.serverURL + filename + '.jpeg')
+						this.hasImage();
+					})
+					.error(function(result, error) // bad request to scrapbook sever
+					{
+						alert("Error removing block!");
+					});
 	        }
 
 	        function fail(error)
@@ -974,9 +992,26 @@ $(document).ready(function() {
 
 	        function win(returned)
 	        {
+	        	$.ajax({
+				  url: App.Manager.serverURL + '/removeBlock',
+				  dataType : 'jsonp',
+				  data: 
+				  	{
+				  		id: App.Manager.currentView.blockId,
+				  		type: 'image',
+				  		content: filename + '.jpeg',
+					}
 
-	        	this.hasImage();
-				alert("success!")
+					})
+					.success(function(result){
+						this.hasImage();
+					})
+					.error(function(result, error) // bad request to scrapbook sever
+					{
+						alert("Error removing block!");
+					});
+
+	        	
 	        }
 
 	        function fail(error)
