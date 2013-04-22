@@ -590,9 +590,9 @@ $(document).ready(function() {
 				error: function(model, error, options)
 				{
 				    alert("There was an error with saving the scrapbooks.");
+				    alert(JSON.stringify(model));
 				    alert(JSON.stringify(error));
-				    alert(JSON.stringify(response));
-				    console.log(error);
+				    console.log(options);
 				}
 			});
 	    },
@@ -824,6 +824,7 @@ $(document).ready(function() {
 		template_colour: _.template($('#template-dialog-has-colour').html()),
 		template_map: _.template($('#template-dialog-has-map').html()),
 		template_text: _.template($('#template-dialog-has-text').html()),
+		template_new_text: _.template($('#template-dialog-new-text').html()),
 		template_image: _.template($('#template-dialog-has-image').html()),
 
 		events: 
@@ -831,7 +832,9 @@ $(document).ready(function() {
 			'click .dialogMask': 'close',
 			'click .removeEle' : 'removeElement',
 			'click .takePhoto' : 'takePhoto',
-			'click .library': 'libraryPhoto'
+			'click .library': 'libraryPhoto',
+			'click .saveTextEle': 'saveText',
+			'click .writeText' : 'newText'
 		},
 
 		initialize: function()
@@ -884,12 +887,19 @@ $(document).ready(function() {
 				{
 					case "image": 
 						this.hasImage(block);
+						break;
 					case "text": 
-						this.hasImage(block);
+						this.hasText(block);
+						break;
 					case "colour": 
-						this.hasImage(block);
+						this.hasColour(block);
+						break;
 					case "map": 
-						this.hasImage(block);
+						this.hasMap(block);
+						break;
+					default:
+						this.showSelectType();
+						break;
 				}
 			}
 			else
@@ -898,9 +908,81 @@ $(document).ready(function() {
 			}
 		},
 
+		newText: function()
+		{
+			$('.dialog .inner').html(this.template_new_text())
+		},
+
 		hasImage: function(block)
 		{
 			$('.dialog .inner').html(this.template_image(block))
+		},
+
+		hasText: function(block)
+		{
+			alert("text!")
+			$('.dialog .inner').empty()
+			$('.dialog .inner').html(this.template_text(block))
+		},
+
+		hasColour: function(block)
+		{
+			$('.dialog .inner').html(this.template_colour(block))
+		},
+
+		hasMap: function(block)
+		{
+			$('.dialog .inner').html(this.template_map(block))
+		},
+
+		saveText: function()
+		{
+			var context = this
+			$.ajax({
+				  url: App.Manager.serverURL + '/editBlock',
+				  dataType : 'jsonp',
+				  data: 
+				  	{
+				  		id: App.Manager.currentView.blockId,
+				  		type: 'text',
+				  		content: $('#blockTextElement').val()
+					}
+
+					})
+					.success(function(result){
+						
+						$('div[data-block-id='+ App.Manager.currentView.blockId +']').html("<div style='width:100%; height: 100%;'>" + $('#blockTextElement').val() + "</div>")
+						
+						$('div[data-block-id='+ App.Manager.currentView.blockId +']').data('block-type', 'text');
+						//$('div[data-block-id='+ App.Manager.currentView.blockId +']').data('pageId', App.Manager.currentView.pageId);
+
+						var pageModel = App.Manager.currentView.collection.findWhere({id: App.Manager.currentView.pageId});
+						alert("2")
+						var blocks = pageModel.get('blocks');
+						alert("3")
+						blocks[ App.Manager.currentView.blockNumber - 1].content =  $('#blockTextElement').val();
+						alert("4")
+						blocks[ App.Manager.currentView.blockNumber - 1].type = 'text';
+						alert("5")
+						pageModel.set('blocks', blocks);
+						alert("6")
+
+						var pageModel2 = App.Manager.currentView.collection.get(App.Manager.currentView.pageId)
+
+						var block = pageModel2.get('blocks');
+						for(var i = 0; i < block.length; i++)
+						{
+							if(block[i].id == App.Manager.currentView.blockId)
+							{
+								block = block[i]
+							}
+						}
+						context.close();
+					})
+					.error(function(result, error) // bad request to scrapbook sever
+					{
+						alert("Error removing block!");
+					});
 		},
 
 		libraryPhoto: function()
@@ -1104,7 +1186,13 @@ $(document).ready(function() {
 			  		id: App.Manager.currentView.blockId,
 				}
 
-				}).error(function(result, error) // bad request to scrapbook sever
+				}).success(function(result){
+					$('div[data-block-id='+ App.Manager.currentView.blockId +']').html("<div style='width:100%; hight:100%;'></div>");
+					//$('div[data-block-id='+ App.Manager.currentView.blockId +']').data('content', '');
+					$('div[data-block-id='+ App.Manager.currentView.blockId +']').data('block-type', '');
+					$('div[data-block-id='+ App.Manager.currentView.blockId +']').data('pageId', App.Manager.currentView.pageId);
+				})
+				.error(function(result, error) // bad request to scrapbook sever
 				{
 					alert("Error removing block!");
 				});

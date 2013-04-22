@@ -135,15 +135,16 @@
     <div class='block col3 row3' data-block-id='<%= blocks[0].id %>' id='<%= blocks[0].id %>' data-block-type='<%= blocks[0].type %>' data-block-number='<%= blocks[0].blockNumber %>'><%= theContent[0]%></div>
  
     </script>
+
     <script type="text/html" id="template-book-single-two">
 
       <div class='block col1 row1' data-block-id='<%= blocks[0].id %>' id='<%= blocks[0].id %>' data-block-type='<%= blocks[0].type %>' data-block-number='<%= blocks[0].blockNumber %>'><%= theContent[0]%></div>
 
-        <div class='block col1 row1' data-block-id='<%= blocks[1].id %>' id='<%= blocks[1].id %>' data-block-type='<%= blocks[1].type %>' data-block-number='<%= blocks[1].blockNumber %>'><%= theContent[1]%></div>
+      <div class='block col1 row1' data-block-id='<%= blocks[1].id %>' id='<%= blocks[1].id %>' data-block-type='<%= blocks[1].type %>' data-block-number='<%= blocks[1].blockNumber %>'><%= theContent[1]%></div>
 
-         <div class='block col1 row1' data-block-id='<%= blocks[2].id %>' id='<%= blocks[2].id %>' data-block-type='<%= blocks[2].type %>' data-block-number='<%= blocks[2].blockNumber %>'><%= theContent[2]%></div>
+      <div class='block col1 row1' data-block-id='<%= blocks[2].id %>' id='<%= blocks[2].id %>' data-block-type='<%= blocks[2].type %>' data-block-number='<%= blocks[2].blockNumber %>'><%= theContent[2]%></div>
 
-          <div class='block col3 row2' data-block-id='<%= blocks[3].id %>' id='<%= blocks[3].id %>' data-block-type='<%= blocks[3].type %>' data-block-number='<%= blocks[3].blockNumber %>'><%= theContent[3]%></div>
+      <div class='block col3 row2' data-block-id='<%= blocks[3].id %>' id='<%= blocks[3].id %>' data-block-type='<%= blocks[3].type %>' data-block-number='<%= blocks[3].blockNumber %>'><%= theContent[3]%></div>
 
     </script>
 
@@ -156,8 +157,18 @@
 
      <script type="text/html" id="template-dialog-has-text">
 
-      i have an image
-     
+      <div class="description">Contents of the block:</div>
+      <textarea id='blockTextElement' class="textarea"><%= content %></textarea>
+     <div class='btn saveTextEle' style='background: rgb(184, 255, 178); width: 240px; margin:0 auto; margin-bottom:10px; float: none;'>save changes</div>
+     <div class='btn removeEle' style='background: rgb(255, 178, 178); width: 240px; margin:0 auto; float: none;'>Remove this text block</div>
+    </script>
+
+     <script type="text/html" id="template-dialog-new-text">
+
+      <div class="description">Contents of the block:</div>
+      <textarea id='blockTextElement' class="textarea"></textarea>
+     <div class='btn saveTextEle' style='background: rgb(184, 255, 178); width: 240px; margin:0 auto; margin-bottom:10px; float: none;'>save changes</div>
+
     </script>
 
      <script type="text/html" id="template-dialog-has-map">
