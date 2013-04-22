@@ -921,7 +921,7 @@ $(document).ready(function() {
 	        function win(returned)
 	        {
 	        	$.ajax({
-				  url: App.Manager.serverURL + '/removeBlock',
+				  url: App.Manager.serverURL + '/editBlock',
 				  dataType : 'jsonp',
 				  data: 
 				  	{
@@ -995,7 +995,7 @@ $(document).ready(function() {
 	        function win(returned)
 	        {
 	        	$.ajax({
-				  url: App.Manager.serverURL + '/removeBlock',
+				  url: App.Manager.serverURL + '/editBlock',
 				  dataType : 'jsonp',
 				  data: 
 				  	{
