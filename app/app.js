@@ -393,8 +393,8 @@ $(document).ready(function() {
 	    	this.collection.each(function(friendView) {
 	    		alert("creating new Friend view with model")
 	            var myView = new App.Views.Friend({ model: friendView });
+	            alert(JSON.stringify(myView))
 
-	            alert("after")
 	        }, this);
 
 	        return this;
