@@ -1006,6 +1006,8 @@ $(document).ready(function() {
 
 					})
 					.success(function(result){
+						alert("uploaded!")
+						alert(this.context.hasImage)
 						this.context.hasImage();
 					})
 					.error(function(result, error) // bad request to scrapbook sever
@@ -1139,7 +1141,6 @@ $(document).ready(function() {
 			// see which PAGE the bloack is from and store for reference
 			this.pageId = e.target.parentElement.attributes[3].value;
 
-			alert("here")
 			var options = {};
 
 			if(this.blockType != "")
