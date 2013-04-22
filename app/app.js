@@ -668,20 +668,47 @@ $(document).ready(function() {
 			//$(this.el).hide();
 		},
 
-	    render: function() {
+	    render: function()
+	    {
+	    	var theContent = Array();
+	    	var blocks = this.model.get('blocks');
+	    	for(var i=0; i < blocks.length; i++ )
+		   	{
+		        if(blocks[i].type == 'image')
+		        {
+		          theContent[i] = "<img src='' style='width:100%; height: 100%; background: url(http://scrapbook.uk.to/files/"+ blocks[i].content + ")' />";
+		        }
+		        else if (blocks[i].type == 'text')
+		        {
+		          theContent[i] = "<div style='width:100%; height: 100%;'>" + blocks[i].content + "</div>";
+		        }
+		        else if (blocks[i].type == 'colour')
+		        {
+		          theContent[i] = "<div style='width:100%; height:100%; background:" + blocks[i].content +";'></div>";
+		        }
+		        else
+		        {
+		        	theContent[i] = "<div style='width:100%; height:100%;'></div>";
+		        }
+		    }
+
 	    	if(this.model.get('templateId') == 1)
 	    	{
-	        	this.$el.html(this.template_1(this.model.toJSON()));
+	    		var data = this.model.toJSON();
+	    		data.theContent = theContent
+	        	this.$el.html(this.template_1(data));
+	        	
 	    	}
 	    	else if(this.model.get('templateId') == 2)
 	    	{
-	    		this.$el.html(this.template_2(this.model.toJSON()));
+	    		var data = this.model.toJSON();
+	    		data.theContent = theContent
+	        	this.$el.html(this.template_2(data));
 	    	}
 	    	else
 	    	{
 	    		alert("Sorry, i can't find that template!");
 	    	}
-
 	        return this;
 	    }
 	});
@@ -1172,14 +1199,14 @@ $(document).ready(function() {
 	    {
 	    	console.log(e)
 	    	// see which block was clicked on and store for reference
-			this.blockId = e.target.attributes[2].value;
+			this.blockId = e.target.parentElement.attributes[1].value;
 
-			this.blockType =  e.target.attributes[4].value;
+			this.blockType =  e.target.parentElement.attributes[3].value;
 
-			this.blockNumber = e.target.attributes[5].value;
+			this.blockNumber = e.currentTarget.attributes[4].value;
 
 			// see which PAGE the bloack is from and store for reference
-			this.pageId = e.target.parentElement.attributes[3].value;
+			this.pageId = e.target.parentElement.parentElement.attributes[3].value;
 
 			var options = {};
 

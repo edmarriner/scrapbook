@@ -132,15 +132,19 @@
     <!-- single page layout -->
     <script type="text/html" id="template-book-single-one">
 
-      <img src='' class='block col3 row3' data-block-id='<%= blocks[0].id %>' id='<%= blocks[0].id %>' data-block-type='<%= blocks[0].type %>' data-block-number='<%= blocks[0].blockNumber %>' style="background:url('http://scrapbook.uk.to/files/<%= blocks[0].content %>') no-repeat center center;  background-size: cover; -webkit-box-shadow: inset 0px 0px <%= blocks[0].borderFeather %>px <%= blocks[0].borderSize %>px <%= blocks[0].borderColour %>; " />
-     
+    <div class='block col3 row3' data-block-id='<%= blocks[0].id %>' id='<%= blocks[0].id %>' data-block-type='<%= blocks[0].type %>' data-block-number='<%= blocks[0].blockNumber %>'><%= theContent[0]%></div>
+ 
     </script>
     <script type="text/html" id="template-book-single-two">
 
-      <img src='' class='block col2 row2' data-block-id='<%= blocks[0].id %>' id='<%= blocks[0].id %>' data-block-type='<%= blocks[0].type %>' data-block-number='<%= blocks[0].blockNumber %>' style="background:url('http://scrapbook.uk.to/files/<%= blocks[0].content %>') no-repeat center center;  background-size: cover; -webkit-box-shadow: inset 0px 0px <%= blocks[0].borderFeather %>px <%= blocks[0].borderSize %>px <%= blocks[0].borderColour %>; " />
+      <div class='block col1 row1' data-block-id='<%= blocks[0].id %>' id='<%= blocks[0].id %>' data-block-type='<%= blocks[0].type %>' data-block-number='<%= blocks[0].blockNumber %>'><%= theContent[0]%></div>
 
-      <img src='' class='block col2 row2' data-block-id='<%= blocks[1].id %>' id='<%= blocks[1].id %>' data-block-type='<%= blocks[1].type %>' data-block-number='<%= blocks[1].blockNumber %>' style="background:url('http://scrapbook.uk.to/files/<%= blocks[1].content %>') no-repeat center center;  background-size: cover; -webkit-box-shadow: inset 0px 0px <%= blocks[1].borderFeather %>px <%= blocks[1].borderSize %>px <%= blocks[1].borderColour %>; " />
-     
+        <div class='block col1 row1' data-block-id='<%= blocks[1].id %>' id='<%= blocks[1].id %>' data-block-type='<%= blocks[1].type %>' data-block-number='<%= blocks[1].blockNumber %>'><%= theContent[1]%></div>
+
+         <div class='block col1 row1' data-block-id='<%= blocks[2].id %>' id='<%= blocks[2].id %>' data-block-type='<%= blocks[2].type %>' data-block-number='<%= blocks[2].blockNumber %>'><%= theContent[2]%></div>
+
+          <div class='block col3 row2' data-block-id='<%= blocks[3].id %>' id='<%= blocks[3].id %>' data-block-type='<%= blocks[3].type %>' data-block-number='<%= blocks[3].blockNumber %>'><%= theContent[3]%></div>
+
     </script>
 
      <script type="text/html" id="template-dialog-has-image">
