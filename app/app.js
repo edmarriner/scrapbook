@@ -879,6 +879,7 @@ $(document).ready(function() {
 		libraryPhoto: function()
 		{
 			var filename = null;
+			var context = this;
 			navigator.camera.getPicture(onSuccess, onFail, { quality: 100,
 				destinationType: Camera.DestinationType.FILE_URI,
 				encodingType: Camera.EncodingType.JPEG,
@@ -933,7 +934,8 @@ $(document).ready(function() {
 					.success(function(result){
 
 						$('img[data-block-id]').css('background', App.Manager.serverURL + filename + '.jpeg')
-						this.hasImage();
+						this.context.hasImage();
+						//this.hasImage();
 					})
 					.error(function(result, error) // bad request to scrapbook sever
 					{
@@ -952,7 +954,7 @@ $(document).ready(function() {
 		takePhoto: function()
 		{
 			var filename = null;
-
+			var context = this;
 			navigator.camera.getPicture(onSuccess, onFail, { quality: 100,
 				destinationType: Camera.DestinationType.FILE_URI,
 				encodingType: Camera.EncodingType.JPEG,
@@ -1004,7 +1006,7 @@ $(document).ready(function() {
 
 					})
 					.success(function(result){
-						this.hasImage();
+						this.context.hasImage();
 					})
 					.error(function(result, error) // bad request to scrapbook sever
 					{
