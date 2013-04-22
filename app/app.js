@@ -834,7 +834,8 @@ $(document).ready(function() {
 			'click .takePhoto' : 'takePhoto',
 			'click .library': 'libraryPhoto',
 			'click .saveTextEle': 'saveText',
-			'click .writeText' : 'newText'
+			'click .writeText' : 'newText',
+			'click .newPage' : 'newPage'
 		},
 
 		initialize: function()
@@ -865,6 +866,11 @@ $(document).ready(function() {
 			$(window).resize(function(){ // whatever the screen size this
 		       $('.dialog').center();       // this will make it center when 
 		    });
+		},
+
+		newPage: function()
+		{
+
 		},
 
 		checkOptions: function()
@@ -935,6 +941,8 @@ $(document).ready(function() {
 			$('.dialog .inner').html(this.template_map(block))
 		},
 
+
+
 		saveText: function()
 		{
 			var context = this
@@ -953,7 +961,7 @@ $(document).ready(function() {
 						
 						$('div[data-block-id='+ App.Manager.currentView.blockId +']').html("<div style='width:100%; height: 100%;'>" + $('#blockTextElement').val() + "</div>")
 						
-						$('div[data-block-id='+ App.Manager.currentView.blockId +']').data('block-type', 'text');
+						$('div[data-block-id='+ App.Manager.currentView.blockId +']').attr('data-block-type', 'text');
 						//$('div[data-block-id='+ App.Manager.currentView.blockId +']').data('pageId', App.Manager.currentView.pageId);
 
 						var pageModel = App.Manager.currentView.collection.findWhere({id: App.Manager.currentView.pageId});
@@ -1043,7 +1051,7 @@ $(document).ready(function() {
 					.success(function(result){
 
 						$('img[data-block-id='+ App.Manager.currentView.blockId +']').css('background-image', 'url(http://scrapbook.uk.to/files/' + filename + '.jpeg)');
-						alert("1")
+						$('div[data-block-id='+ App.Manager.currentView.blockId +']').attr('data-block-type', 'image');
 						var pageModel = App.Manager.currentView.collection.findWhere({id: App.Manager.currentView.pageId});
 						alert("2")
 						var blocks = pageModel.get('blocks');
@@ -1137,7 +1145,7 @@ $(document).ready(function() {
 					})
 					.success(function(result){
 						$('img[data-block-id='+ App.Manager.currentView.blockId +']').css('background-image', 'url(http://scrapbook.uk.to/files/' + filename + '.jpeg)');
-						alert("1")
+						$('div[data-block-id='+ App.Manager.currentView.blockId +']').attr('data-block-type', 'image');
 						var pageModel = App.Manager.currentView.collection.findWhere({id: App.Manager.currentView.pageId});
 						alert("2")
 						var blocks = pageModel.get('blocks');
@@ -1187,10 +1195,10 @@ $(document).ready(function() {
 				}
 
 				}).success(function(result){
-					$('div[data-block-id='+ App.Manager.currentView.blockId +']').html("<div style='width:100%; hight:100%;'></div>");
+					$('div[data-block-id='+ App.Manager.currentView.blockId +']').html("<div style='width:100%; height:100%;'></div>");
 					//$('div[data-block-id='+ App.Manager.currentView.blockId +']').data('content', '');
-					$('div[data-block-id='+ App.Manager.currentView.blockId +']').data('block-type', '');
-					$('div[data-block-id='+ App.Manager.currentView.blockId +']').data('pageId', App.Manager.currentView.pageId);
+					$('div[data-block-id='+ App.Manager.currentView.blockId +']').attr('data-block-type', '');
+					//$('div[data-block-id='+ App.Manager.currentView.blockId +']').data('pageId', App.Manager.currentView.pageId);
 				})
 				.error(function(result, error) // bad request to scrapbook sever
 				{
@@ -1765,7 +1773,7 @@ $(document).ready(function() {
 					//console.log(collection)
 					var collectionPageView = new App.CollectionViews.Pages({ collection: collection });
 					App.Manager.setView(collectionPageView);
-					$('#bb-bookblock').append("<div class='bb-item' style='display: none;'><div class='topPage'><div style='color:red; fonr-size:50px;'>add new page?</div></div></div>")
+					$('#bb-bookblock').append("<div class='bb-item' style='display: none;'><div class='topPage'><div style='color: #999; font-size: 33px;text-align: center;padding-top: 43%;'>tap to start new page</div></div></div>")
 					$('#page_1').show();
 					collectionPageView.animate();
 					collectionPageView.setBookSizes();
