@@ -933,9 +933,12 @@ $(document).ready(function() {
 					})
 					.success(function(result){
 
-						$('img[data-block-id='+ App.Manager.currentView.blockId +']').css('background-image', App.Manager.serverURL + filename + '.jpeg');
-						pageModel = App.Manager.currentView.collection.findWhere({pageId: App.Manager.currentView.pageId})
-						alert(JSON.stringify(pageModel.get(blocks)));
+						$('img[data-block-id='+ App.Manager.currentView.blockId +']').css('backgroundImage', App.Manager.serverURL + filename + '.jpeg');
+						var pageModel = App.Manager.currentView.collection.findWhere({pageId: App.Manager.currentView.pageId});
+						var blocks = pageModel.get('blocks');
+						blocks[ App.Manager.currentView.blockNumber - 1].content = App.Manager.serverURL + filename + '.jpeg';
+						blocks[ App.Manager.currentView.blockNumber - 1].type = 'image';
+						pageModel.set('blocks', blocks);
 						context.hasImage();
 						//this.hasImage();
 					})
@@ -1008,8 +1011,12 @@ $(document).ready(function() {
 
 					})
 					.success(function(result){
-						alert("uploaded!")
-						alert(filename)
+						$('img[data-block-id='+ App.Manager.currentView.blockId +']').css('backgroundImage', App.Manager.serverURL + filename + '.jpeg');
+						var pageModel = App.Manager.currentView.collection.findWhere({pageId: App.Manager.currentView.pageId});
+						var blocks = pageModel.get('blocks');
+						blocks[ App.Manager.currentView.blockNumber - 1].content = App.Manager.serverURL + filename + '.jpeg';
+						blocks[ App.Manager.currentView.blockNumber - 1].type = 'image';
+						pageModel.set('blocks', blocks);
 						context.hasImage();
 					})
 					.error(function(result, error) // bad request to scrapbook sever
