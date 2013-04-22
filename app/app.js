@@ -939,7 +939,7 @@ $(document).ready(function() {
 						alert("2")
 						var blocks = pageModel.get('blocks');
 						alert("3")
-						blocks[ App.Manager.currentView.blockNumber - 1].content = 'http://scrapbook.uk.to/files/' + filename + '.jpeg';
+						blocks[ App.Manager.currentView.blockNumber - 1].content =  filename + '.jpeg';
 						alert("4")
 						blocks[ App.Manager.currentView.blockNumber - 1].type = 'image';
 						alert("5")
