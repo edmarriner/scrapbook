@@ -333,14 +333,18 @@ $(document).ready(function() {
 
 	App.Views.Timeline = Backbone.View.extend({
 
-		tagName: 'li',
-
 		// Cache the template function for a single item.
 		template: _.template($('#template-timeline').html()),
 
 	    render: function()
 	    {
+	    	alert("start of the rendering..")
+	    	alert(this.model.get('firstName'))
+	    	alert(this.model.get('lastName'))
+	    	alert(this.model.get('picture'))
 	        this.$el.html(this.template(this.model.toJSON()));
+	        alert("end of the render")
+	        alert(JSON.stringify(this.$el.html()))
 	        return this;
 	    },
 
@@ -381,11 +385,14 @@ $(document).ready(function() {
 	    render: function()
 	    {
 	    	this.$el.html(this.template());
+
 	    	alert(this.collection.length + " number friends")
+
 	    	this.collection.each(function(friendView) {
-	    		alert("test")
+	    		alert("creating new Friend view with model")
 	            var view = new App.Views.Friend({ model: friendView });
-	            alert(JSON.stringify(view.render().el))
+	            alert("view el -> " + JSON.stringify(view.render().el))
+	            alert("info -> " + JSON.stringify(this.$el.find('.information').html()))
 	            this.$el.find('.information').append(view.render().el);
 	        }, this);
 
