@@ -933,7 +933,9 @@ $(document).ready(function() {
 					})
 					.success(function(result){
 
-						$('img[data-block-id]').css('background', App.Manager.serverURL + filename + '.jpeg')
+						$('img[data-block-id='+ App.Manager.currentView.blockId +']').css('background-image', App.Manager.serverURL + filename + '.jpeg');
+						pageModel = App.Manager.currentView.collection.findWhere({pageId: App.Manager.currentView.pageId})
+						alert(JSON.stringify(pageModel.get(blocks)));
 						context.hasImage();
 						//this.hasImage();
 					})
