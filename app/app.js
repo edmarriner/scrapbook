@@ -826,6 +826,14 @@ $(document).ready(function() {
 		template_text: _.template($('#template-dialog-has-text').html()),
 		template_new_text: _.template($('#template-dialog-new-text').html()),
 		template_image: _.template($('#template-dialog-has-image').html()),
+		
+		template_settings: _.template($('#template-dialog-settings').html()),
+		template_settings_details: _.template($('#template-dialog-settings-scrapbook').html()),
+		template_settings_remove: _.template($('#template-dialog-settings-remove-page').html()),
+		template_settings_change_template: _.template($('#template-dialog-settings-template').html()),
+		template_settings_share: _.template($('#template-dialog-settings-share').html()),
+		template_settings_delete: _.template($('#template-dialog-settings-delete').html()),
+		template_settings_editors: _.template($('#template-dialog-settings-change-friends').html()),
 
 		events: 
 		{
@@ -835,12 +843,17 @@ $(document).ready(function() {
 			'click .library': 'libraryPhoto',
 			'click .saveTextEle': 'saveText',
 			'click .writeText' : 'newText',
+			'click .changeTemplate': 'changeTemplate',
+			'click .removePage': 'removePage',
+			'click .editDetails': 'editDetails',
+			'click .share': 'share',
+			'click .deleteScrapbook': 'deleteScrapbook',
+			'click .editors': 'editors'
 		},
 
 		initialize: function()
 		{
 			console.log(this.$el)
-
 		},
 
 	    render: function()
@@ -867,7 +880,37 @@ $(document).ready(function() {
 		    });
 		},
 
-		
+		showSettings: function()
+		{
+			$('.dialog .inner').html(this.template_settings())
+		},
+
+		changeTemplate: function()
+		{
+			$('.dialog .inner').html(this.template_settings_change_template())
+		},
+
+		removePage: function()
+		{
+			$('.dialog .inner').html(this.template_settings_remove())
+		},
+
+
+		editDetails: function()
+		{
+			$('.dialog .inner').html(this.template_settings_details())
+		},
+
+
+		deleteScrapbook: function()
+		{
+			$('.dialog .inner').html(this.template_settings_delete())
+		},
+
+		editors: function()
+		{
+			$('.dialog .inner').html(this.template_settings_editors())
+		},
 
 		checkOptions: function()
 		{
@@ -903,6 +946,10 @@ $(document).ready(function() {
 						this.showSelectType();
 						break;
 				}
+			}
+			else if(this.options.settings)
+			{
+				this.showSettings();
 			}
 			else
 			{
@@ -1258,7 +1305,9 @@ $(document).ready(function() {
 		    "click #changeBorderStyle": "showBlockStyles",
 		    "click #choosePhoto": "takePhoto",
 		    "click #chooseLibrary": "libraryPhoto",
-			'click .newPage' : 'newPage'
+			'click .newPage' : 'newPage',
+			'click .settingsButton' : 'settings',
+
 		},
 
 	    render: function(){
@@ -1334,6 +1383,7 @@ $(document).ready(function() {
 							    alert(JSON.stringify(response))
 							    console.log(error)
 							}
+
 						});
 						
 						
@@ -1358,8 +1408,6 @@ $(document).ready(function() {
 			// see which PAGE the bloack is from and store for reference
 			this.pageId = e.target.parentElement.parentElement.attributes[3].value;
 
-			
-
 			var options = {};
 
 			if(this.blockType != "")
@@ -1367,6 +1415,18 @@ $(document).ready(function() {
 				options.hasContent = true,
 				options.contentType = this.blockType
 			}
+
+			// open the dialog
+			var dialog = new App.Views.Dialog(options);
+			dialog.render();
+	    },
+
+	    settings: function(e)
+	    {
+
+	    	
+			var options = {};
+			options.settings = true;
 
 			// open the dialog
 			var dialog = new App.Views.Dialog(options);
@@ -1393,8 +1453,8 @@ $(document).ready(function() {
 						},
 						init = function() {
 
+							App.Manager.currentView.currentPage = 1;
 							initEvents();
-							
 						},
 
 						initEvents = function() {
@@ -1405,12 +1465,14 @@ $(document).ready(function() {
 									App.Manager.PageTurn.jump = function(page)
 									{
 										config.bb.jump( page );
+										App.Manager.currentView.currentPage = page;
 									}
 
 							// add navigation events
 							config.$navNext.on( 'click', function() {
 
 								config.bb.next();
+								App.Manager.currentView.currentPage ++;
 								return false;
 
 							} );
@@ -1418,6 +1480,7 @@ $(document).ready(function() {
 							config.$navPrev.on( 'click', function() {
 								
 								config.bb.prev();
+								App.Manager.currentView.currentPage --;
 								return false;
 
 							} );
@@ -1435,12 +1498,14 @@ $(document).ready(function() {
 								'swipeleft'		: function( event ) {
 								
 									config.bb.next();
+									App.Manager.currentView.currentPage ++;
 									return false;
 
 								},
 								'swiperight'	: function( event ) {
 								
 									config.bb.prev();
+									App.Manager.currentView.currentPage --;
 									return false;
 									
 								}

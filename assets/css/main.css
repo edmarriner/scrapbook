@@ -753,6 +753,21 @@ body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleB
   border-top: 2px solid #fff;
   background: #f16c6c; }
 
+.settingsButtonsEditor {
+  float: none;
+  margin: 0 auto;
+  margin-bottom: 15px; }
+
+.templateButton {
+  height: 80px;
+  margin-bottom: 20px;
+  width: 37%;
+  line-height: 80px; }
+
+.templateButtonActive {
+  background: #94ba2d;
+  color: #fff; }
+
 .bookSettings img {
   width: 90%;
   margin-left: 0.625em;
@@ -873,7 +888,7 @@ body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleB
     float: left;
     margin-right: 8px;
     line-height: 34px; }
-  .bookEdit .settingButton {
+  .bookEdit .settingsButton {
     width: 100px;
     text-align: center;
     background: #5A6B73;

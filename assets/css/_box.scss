@@ -198,3 +198,24 @@
     //  margin: 0 auto;
     //  text-align: center;
     //}
+
+    .settingsButtonsEditor
+    {
+      float:none;
+      margin: 0 auto;
+      margin-bottom: 15px;
+    }
+
+    .templateButton
+    {
+      height: 80px;
+      margin-bottom: 20px;
+      width: 37%;
+      line-height: 80px;
+    }
+
+    .templateButtonActive
+    {
+      background: #94ba2d;
+      color: #fff;
+    }
