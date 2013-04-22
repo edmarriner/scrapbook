@@ -647,7 +647,8 @@ $(document).ready(function() {
 		className: "topPage",
 
 	    // Cache the template function for a single item.
-		template: _.template($('#template-book-single').html()),
+		template_1: _.template($('#template-book-single-one').html()),
+		template_2: _.template($('#template-book-single-two').html()),
 
 		initialize: function()
 		{
@@ -661,12 +662,26 @@ $(document).ready(function() {
 
 			$(this.el).attr('data-page-id', this.model.get('id')); 
 
+			console.log(this.model.toJSON())
+
 			// hide the element
 			//$(this.el).hide();
 		},
 
 	    render: function() {
-	        this.$el.html(this.template(this.model.toJSON()));
+	    	if(this.model.get('templateId') == 1)
+	    	{
+	        	this.$el.html(this.template_1(this.model.toJSON()));
+	    	}
+	    	else if(this.model.get('templateId') == 2)
+	    	{
+	    		this.$el.html(this.template_2(this.model.toJSON()));
+	    	}
+	    	else
+	    	{
+	    		alert("Sorry, i can't find that template!");
+	    	}
+
 	        return this;
 	    }
 	});
