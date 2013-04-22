@@ -933,14 +933,19 @@ $(document).ready(function() {
 					})
 					.success(function(result){
 
-						$('img[data-block-id='+ App.Manager.currentView.blockId +']').css('backgroundImage', App.Manager.serverURL + filename + '.jpeg');
+						$('img[data-block-id='+ App.Manager.currentView.blockId +']').css('background-image', 'url(' + App.Manager.serverURL + filename + '.jpeg)');
+						alert("1")
 						var pageModel = App.Manager.currentView.collection.findWhere({pageId: App.Manager.currentView.pageId});
+						alert("2")
 						var blocks = pageModel.get('blocks');
+						alert("3")
 						blocks[ App.Manager.currentView.blockNumber - 1].content = App.Manager.serverURL + filename + '.jpeg';
+						alert("4")
 						blocks[ App.Manager.currentView.blockNumber - 1].type = 'image';
+						alert("5")
 						pageModel.set('blocks', blocks);
+						alert("6")
 						context.hasImage();
-						//this.hasImage();
 					})
 					.error(function(result, error) // bad request to scrapbook sever
 					{
@@ -1011,20 +1016,24 @@ $(document).ready(function() {
 
 					})
 					.success(function(result){
-						$('img[data-block-id='+ App.Manager.currentView.blockId +']').css('backgroundImage', App.Manager.serverURL + filename + '.jpeg');
+						$('img[data-block-id='+ App.Manager.currentView.blockId +']').css('background-image', 'url(' + App.Manager.serverURL + filename + '.jpeg)');
+						alert("1")
 						var pageModel = App.Manager.currentView.collection.findWhere({pageId: App.Manager.currentView.pageId});
+						alert("2")
 						var blocks = pageModel.get('blocks');
+						alert("3")
 						blocks[ App.Manager.currentView.blockNumber - 1].content = App.Manager.serverURL + filename + '.jpeg';
+						alert("4")
 						blocks[ App.Manager.currentView.blockNumber - 1].type = 'image';
+						alert("5")
 						pageModel.set('blocks', blocks);
+						alert("6")
 						context.hasImage();
 					})
 					.error(function(result, error) // bad request to scrapbook sever
 					{
 						alert("Error uploading picture, please try again!");
 					});
-
-	        	
 	        }
 
 	        function fail(error)
