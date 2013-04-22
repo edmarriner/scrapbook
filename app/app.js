@@ -1007,12 +1007,12 @@ $(document).ready(function() {
 					})
 					.success(function(result){
 						alert("uploaded!")
-						//alert(this.context.hasImage)
+						alert(filename)
 						context.hasImage();
 					})
 					.error(function(result, error) // bad request to scrapbook sever
 					{
-						alert("Error removing block!");
+						alert("Error uploading picture, please try again!");
 					});
 
 	        	
