@@ -856,7 +856,8 @@ $(document).ready(function() {
 			'click .tpl4': 'selectTemplate4',
 			'click .tpl5': 'selectTemplate5',
 			'click .tpl6': 'selectTemplate6',
-			'click .deletePageRequest':'deletePageRequest'
+			'click .deletePageRequest':'deletePageRequest',
+			'click .deleteScrapbookRequest': 'deleteRequest'
 		},
 
 		initialize: function()
@@ -905,7 +906,7 @@ $(document).ready(function() {
 
 					})
 					.success(function(result){
-						alert("success")
+
 						App.Manager.activeCollections.pages = new App.Collections.Pages;
 						App.Manager.activeCollections.pages.fetch({
 							data: {
@@ -914,7 +915,7 @@ $(document).ready(function() {
 							dataType : 'jsonp',
 							success: function(collection)
 							{
-								alert("colletion time")
+
 								var view = new App.CollectionViews.Pages({ collection: collection });
 								App.Manager.setView(view);
 								$('#bb-bookblock').append("<div class='bb-item' style='display: none;'><div class='topPage'><div class='newPage' style='color: #999; font-size: 33px;text-align: center;padding-top: 43%; height: 57%;'>tap to start new page</div></div></div>")
@@ -940,6 +941,7 @@ $(document).ready(function() {
 					})
 					.error(function(result, error) // bad request to scrapbook sever
 					{
+						console.log(error)
 						alert("Error adding page !");
 					});
 					this.close()
@@ -962,7 +964,7 @@ $(document).ready(function() {
 
 					})
 					.success(function(result){
-						alert("success")
+
 						App.Manager.activeCollections.pages = new App.Collections.Pages;
 						App.Manager.activeCollections.pages.fetch({
 							data: {
@@ -971,7 +973,7 @@ $(document).ready(function() {
 							dataType : 'jsonp',
 							success: function(collection)
 							{
-								alert("colletion time")
+
 								var view = new App.CollectionViews.Pages({ collection: collection });
 								App.Manager.setView(view);
 								$('#bb-bookblock').append("<div class='bb-item' style='display: none;'><div class='topPage'><div class='newPage' style='color: #999; font-size: 33px;text-align: center;padding-top: 43%; height: 57%;'>tap to start new page</div></div></div>")
@@ -1019,7 +1021,7 @@ $(document).ready(function() {
 
 					})
 					.success(function(result){
-						alert("success")
+
 						App.Manager.activeCollections.pages = new App.Collections.Pages;
 						App.Manager.activeCollections.pages.fetch({
 							data: {
@@ -1028,7 +1030,7 @@ $(document).ready(function() {
 							dataType : 'jsonp',
 							success: function(collection)
 							{
-								alert("colletion time")
+
 								var view = new App.CollectionViews.Pages({ collection: collection });
 								App.Manager.setView(view);
 								$('#bb-bookblock').append("<div class='bb-item' style='display: none;'><div class='topPage'><div class='newPage' style='color: #999; font-size: 33px;text-align: center;padding-top: 43%; height: 57%;'>tap to start new page</div></div></div>")
@@ -1076,7 +1078,7 @@ $(document).ready(function() {
 
 					})
 					.success(function(result){
-						alert("success")
+
 						App.Manager.activeCollections.pages = new App.Collections.Pages;
 						App.Manager.activeCollections.pages.fetch({
 							data: {
@@ -1085,7 +1087,7 @@ $(document).ready(function() {
 							dataType : 'jsonp',
 							success: function(collection)
 							{
-								alert("colletion time")
+
 								var view = new App.CollectionViews.Pages({ collection: collection });
 								App.Manager.setView(view);
 								$('#bb-bookblock').append("<div class='bb-item' style='display: none;'><div class='topPage'><div class='newPage' style='color: #999; font-size: 33px;text-align: center;padding-top: 43%; height: 57%;'>tap to start new page</div></div></div>")
@@ -1133,7 +1135,7 @@ $(document).ready(function() {
 
 					})
 					.success(function(result){
-						alert("success")
+
 						App.Manager.activeCollections.pages = new App.Collections.Pages;
 						App.Manager.activeCollections.pages.fetch({
 							data: {
@@ -1142,7 +1144,7 @@ $(document).ready(function() {
 							dataType : 'jsonp',
 							success: function(collection)
 							{
-								alert("colletion time")
+
 								var view = new App.CollectionViews.Pages({ collection: collection });
 								App.Manager.setView(view);
 								$('#bb-bookblock').append("<div class='bb-item' style='display: none;'><div class='topPage'><div class='newPage' style='color: #999; font-size: 33px;text-align: center;padding-top: 43%; height: 57%;'>tap to start new page</div></div></div>")
@@ -1190,7 +1192,6 @@ $(document).ready(function() {
 
 					})
 					.success(function(result){
-						alert("success")
 						App.Manager.activeCollections.pages = new App.Collections.Pages;
 						App.Manager.activeCollections.pages.fetch({
 							data: {
@@ -1199,7 +1200,6 @@ $(document).ready(function() {
 							dataType : 'jsonp',
 							success: function(collection)
 							{
-								alert("colletion time")
 								var view = new App.CollectionViews.Pages({ collection: collection });
 								App.Manager.setView(view);
 								$('#bb-bookblock').append("<div class='bb-item' style='display: none;'><div class='topPage'><div class='newPage' style='color: #999; font-size: 33px;text-align: center;padding-top: 43%; height: 57%;'>tap to start new page</div></div></div>")
@@ -1281,6 +1281,7 @@ $(document).ready(function() {
 
 		deletePageRequest: function()
 		{
+			
 			var myPage = App.Manager.activeCollections.pages.findWhere({'pageNumber': ''+App.Manager.currentView.currentPage+''});
 			var PageNumber = myPage.get('pageNumber');
 			var scrapbook = myPage.get('scrapbookId')
@@ -1297,7 +1298,6 @@ $(document).ready(function() {
 
 					})
 					.success(function(result){
-						alert("success")
 						App.Manager.activeCollections.pages = new App.Collections.Pages;
 						App.Manager.activeCollections.pages.fetch({
 							data: {
@@ -1306,7 +1306,7 @@ $(document).ready(function() {
 							dataType : 'jsonp',
 							success: function(collection)
 							{
-								alert("colletion time")
+								
 								var view = new App.CollectionViews.Pages({ collection: collection });
 								App.Manager.setView(view);
 								$('#bb-bookblock').append("<div class='bb-item' style='display: none;'><div class='topPage'><div class='newPage' style='color: #999; font-size: 33px;text-align: center;padding-top: 43%; height: 57%;'>tap to start new page</div></div></div>")
@@ -1343,6 +1343,7 @@ $(document).ready(function() {
 						alert("Error adding page !");
 					});
 					this.close()
+
 		},
 
 		editDetails: function()
@@ -1354,6 +1355,37 @@ $(document).ready(function() {
 		deleteScrapbook: function()
 		{
 			$('.dialog .inner').html(this.template_settings_delete())
+		},
+
+		deleteRequest: function()
+		{
+
+
+			var myPage = App.Manager.activeCollections.pages.findWhere({'pageNumber': ''+App.Manager.currentView.currentPage+''});
+			var PageNumber = myPage.get('pageNumber');
+			var scrapbook = myPage.get('scrapbookId')
+			var PageID = myPage.get('id');
+
+			$.ajax({
+				  url: App.Manager.serverURL + '/removePage',
+				  dataType : 'jsonp',
+				  data: 
+				  	{
+				  		scrapbook: scrapbook
+					}
+
+					})
+					.success(function(result){
+						
+					App.router.navigate("", {trigger: true, replace: true});
+
+					})
+					.error(function(result, error) // bad request to scrapbook sever
+					{
+						alert("Error adding page !");
+					});
+					this.close()
+
 		},
 
 		editors: function()
