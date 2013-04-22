@@ -323,7 +323,13 @@ $(document).ready(function() {
 
 	    render: function()
 	    {
+	    	alert("start of the rendering..")
+	    	alert(this.model.get('firstName'))
+	    	alert(this.model.get('lastName'))
+	    	alert(this.model.get('picture'))
 	        this.$el.html(this.template(this.model.toJSON()));
+	         alert("end of the render")
+	        alert(JSON.stringify(this.$el.html()))
 	        return this;
 	    }
 	});
@@ -338,15 +344,11 @@ $(document).ready(function() {
 
 	    render: function()
 	    {
-	    	alert("start of the rendering..")
-	    	alert(this.model.get('firstName'))
-	    	alert(this.model.get('lastName'))
-	    	alert(this.model.get('picture'))
+	    	
 	        this.$el.html(this.template(this.model.toJSON()));
-	        alert("end of the render")
-	        alert(JSON.stringify(this.$el.html()))
+	       
 	        return this;
-	    },
+	    }
 
 	});
 
