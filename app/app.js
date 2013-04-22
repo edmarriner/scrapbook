@@ -835,7 +835,6 @@ $(document).ready(function() {
 			'click .library': 'libraryPhoto',
 			'click .saveTextEle': 'saveText',
 			'click .writeText' : 'newText',
-			'click .newPage' : 'newPage'
 		},
 
 		initialize: function()
@@ -868,10 +867,7 @@ $(document).ready(function() {
 		    });
 		},
 
-		newPage: function()
-		{
-
-		},
+		
 
 		checkOptions: function()
 		{
@@ -1261,7 +1257,8 @@ $(document).ready(function() {
 		    "click #changeBlock": "showBlockSelection",
 		    "click #changeBorderStyle": "showBlockStyles",
 		    "click #choosePhoto": "takePhoto",
-		    "click #chooseLibrary": "libraryPhoto"
+		    "click #chooseLibrary": "libraryPhoto",
+			'click .newPage' : 'newPage'
 		},
 
 	    render: function(){
@@ -1291,6 +1288,63 @@ $(document).ready(function() {
 	        return this;
 	    },
 
+	    newPage: function(e)
+		{
+			App.Manager.newPageFlag = true;
+
+			var context = this
+			alert("new page")
+
+			$.ajax({
+				  url: App.Manager.serverURL + '/addPage',
+				  dataType : 'jsonp',
+				  data: 
+				  	{
+				  		scrapbook: App.Manager.scrapbookId,
+				  		user: App.Manager.user.get('id')
+					}
+
+					})
+					.success(function(result){
+						alert("success")
+						App.Manager.activeCollections.pages = new App.Collections.Pages;
+						App.Manager.activeCollections.pages.fetch({
+							data: {
+								scrapbook: App.Manager.scrapbookId
+							},
+							dataType : 'jsonp',
+							success: function(collection)
+							{
+								alert("colletion time")
+								var collectionPageView = new App.CollectionViews.Pages({ collection: collection });
+								App.Manager.setView(collectionPageView);
+								$('#bb-bookblock').append("<div class='bb-item' style='display: none;'><div class='topPage'><div class='newPage' style='color: #999; font-size: 33px;text-align: center;padding-top: 43%; height: 57%;'>tap to start new page</div></div></div>")
+								$('#page_1').show();
+								collectionPageView.animate();
+								collectionPageView.setBookSizes();
+								App.Manager.PageTurn.jump(collection.length)
+
+								//var dialog = new App.Views.Dialog;
+								//dialog.render();
+							},
+							error: function(response, error)
+							{
+							    alert("There was an error with fetching the NEW collection of pages for this scrapbook.")
+							    alert(JSON.stringify(error));
+							    alert(JSON.stringify(response))
+							    console.log(error)
+							}
+						});
+						
+						
+					})
+					.error(function(result, error) // bad request to scrapbook sever
+					{
+						alert("Error adding page !");
+					});
+
+		},
+
 	    dialog: function(e)
 	    {
 	    	console.log(e)
@@ -1303,6 +1357,8 @@ $(document).ready(function() {
 
 			// see which PAGE the bloack is from and store for reference
 			this.pageId = e.target.parentElement.parentElement.attributes[3].value;
+
+			
 
 			var options = {};
 
@@ -1321,7 +1377,7 @@ $(document).ready(function() {
 	    {
 	    	$(function() {
 
-				var Page = (function() {
+				App.Manager.PageTurn = (function() {
 
 					var config = {
 							$bookBlock : $( '#bb-bookblock' ),
@@ -1340,10 +1396,16 @@ $(document).ready(function() {
 							initEvents();
 							
 						},
+
 						initEvents = function() {
 
 							var $slides = config.$bookBlock.children(),
 									totalSlides = $slides.length;
+
+									App.Manager.PageTurn.jump = function(page)
+									{
+										config.bb.jump( page );
+									}
 
 							// add navigation events
 							config.$navNext.on( 'click', function() {
@@ -1391,7 +1453,7 @@ $(document).ready(function() {
 
 				})();
 
-				Page.init();
+				App.Manager.PageTurn.init();
 
 			});
 	    },
@@ -1762,8 +1824,9 @@ $(document).ready(function() {
 
 	    edit: function(id){
 
-	        var pageCollection = new App.Collections.Pages;
-			pageCollection.fetch({
+	    	App.Manager.scrapbookId = id;
+	        App.Manager.activeCollections.pages = new App.Collections.Pages;
+			App.Manager.activeCollections.pages.fetch({
 				data: {
 					scrapbook: id
 				},
@@ -1773,7 +1836,7 @@ $(document).ready(function() {
 					//console.log(collection)
 					var collectionPageView = new App.CollectionViews.Pages({ collection: collection });
 					App.Manager.setView(collectionPageView);
-					$('#bb-bookblock').append("<div class='bb-item' style='display: none;'><div class='topPage'><div style='color: #999; font-size: 33px;text-align: center;padding-top: 43%;'>tap to start new page</div></div></div>")
+					$('#bb-bookblock').append("<div class='bb-item' style='display: none;'><div class='topPage'><div class='newPage' style='color: #999; font-size: 33px;text-align: center;padding-top: 43%;'>tap to start new page</div></div></div>")
 					$('#page_1').show();
 					collectionPageView.animate();
 					collectionPageView.setBookSizes();
