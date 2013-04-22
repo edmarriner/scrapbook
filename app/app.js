@@ -1016,13 +1016,13 @@ $(document).ready(function() {
 
 					})
 					.success(function(result){
-						$('img[data-block-id='+ App.Manager.currentView.blockId +']').css('background-image', 'url(' + App.Manager.serverURL + filename + '.jpeg)');
+						$('img[data-block-id='+ App.Manager.currentView.blockId +']').css('background-image', 'url(http://scrapbook.uk.to/files/' + filename + '.jpeg)');
 						alert("1")
 						var pageModel = App.Manager.currentView.collection.findWhere({id: App.Manager.currentView.pageId});
 						alert("2")
 						var blocks = pageModel.get('blocks');
 						alert("3")
-						blocks[ App.Manager.currentView.blockNumber - 1].content = App.Manager.serverURL + filename + '.jpeg';
+						blocks[ App.Manager.currentView.blockNumber - 1].content = 'http://scrapbook.uk.to/files/' + filename + '.jpeg';
 						alert("4")
 						blocks[ App.Manager.currentView.blockNumber - 1].type = 'image';
 						alert("5")
