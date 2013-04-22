@@ -935,7 +935,7 @@ $(document).ready(function() {
 
 						$('img[data-block-id='+ App.Manager.currentView.blockId +']').css('background-image', 'url(' + App.Manager.serverURL + filename + '.jpeg)');
 						alert("1")
-						var pageModel = App.Manager.currentView.collection.findWhere({pageId: App.Manager.currentView.pageId});
+						var pageModel = App.Manager.currentView.collection.findWhere({id: App.Manager.currentView.pageId});
 						alert("2")
 						var blocks = pageModel.get('blocks');
 						alert("3")
@@ -1018,7 +1018,7 @@ $(document).ready(function() {
 					.success(function(result){
 						$('img[data-block-id='+ App.Manager.currentView.blockId +']').css('background-image', 'url(' + App.Manager.serverURL + filename + '.jpeg)');
 						alert("1")
-						var pageModel = App.Manager.currentView.collection.findWhere({pageId: App.Manager.currentView.pageId});
+						var pageModel = App.Manager.currentView.collection.findWhere({id: App.Manager.currentView.pageId});
 						alert("2")
 						var blocks = pageModel.get('blocks');
 						alert("3")
