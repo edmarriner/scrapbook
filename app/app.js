@@ -802,7 +802,9 @@ $(document).ready(function() {
 		events: 
 		{
 			'click .dialogMask': 'close',
-			'click .removeEle' : 'removeElement'
+			'click .removeEle' : 'removeElement',
+			'click .takePhoto' : 'takePhoto',
+			'click .library': 'libraryPhoto'
 		},
 
 		initialize: function()
@@ -871,6 +873,116 @@ $(document).ready(function() {
 		hasImage: function(block)
 		{
 			$('.dialog .inner').html(this.template_image(block))
+		},
+
+		libraryPhoto: function()
+		{
+			var filename = null;
+			navigator.camera.getPicture(onSuccess, onFail, { quality: 100,
+				destinationType: Camera.DestinationType.FILE_URI,
+				encodingType: Camera.EncodingType.JPEG,
+				sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+			}); 
+
+			function onFail(error)
+			{
+				alert(error);
+			}
+
+			function onSuccess(imageURI)
+			{
+	            var options = new FileUploadOptions();
+	            options.fileKey="file";
+	            
+	            var text = "";
+			    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+			    for( var i=0; i < 20; i++ )
+			        text += possible.charAt(Math.floor(Math.random() * possible.length))
+			 
+			    filename = text;
+			    
+	            options.fileName = text;
+	            options.mimeType="image/jpeg";
+
+	            var params = new Object();
+	            params.value1 = "test";
+	            params.value2 = "param";
+
+	            options.params = params;
+
+	            var ft = new FileTransfer();
+	            ft.upload(imageURI, encodeURI("http://scrapbook.uk.to/api/index.php/upload"), win, fail, options);
+
+			}        
+
+	        function win(returned)
+	        {
+				alert("success!")
+	        }
+
+	        function fail(error)
+	        {
+	            alert("An error has occurred: Code = " + error.code);
+	            console.log("upload error source " + error.source);
+	            console.log("upload error target " + error.target);
+	        }
+		},
+
+		takePhoto: function()
+		{
+			var filename = null;
+
+			navigator.camera.getPicture(onSuccess, onFail, { quality: 100,
+				destinationType: Camera.DestinationType.FILE_URI,
+				encodingType: Camera.EncodingType.JPEG,
+			}); 
+
+			function onFail(error)
+			{
+				alert(error);
+			}
+
+			function onSuccess(imageURI)
+			{
+	            var options = new FileUploadOptions();
+	            options.fileKey="file";
+	            
+	            var text = "";
+			    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+			    for( var i=0; i < 20; i++ )
+			        text += possible.charAt(Math.floor(Math.random() * possible.length))
+			 
+			    filename = text;
+			    
+	            options.fileName = text;
+	            options.mimeType="image/jpeg";
+
+	            var params = new Object();
+	            params.value1 = "test";
+	            params.value2 = "param";
+
+	            options.params = params;
+
+	            var ft = new FileTransfer();
+	            ft.upload(imageURI, encodeURI("http://scrapbook.uk.to/api/index.php/upload"), win, fail, options);
+
+			}        
+
+	        function win(returned)
+	        {
+
+
+				alert("success!")
+	        }
+
+	        function fail(error)
+	        {
+	            alert("An error has occurred: Code = " + error.code);
+	            console.log("upload error source " + error.source);
+	            console.log("upload error target " + error.target);
+	        }
 		},
 
 		removeElement: function()
