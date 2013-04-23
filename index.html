@@ -329,8 +329,12 @@
     </script>
 
     <script type="text/html" id="template-dialog-settings-scrapbook">
-      <h1>Change the book title</h1>
-      <h1>Change the book cover</h1>
+      <h1>Edit scrapbook details</h1>
+      <div class="description">Title of scrapbook</div>
+      <input id='scrapbookTitleDetail' value='<%= title %>' class="textbox" >
+      <div class="description">Description</div>
+      <textarea id='scrapbookDescriptionDetail' class="textbox" ><%= description %></textarea>
+      <div class='btn updateNewDetails'>Save</div>
     </script>
 
     <script type="text/html" id="template-dialog-settings-remove-page">

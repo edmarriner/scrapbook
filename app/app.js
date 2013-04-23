@@ -857,7 +857,8 @@ $(document).ready(function() {
 			'click .tpl5': 'selectTemplate5',
 			'click .tpl6': 'selectTemplate6',
 			'click .deletePageRequest':'deletePageRequest',
-			'click .deleteScrapbookRequest': 'deleteRequest'
+			'click .deleteScrapbookRequest': 'deleteRequest',
+			'click .updateNewDetails': 'updateNewDetails'
 		},
 
 		initialize: function()
@@ -887,6 +888,37 @@ $(document).ready(function() {
 			$(window).resize(function(){ // whatever the screen size this
 		       $('.dialog').center();       // this will make it center when 
 		    });
+		},
+
+		updateNewDetails: function()
+		{
+			var myPage = App.Manager.activeCollections.pages.findWhere({'pageNumber': ''+App.Manager.currentView.currentPage+''});
+
+			var scrapbook = myPage.get('scrapbookId')
+
+			var title = $('#scrapbookTitleDetail').val();
+			var description = $('#scrapbookDescriptionDetail').val();
+
+			$.ajax({
+			  url: App.Manager.serverURL + '/updateScrapbook',
+			  dataType : 'jsonp',
+			  context: this,
+			  data: 
+			  	{
+			  		scrapbook: scrapbook,
+			  		title: title,
+			  		description: description
+				}
+
+			})
+			.success(function(result){
+				this.close()
+			})
+			.error(function(result, error) // bad request to scrapbook sever
+			{
+				alert("Error saving details!");
+			});
+
 		},
 
 		selectTemplate1: function()
@@ -1348,7 +1380,34 @@ $(document).ready(function() {
 
 		editDetails: function()
 		{
-			$('.dialog .inner').html(this.template_settings_details())
+			var myPage = App.Manager.activeCollections.pages.findWhere({'pageNumber': ''+App.Manager.currentView.currentPage+''});
+			var PageNumber = myPage.get('pageNumber');
+			var scrapbook = myPage.get('scrapbookId')
+
+
+			var data = {};
+			$.ajax({
+			  url: App.Manager.serverURL + '/singleScrapbook',
+			  dataType : 'jsonp',
+			  context: this,
+			  data: 
+			  	{
+			  		scrapbook: scrapbook
+				}
+
+			})
+			.success(function(result){
+				console.log(result)
+				data.title = result.title;
+				data.description = result.description;
+				$('.dialog .inner').html(this.template_settings_details(data))
+			})
+			.error(function(result, error) // bad request to scrapbook sever
+			{
+				alert("Error getting scrpbook !");
+			});
+			console.log(data)
+			
 		},
 
 
@@ -1367,7 +1426,7 @@ $(document).ready(function() {
 			var PageID = myPage.get('id');
 
 			$.ajax({
-				  url: App.Manager.serverURL + '/removePage',
+				  url: App.Manager.serverURL + '/removeScrapbook',
 				  dataType : 'jsonp',
 				  data: 
 				  	{
