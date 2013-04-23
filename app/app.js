@@ -890,6 +890,20 @@ $(document).ready(function() {
 		    });
 		},
 
+		share: function()
+		{
+			var params = {
+				    method: 'feed',
+				    name: 'Facebook Dialogs',
+				    link: 'https://developers.facebook.com/docs/reference/dialogs/',
+				    picture: 'http://fbrell.com/f8.jpg',
+				    caption: 'Reference Documentation',
+				    description: 'Dialogs provide a simple, consistent interface for applications to interface with users.'
+				  };
+				console.log(params);
+			    FB.ui(params, function(obj) { console.log(obj);});
+		},
+
 		updateNewDetails: function()
 		{
 			var myPage = App.Manager.activeCollections.pages.findWhere({'pageNumber': ''+App.Manager.currentView.currentPage+''});
