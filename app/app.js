@@ -684,7 +684,7 @@ $(document).ready(function() {
 		        }
 		        else if (blocks[i].type == 'colour')
 		        {
-		          theContent[i] = "<div style='width:100%; height:100%; background:" + blocks[i].content +";'></div>";
+		          theContent[i] = "<div style='width:100%; height:100%; background:#" + blocks[i].content +";'></div>";
 		        }
 		        else
 		        {
@@ -822,6 +822,7 @@ $(document).ready(function() {
 		template_select_options: _.template($('#template-dialog-options').html()),
 
 		template_colour: _.template($('#template-dialog-has-colour').html()),
+		template_new_colour: _.template($('#template-dialog-new-colour').html()),
 		template_map: _.template($('#template-dialog-has-map').html()),
 		template_text: _.template($('#template-dialog-has-text').html()),
 		template_new_text: _.template($('#template-dialog-new-text').html()),
@@ -842,7 +843,9 @@ $(document).ready(function() {
 			'click .takePhoto' : 'takePhoto',
 			'click .library': 'libraryPhoto',
 			'click .saveTextEle': 'saveText',
+			'click .saveNewColour': 'saveColourBlock',
 			'click .writeText' : 'newText',
+			'click .colour' : 'colourBlock',
 			'click .changeTemplate': 'changeTemplate',
 			'click .removePage': 'removePage',
 			'click .editDetails': 'editDetails',
@@ -1538,7 +1541,60 @@ $(document).ready(function() {
 			$('.dialog .inner').html(this.template_map(block))
 		},
 
+		colourBlock: function()
+		{
+			$('.dialog .inner').html(this.template_new_colour())
+		},
+		
+		saveColourBlock: function()
+		{
+			var context = this
+			$.ajax({
+				  url: App.Manager.serverURL + '/editBlock',
+				  dataType : 'jsonp',
+				  data: 
+				  	{
+				  		id: App.Manager.currentView.blockId,
+				  		type: 'colour',
+				  		content: '000'
+					}
 
+					})
+					.success(function(result){
+						
+						$('div[data-block-id='+ App.Manager.currentView.blockId +']').html("<div style='width:100%; height: 100%;background: " + "#000" + "'></div>")
+						
+						$('div[data-block-id='+ App.Manager.currentView.blockId +']').attr('data-block-type', 'colour');
+						//$('div[data-block-id='+ App.Manager.currentView.blockId +']').data('pageId', App.Manager.currentView.pageId);
+
+						var pageModel = App.Manager.currentView.collection.findWhere({id: App.Manager.currentView.pageId});
+						alert("2")
+						var blocks = pageModel.get('blocks');
+						alert("3")
+						blocks[ App.Manager.currentView.blockNumber - 1].content =  '#000';
+						alert("4")
+						blocks[ App.Manager.currentView.blockNumber - 1].type = 'colour';
+						alert("5")
+						pageModel.set('blocks', blocks);
+						alert("6")
+
+						var pageModel2 = App.Manager.currentView.collection.get(App.Manager.currentView.pageId)
+
+						var block = pageModel2.get('blocks');
+						for(var i = 0; i < block.length; i++)
+						{
+							if(block[i].id == App.Manager.currentView.blockId)
+							{
+								block = block[i]
+							}
+						}
+						context.close();
+					})
+					.error(function(result, error) // bad request to scrapbook sever
+					{
+						alert("Error removing block!");
+					});
+		},
 
 		saveText: function()
 		{
