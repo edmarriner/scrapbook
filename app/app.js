@@ -1043,15 +1043,17 @@ $(document).ready(function() {
 
 			})
 			.success(function(result){
+				alert(result.id+" - "+result.title + " - "+ result.description)
 				var params = {
 				    method: 'feed',
-				    name: result.title,
-				    link: 'http://scrapbooka.com/scrapbook/' + App.Manager.currentView.collection.at(0).get('scrapbookId'),
+				    name: "" + result.title,
+				    link: 'http://scrapbooka.com/scrapbook/' + result.id,
 				    caption: 'Check out my new scrapbook!',
 				    picture: 'http://fbrell.com/f8.jpg',
-				    description: result.description
+				    description: "" + result.description
 				  };
 				console.log(params);
+				alert(window.FB)
 			    window.FB.ui(params, function(obj) { console.log(obj);});
 			})
 			.error(function(result, error) // bad request to scrapbook sever
