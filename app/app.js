@@ -404,8 +404,9 @@ $(document).ready(function() {
 						facebookFriend.firstName = response.data[0].fql_result_set[i].first_name;
 						facebookFriend.lastName = response.data[0].fql_result_set[i].last_name;
 						facebookFriend.picture = response.data[0].fql_result_set[i].pic_square;
+						alert(JSON.stringify(facebookFriend));
 						var myView = new App.Views.Friend({ model: facebookFriend });
-
+						alert(JSON.stringify(myView.render().el));
 						this.$el.find('.friendList').append(myView.render.el());
 				    }
 	      		}
