@@ -345,7 +345,6 @@ $(document).ready(function() {
 	    {
 	    	
 	        this.$el.html(this.template(this.model.toJSON()));
-	       
 	        return this;
 	    }
 
@@ -390,20 +389,14 @@ $(document).ready(function() {
 	    	FB.api('/fql', { q:{"query1":"SELECT uid , first_name, last_name, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1"} },
 				function(response)
 				{
-					//alert("facebook returned " + response.data[0].fql_result_set.length + " friends")
 					for(var i = 0; i < response.data[0].fql_result_set.length; i++)
 						{
 							var facebookFriend = {}
 							facebookFriend.firstName = response.data[0].fql_result_set[i].first_name;
-							//facebookFriend.firstName = 'carys'
 							facebookFriend.lastName = response.data[0].fql_result_set[i].last_name;
-							//facebookFriend.lastName = 'morgan';
 							facebookFriend.picture = response.data[0].fql_result_set[i].pic_square;
-							//facebookFriend.picture = 'pic.jpg';
 							var myView = new App.Views.Friend({ model: facebookFriend });
 							App.Manager.currentView.$el.find('.friendList').append(myView.render().el);
-
-							//alert("done")
 					    }
 		      	}
    	 		);
@@ -562,7 +555,8 @@ $(document).ready(function() {
 
 		events: {
 
-			"click #createScrapbookButton" : "createScrapbook"
+			"click #createScrapbookButton" : "createScrapbook",
+			'click #chooseFriends' : 'chooseFriends'
 		},
 
 		// Cache the template function for a single item.
@@ -571,6 +565,17 @@ $(document).ready(function() {
 	    render: function() {
 	        this.$el.html(this.template());
 	        return this;
+	    },
+
+	    chooseFriends: function()
+	    {
+
+
+			// open the dialog
+			this.friendPicker = new App.Views.FriendPicker();
+			friendPicker.render();
+
+    		
 	    },
 
 	    createScrapbook: function()
@@ -820,6 +825,65 @@ $(document).ready(function() {
 
 	        return this;
 	    }
+	});
+
+	App.Views.FriendPicker = Backbone.View.extend({
+
+		el: '#viewport',
+
+		// Cache the template function for a single item.
+		template: _.template($('#template-dialog').html()),
+
+		template_select_options: _.template($('#template-dialog-options').html()),
+
+		events: 
+		{
+			'click .dialogMask': 'close'
+		},
+
+		initialize: function()
+		{
+			console.log(this.$el)
+		},
+
+	    render: function()
+	    {
+	        this.$el.append(this.template());
+	        this.$el.find('.dialog').center();
+	        this.alwaysCenter();
+
+	        FB.api('/fql', { q:{"query1":"SELECT uid , first_name, last_name, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1"} },
+				function(response)
+				{
+					for(var i = 0; i < response.data[0].fql_result_set.length; i++)
+					{
+						var facebookFriend = {}
+						facebookFriend.firstName = response.data[0].fql_result_set[i].first_name;
+						facebookFriend.lastName = response.data[0].fql_result_set[i].last_name;
+						facebookFriend.picture = response.data[0].fql_result_set[i].pic_square;
+						var myView = new App.Views.Friend({ model: facebookFriend });
+						App.Manager.currentView.friendPicker.$el.find('.inner').append(myView.render().el);
+				    }
+		      	}
+   	 		);
+
+	        return this;
+	    },
+
+	    close: function()
+	    {
+			this.unbind();
+			this.undelegateEvents()
+	    	$('.dialog').remove();
+	    	$('.dialogMask').remove();
+	    },
+
+		alwaysCenter: function()
+		{
+			$(window).resize(function(){ // whatever the screen size this
+		       $('.dialog').center();       // this will make it center when 
+		    });
+		}
 	});
 
 	// Modal
