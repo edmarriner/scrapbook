@@ -406,7 +406,7 @@ $(document).ready(function() {
 						facebookFriend.picture = response.data[0].fql_result_set[i].pic_square;
 						alert(JSON.stringify(facebookFriend));
 						var myView = new App.Views.Friend({ model: facebookFriend });
-						alert(JSON.stringify(myView);
+						alert(JSON.stringify(myView));
 							alert(JSON.stringify(myView.el))
 						this.$el.find('.friendList').append(myView.render.el());
 				    }
