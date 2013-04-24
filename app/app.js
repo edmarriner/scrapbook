@@ -1051,7 +1051,7 @@ $(document).ready(function() {
 				    description: result.description
 				  };
 				console.log(params);
-			    FB.ui(params, function(obj) { console.log(obj);});
+			    window.FB.ui(params, function(obj) { console.log(obj);});
 			})
 			.error(function(result, error) // bad request to scrapbook sever
 			{
@@ -1450,7 +1450,7 @@ $(document).ready(function() {
 		buy: function()
 		{
 			alert(window.plugins.childBrowser)
-			window.plugins.childBrowser.showWebPage('http://www.google.com', { showLocationBar: false });
+			window.plugins.childBrowser.showWebPage('http://www.google.com');
 		},
 
 		changeTemplate: function()
