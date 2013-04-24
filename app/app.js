@@ -1452,8 +1452,7 @@ $(document).ready(function() {
 
 		buy: function()
 		{
-			var ref = window.open('http://apache.org', '_blank', 'location=yes');
-			
+			var ref = window.open('http://scrapbooka.com/', '_blank', 'location=no');
 		},
 
 		changeTemplate: function()
