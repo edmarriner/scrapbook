@@ -1452,12 +1452,8 @@ $(document).ready(function() {
 
 		buy: function()
 		{
-			alert(window.plugins.childBrowser)
-			window.plugins.childBrowser.showWebPage('http://www.google.com',
-                                        { showLocationBar: true });
-
-			alert(window.plugins.childBrowser.showWebPage('http://google.com'))
-			//window.plugins.childBrowser.showWebPage('http://www.google.com');
+			var ref = window.open('http://apache.org', '_blank', 'location=yes');
+			
 		},
 
 		changeTemplate: function()
