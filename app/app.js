@@ -333,6 +333,22 @@ $(document).ready(function() {
 	    }
 	});
 
+
+
+	// Single friend
+	// ----------------------------------------------------------------------
+	App.Views.FriendObject = Backbone.View.extend({
+
+		// Cache the template function for a single item.
+		template: _.template($('#template-single-add-friends').html()),
+
+	    render: function()
+	    {
+	        this.$el.html(this.template(this.model));
+	        return this;
+	    }
+	});
+
 	// Single friend
 	// ----------------------------------------------------------------------
 
@@ -580,6 +596,8 @@ $(document).ready(function() {
     		
 	    },
 
+	    friendsAdded: Array(),
+
 	    createScrapbook: function()
 	    {
 
@@ -603,6 +621,7 @@ $(document).ready(function() {
 				success: function(model, response, options)
 				{
 					App.Manager.activeCollections.scrapbooks.add(newScrapbook)
+					App.Manager.currentView.friendsAdded = [];
 					App.router.navigate("/book/edit/" +  response.scrapbookID, {trigger: true, replace: true});
 				},
 				error: function(model, error, options)
@@ -836,22 +855,45 @@ $(document).ready(function() {
 		// Cache the template function for a single item.
 		template: _.template($('#template-dialog').html()),
 
-		template_select_options: _.template($('#template-dialog-options').html()),
-
 		events: 
 		{
-			'click .dialogMask': 'close'
+			'click .dialogMask': 'close',
+			'click .friend' :'toggleFriend'
 		},
 
 		initialize: function()
 		{
 			console.log(this.$el)
+
+		},
+
+		toggleFriend: function(e)
+		{
+			if(_.contains(App.Manager.currentView.friendsAdded,parseInt(e.currentTarget.id)))
+			{
+				$(e.currentTarget).removeClass('activeFriend');
+				if(App.Manager.currentView.friendsAdded.length > 1)
+				{
+					array.splice(_.indexOf(App.Manager.currentView.friendsAdded, e.target.id), 1);
+				}
+				else
+				{
+					App.Manager.currentView.friendsAdded = []
+				}
+			}
+			else
+			{
+				$(e.currentTarget).addClass('activeFriend');
+				App.Manager.currentView.friendsAdded.push(parseInt(e.currentTarget.id));
+			}
+			console.log(App.Manager.currentView.friendsAdded);
 		},
 
 	    render: function()
 	    {
 	        this.$el.append(this.template());
 	        this.$el.find('.dialog').center();
+	        $('.dialog .inner').html("<div class='friendPicker'></div>")
 	        this.alwaysCenter();
 
 	        FB.api('/fql', { q:{"query1":"SELECT uid , first_name, last_name, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1"} },
@@ -860,15 +902,23 @@ $(document).ready(function() {
 					for(var i = 0; i < response.data[0].fql_result_set.length; i++)
 					{
 						var facebookFriend = {}
-						facebookFriend.firstName = response.data[0].fql_result_set[i].first_name;
-						facebookFriend.lastName = response.data[0].fql_result_set[i].last_name;
-						facebookFriend.picture = response.data[0].fql_result_set[i].pic_square;
-						var myView = new App.Views.Friend({ model: facebookFriend });
-						$('.dialog .inner').append(myView.render().el);
+						facebookFriend.firstName = 'carys';
+						//facebookFriend.firstName = response.data[0].fql_result_set[i].first_name;
+						facebookFriend.lastName = 'morgan';
+						//facebookFriend.lastName = response.data[0].fql_result_set[i].last_name;
+						facebookFriend.picture = 'pic.jpg'
+						facebookFriend.id = '123'
+						//facebookFriend.picture = response.data[0].fql_result_set[i].pic_square;
+						var myView = new App.Views.FriendObject({ model: facebookFriend });
+						$('.dialog .inner .friendPicker').append(myView.render().el);
 				    }
 		     	}
    	 		);
-
+			for(var i = 0; i < App.Manager.currentView.friendsAdded.length; i++)
+			{
+				$('.friend#' + App.Manager.currentView.friendsAdded[i]).addClass('activeFriend');
+			}
+			$('.dialog .header').html('Pick Friends')
 	        return this;
 	    },
 
