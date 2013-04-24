@@ -328,13 +328,7 @@ $(document).ready(function() {
 
 	    render: function()
 	    {
-	    	alert("start of the rendering..")
-	    	alert(this.model.firstName)
-	    	alert(this.model.lastName)
-	    	alert(this.model.picture)
 	        this.$el.html(this.template(this.model));
-	         alert("end of the render")
-	        
 	        return this;
 	    }
 	});
@@ -400,10 +394,10 @@ $(document).ready(function() {
 					for(var i = 0; i < response.data[0].fql_result_set.length; i++)
 						{
 							var facebookFriend = {}
-							//facebookFriend.firstName = response.data[0].fql_result_set[i].first_name;
-							facebookFriend.firstName = 'carys'
-							//facebookFriend.lastName = response.data[0].fql_result_set[i].last_name;
-							facebookFriend.lastName = 'morgan';
+							facebookFriend.firstName = response.data[0].fql_result_set[i].first_name;
+							//facebookFriend.firstName = 'carys'
+							facebookFriend.lastName = response.data[0].fql_result_set[i].last_name;
+							//facebookFriend.lastName = 'morgan';
 							facebookFriend.picture = response.data[0].fql_result_set[i].pic_square;
 							//facebookFriend.picture = 'pic.jpg';
 							var myView = new App.Views.Friend({ model: facebookFriend });
