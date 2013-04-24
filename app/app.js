@@ -1048,6 +1048,7 @@ $(document).ready(function() {
 				    name: result.title,
 				    link: 'http://scrapbooka.com/scrapbook/' + App.Manager.currentView.collection.at(0).get('scrapbookId'),
 				    caption: 'Check out my new scrapbook!',
+				    picture: 'http://fbrell.com/f8.jpg',
 				    description: result.description
 				  };
 				console.log(params);
@@ -1450,7 +1451,11 @@ $(document).ready(function() {
 		buy: function()
 		{
 			alert(window.plugins.childBrowser)
-			window.plugins.childBrowser.showWebPage('http://www.google.com');
+			window.plugins.childBrowser.showWebPage('http://www.google.com',
+                                        { showLocationBar: true });
+
+			alert(window.plugins.childBrowser.showWebPage('http://google.com'))
+			//window.plugins.childBrowser.showWebPage('http://www.google.com');
 		},
 
 		changeTemplate: function()
