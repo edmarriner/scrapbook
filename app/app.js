@@ -864,7 +864,7 @@ $(document).ready(function() {
 						facebookFriend.lastName = response.data[0].fql_result_set[i].last_name;
 						facebookFriend.picture = response.data[0].fql_result_set[i].pic_square;
 						var myView = new App.Views.Friend({ model: facebookFriend });
-				//		App.Manager.currentView.friendPicker.$el.find('.inner').append(myView.render().el);
+						$('.dialog .inner').append(myView.render().el);
 				    }
 		     	}
    	 		);
