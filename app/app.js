@@ -691,6 +691,8 @@ $(document).ready(function() {
 	    // Cache the template function for a single item.
 		template_1: _.template($('#template-book-single-one').html()),
 		template_2: _.template($('#template-book-single-two').html()),
+		template_2: _.template($('#template-book-single-three').html()),
+		template_2: _.template($('#template-book-single-four').html()),
 
 		initialize: function()
 		{
@@ -746,6 +748,18 @@ $(document).ready(function() {
 	    		var data = this.model.toJSON();
 	    		data.theContent = theContent
 	        	this.$el.html(this.template_2(data));
+	    	}
+	    	else if(this.model.get('templateId') == 3)
+	    	{
+	    		var data = this.model.toJSON();
+	    		data.theContent = theContent
+	        	this.$el.html(this.template_3(data));
+	    	}
+	    	else if(this.model.get('templateId') == 4)
+	    	{
+	    		var data = this.model.toJSON();
+	    		data.theContent = theContent
+	        	this.$el.html(this.template_4(data));
 	    	}
 	    	else
 	    	{
