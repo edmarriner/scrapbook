@@ -1031,6 +1031,8 @@ $(document).ready(function() {
 
 		share: function()
 		{
+			var scrapbook = App.Manager.currentView.collection.at(App.Manager.currentView.currentPage - 1).get('scrapbookId')
+
 			var data = {};
 			$.ajax({
 			  url: App.Manager.serverURL + '/singleScrapbook',
@@ -1043,11 +1045,10 @@ $(document).ready(function() {
 
 			})
 			.success(function(result){
-				alert(result.id+" - "+result.title + " - "+ result.description)
 				var params = {
 				    method: 'feed',
 				    name: "" + result.title,
-				    link: 'http://scrapbooka.com/scrapbook/' + result.id,
+				    link: 'http://scrapbooka.com/scrapbook/' + scrapbook,
 				    caption: 'Check out my new scrapbook!',
 				    picture: 'http://fbrell.com/f8.jpg',
 				    description: "" + result.description
