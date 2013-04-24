@@ -12,7 +12,12 @@ document.addEventListener('deviceready', function() {
 	}
 
 }, false);
- 
+
+
+// offline
+// <div style="top:0;bottom: 0;left: 0;right: 0;position: absolute;background: rgba(0,0,0,0.7);z-index: 99999999999999999999999999999;padding-top: 130px;text-align: center;font-size: 24px;">Please wait why we try to reconnect to the internet</div>
+//
+
 $(document).ready(function() {
 
 	//FB.Event.subscribe('auth.login', function(response) {
@@ -388,14 +393,24 @@ $(document).ready(function() {
 	    {
 	    	this.$el.html(this.template());
 
-	    	alert(this.collection.length + " number friends")
+	    	App.Manager.activeCollections.friends = new App.Collections.Users;
 
-	    	this.collection.each(function(friendView) {
-	    		alert("creating new Friend view with model")
-	            var myView = new App.Views.Friend({ model: friendView });
-	            alert(JSON.stringify(myView))
+	    	FB.api('/fql', { q:{"query1":"SELECT uid , first_name, last_name, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1"} },
+			function(response)
+			{
+				alert("facebook returned " + response.data[0].fql_result_set.length + " friends")
+				for(var i = 0; i < response.data[0].fql_result_set.length; i++)
+					{
+						var facebookFriend = {}
+						facebookFriend.firstName = response.data[0].fql_result_set[i].first_name;
+						facebookFriend.lastName = response.data[0].fql_result_set[i].last_name;
+						facebookFriend.picture = response.data[0].fql_result_set[i].pic_square;
+						var myView = new App.Views.Friend({ model: facebookFriend });
 
-	        }, this);
+						this.$el.find('.friendList').append(myView.render.el());
+				    }
+	      		}
+   	 		);
 
 	        return this;
 	    }
@@ -2568,24 +2583,7 @@ $(document).ready(function() {
 
 	    friends: function(){
 
-	    	App.Manager.activeCollections.friends = new App.Collections.Users;
-
-	    	FB.api('/fql', { q:{"query1":"SELECT uid , first_name, last_name, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1"} },
-			function(response)
-			{
-				alert("facebook returned " + response.data[0].fql_result_set.length + " friends")
-				for(var i = 0; i < response.data[0].fql_result_set.length; i++)
-					{
-						var facebookFriend = new App.Models.User;
-						facebookFriend.set('firstName', response.data[0].fql_result_set[i].first_name);
-						facebookFriend.set('lastName', response.data[0].fql_result_set[i].last_name);
-						facebookFriend.set('picture', response.data[0].fql_result_set[i].pic_square);
-						App.Manager.activeCollections.friends.push(facebookFriend);
-				    }
-	      		}
-   	 		);
-
-			var friendsView = new App.CollectionViews.Friends({ collection: App.Manager.activeCollections.friends });
+			var friendsView = new App.CollectionViews.Friends();
 			App.Manager.setView(friendsView); 
 				
 
