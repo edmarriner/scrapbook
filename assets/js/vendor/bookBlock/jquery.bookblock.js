@@ -216,6 +216,7 @@
 				return false;
 			}
 
+
 			// callback trigger
 			this.options.onBeforeFlip(this.current);
 
@@ -228,6 +229,8 @@
 
 			} else if (dir === 'next') {
 
+
+
 				if (!this.options.circular && this.current === this.itemsCount - 1) {
 
 					this.end = true;
@@ -236,7 +239,7 @@
 
 					this.previous = this.current;
 					this.current = this.current < this.itemsCount - 1 ? this.current + 1 : 0;
-
+					window.App.Manager.currentView.currentPage = this.current + 1;
 				}
 
 			} else if (dir === 'prev') {
@@ -249,7 +252,7 @@
 
 					this.previous = this.current;
 					this.current = this.current > 0 ? this.current - 1 : this.itemsCount - 1;
-
+					window.App.Manager.currentView.currentPage = this.current + 1;
 				}
 
 			}
@@ -501,20 +504,22 @@
 		// public method: flips next
 		next: function() {
 			this._action('next');
+			//window.App.Manager.currentView.currentPage += 1;
 		},
 		// public method: flips back
 		prev: function() {
 			this._action('prev');
+			//window.App.Manager.currentView.currentPage = -=1;
 		},
 		// public method: goes to a specific page
 		jump: function(page) {
-
+			var EdsPage;
 			page -= 1;
 
 			if (page === this.current || page >= this.itemsCount || page < 0) {
 				return false;
 			}
-
+			window.App.Manager.currentView.currentPage = EdsPage;
 			this._action(page > this.current ? 'next' : 'prev', page);
 
 		},

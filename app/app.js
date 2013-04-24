@@ -917,13 +917,15 @@ $(document).ready(function() {
 						var myView = new App.Views.FriendObject({ model: facebookFriend });
 						$('.dialog .inner .friendPicker').append(myView.render().el);
 				    }
+
+				    for(var i = 0; i < App.Manager.currentView.friendsAdded.length; i++)
+					{
+						alert($('.dialog #' + App.Manager.currentView.friendsAdded[i]))
+						$('.dialog #' + App.Manager.currentView.friendsAdded[i]).addClass('activeFriend');
+					}
 		     	}
    	 		);
-			for(var i = 0; i < App.Manager.currentView.friendsAdded.length; i++)
-			{
-				alert($('.dialog #' + App.Manager.currentView.friendsAdded[i]))
-				$('.dialog #' + App.Manager.currentView.friendsAdded[i]).addClass('activeFriend');
-			}
+			
 			//$('.dialog .header').html('Pick Friends')
 	        return this;
 	    },
@@ -962,6 +964,7 @@ $(document).ready(function() {
 		template_image: _.template($('#template-dialog-has-image').html()),
 		
 		template_settings: _.template($('#template-dialog-settings').html()),
+		template_settings_not_a_page: _.template($('#template-dialog-settings-not-a-page').html()),
 		template_settings_details: _.template($('#template-dialog-settings-scrapbook').html()),
 		template_settings_remove: _.template($('#template-dialog-settings-remove-page').html()),
 		template_settings_change_template: _.template($('#template-dialog-settings-template').html()),
@@ -1415,12 +1418,20 @@ $(document).ready(function() {
 
 		showSettings: function()
 		{
-			$('.dialog .inner').html(this.template_settings())
+			if(App.Manager.currentView.currentPage <= App.Manager.currentView.collection.length)
+			{
+				$('.dialog .inner').html(this.template_settings())
+			}
+			else
+			{
+				$('.dialog .inner').html(this.template_settings_not_a_page())
+			}
 		},
 
 		buy: function()
 		{
-			window.plugins.childBrowser.showWebPage('http://www.google.com', { showLocationBar: true });
+			alert(window.plugins.childBrowser)
+			window.plugins.childBrowser.showWebPage('http://www.google.com', { showLocationBar: false });
 		},
 
 		changeTemplate: function()
@@ -2215,7 +2226,7 @@ $(document).ready(function() {
 							config.$navNext.on( 'click', function() {
 
 								config.bb.next();
-								App.Manager.currentView.currentPage ++;
+								//App.Manager.currentView.currentPage ++;
 								return false;
 
 							} );
@@ -2223,7 +2234,7 @@ $(document).ready(function() {
 							config.$navPrev.on( 'click', function() {
 								
 								config.bb.prev();
-								App.Manager.currentView.currentPage --;
+								//App.Manager.currentView.currentPage --;
 								return false;
 
 							} );
