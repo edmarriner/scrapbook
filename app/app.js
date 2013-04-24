@@ -918,7 +918,7 @@ $(document).ready(function() {
 			{
 				$('.dialog #' + App.Manager.currentView.friendsAdded[i]).addClass('activeFriend');
 			}
-			$('.dialog .header').html('Pick Friends')
+			//$('.dialog .header').html('Pick Friends')
 	        return this;
 	    },
 
