@@ -1031,16 +1031,35 @@ $(document).ready(function() {
 
 		share: function()
 		{
-			var params = {
+			var data = {};
+			$.ajax({
+			  url: App.Manager.serverURL + '/singleScrapbook',
+			  dataType : 'jsonp',
+			  context: this,
+			  data: 
+			  	{
+			  		scrapbook: scrapbook
+				}
+
+			})
+			.success(function(result){
+				var params = {
 				    method: 'feed',
-				    name: 'Facebook Dialogs',
-				    link: 'https://developers.facebook.com/docs/reference/dialogs/',
-				    picture: 'http://fbrell.com/f8.jpg',
-				    caption: 'Reference Documentation',
-				    description: 'Dialogs provide a simple, consistent interface for applications to interface with users.'
+				    name: result.title,
+				    link: 'http://scrapbooka.com/scrapbook/' + App.Manager.currentView.collection.at(0).get('scrapbookId'),
+				    caption: 'Check out my new scrapbook!',
+				    description: result.description
 				  };
 				console.log(params);
 			    FB.ui(params, function(obj) { console.log(obj);});
+			})
+			.error(function(result, error) // bad request to scrapbook sever
+			{
+				alert("Connection failed. Please try again later.");
+			});
+
+
+			
 		},
 
 		updateNewDetails: function()
@@ -1565,7 +1584,7 @@ $(document).ready(function() {
 			})
 			.error(function(result, error) // bad request to scrapbook sever
 			{
-				alert("Error getting scrpbook !");
+				alert("Error getting scrapbook !");
 			});
 			console.log(data)
 			
