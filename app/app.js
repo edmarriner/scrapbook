@@ -406,10 +406,8 @@ $(document).ready(function() {
 						facebookFriend.lastName = 'morgan';
 						//facebookFriend.picture = 'pic.jpg' //response.data[0].fql_result_set[i].pic_square;
 						facebookFriend.picture = 'pic.jpg';
-						alert(JSON.stringify(facebookFriend));
+
 						var myView = new App.Views.Friend({ model: facebookFriend });
-						//alert(JSON.stringify(myView));
-						//alert(JSON.stringify(myView.el))
 						this.$el.find('.friendList').append(myView.render().el);
 				    }
 	      		}
