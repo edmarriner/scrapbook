@@ -407,7 +407,7 @@ $(document).ready(function() {
 							//facebookFriend.picture = 'pic.jpg' //response.data[0].fql_result_set[i].pic_square;
 							facebookFriend.picture = 'pic.jpg';
 							var myView = new App.Views.Friend({ model: facebookFriend });
-							this.$el.find('.friendList').append(myView.render().el);
+							App.Manager.currentView.$el.find('.friendList').append(myView.render().el);
 
 							alert("done")
 					    //}
