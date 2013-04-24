@@ -1452,7 +1452,7 @@ $(document).ready(function() {
 
 		buy: function()
 		{
-			var ref = window.open('http://scrapbooka.com/', '_blank', 'location=no');
+			var ref = window.open('http://scrapbook.uk.to/website/index.php/scrapbooks/1/buy', '_blank', 'location=no');
 		},
 
 		changeTemplate: function()
