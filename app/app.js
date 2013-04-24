@@ -620,6 +620,7 @@ $(document).ready(function() {
 
 			var data = newScrapbook.toJSON();
 			data.user = App.Manager.user.get('id');
+			data.friends = this.friendsAdded;
 			newScrapbook.save(data, {
 
 				success: function(model, response, options)
