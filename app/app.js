@@ -567,13 +567,15 @@ $(document).ready(function() {
 	        return this;
 	    },
 
+	    friendPicker: null,
+
 	    chooseFriends: function()
 	    {
 
 
 			// open the dialog
 			this.friendPicker = new App.Views.FriendPicker();
-			friendPicker.render();
+			this.friendPicker.render();
 
     		
 	    },
