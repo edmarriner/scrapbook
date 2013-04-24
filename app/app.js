@@ -375,8 +375,7 @@ $(document).ready(function() {
 		initialize: function()
 		{
 			App.Manager.appView.updateHeader('Friends');
-			
-			this.collection.on('add', this.render, this);
+
 		
 		},
 
