@@ -400,12 +400,12 @@ $(document).ready(function() {
 				for(var i = 0; i < response.data[0].fql_result_set.length; i++)
 					{
 						var facebookFriend = {}
-						facebookFriend.firstName = response.data[0].fql_result_set[i].first_name;
-						//facebookFriend.firstName = 'carys'
-						facebookFriend.lastName = response.data[0].fql_result_set[i].last_name;
-						//facebookFriend.lastName = 'morgan';
-						facebookFriend.picture = 'pic.jpg' //response.data[0].fql_result_set[i].pic_square;
-						//facebookFriend.picture = 'pic.jpg';
+						//facebookFriend.firstName = response.data[0].fql_result_set[i].first_name;
+						facebookFriend.firstName = 'carys'
+						//facebookFriend.lastName = response.data[0].fql_result_set[i].last_name;
+						facebookFriend.lastName = 'morgan';
+						//facebookFriend.picture = 'pic.jpg' //response.data[0].fql_result_set[i].pic_square;
+						facebookFriend.picture = 'pic.jpg';
 						alert(JSON.stringify(facebookFriend));
 						var myView = new App.Views.Friend({ model: facebookFriend });
 						//alert(JSON.stringify(myView));
