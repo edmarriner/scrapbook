@@ -598,6 +598,10 @@ $(document).ready(function() {
 
 	    friendsAdded: Array(),
 
+	    close: function(){
+	    	this.friendsAdded = [];
+	    },
+
 	    createScrapbook: function()
 	    {
 
@@ -916,6 +920,7 @@ $(document).ready(function() {
    	 		);
 			for(var i = 0; i < App.Manager.currentView.friendsAdded.length; i++)
 			{
+				alert($('.dialog #' + App.Manager.currentView.friendsAdded[i]))
 				$('.dialog #' + App.Manager.currentView.friendsAdded[i]).addClass('activeFriend');
 			}
 			//$('.dialog .header').html('Pick Friends')
