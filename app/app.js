@@ -392,7 +392,6 @@ $(document).ready(function() {
 	    {
 	    	this.$el.html(this.template());
 
-	    	App.Manager.activeCollections.friends = new App.Collections.Users;
 
 	    	FB.api('/fql', { q:{"query1":"SELECT uid , first_name, last_name, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1"} },
 			function(response)
@@ -402,13 +401,16 @@ $(document).ready(function() {
 					{
 						var facebookFriend = {}
 						facebookFriend.firstName = response.data[0].fql_result_set[i].first_name;
+						//facebookFriend.firstName = 'carys'
 						facebookFriend.lastName = response.data[0].fql_result_set[i].last_name;
+						//facebookFriend.lastName = 'morgan';
 						facebookFriend.picture = response.data[0].fql_result_set[i].pic_square;
+						//facebookFriend.picture = 'pic.jpg';
 						alert(JSON.stringify(facebookFriend));
 						var myView = new App.Views.Friend({ model: facebookFriend });
-						alert(JSON.stringify(myView));
-							alert(JSON.stringify(myView.el))
-						this.$el.find('.friendList').append(myView.render.el());
+						//alert(JSON.stringify(myView));
+						//alert(JSON.stringify(myView.el))
+						this.$el.find('.friendList').append(myView.render().el);
 				    }
 	      		}
    	 		);
