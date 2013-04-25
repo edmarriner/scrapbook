@@ -1879,7 +1879,6 @@ $(document).ready(function() {
 
 	            var ft = new FileTransfer();
 	            ft.upload(imageURI, encodeURI("http://scrapbook.uk.to/api/index.php/upload"), win, fail, options);
-
 			}        
 
 	        function win(returned)
