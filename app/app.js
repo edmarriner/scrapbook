@@ -722,7 +722,7 @@ $(document).ready(function() {
 		   	{
 		        if(blocks[i].type == 'image')
 		        {
-		          theContent[i] = "<img src='' style='width:100%; height: 100%; background: url(http://scrapbook.uk.to/files/"+ blocks[i].content + ")' />";
+		          theContent[i] = "<img src='' style='width:100%; height: 100%; background-sizing:cover; background: url(http://scrapbook.uk.to/files/"+ blocks[i].content + ")' />";
 		        }
 		        else if (blocks[i].type == 'text')
 		        {
@@ -1883,6 +1883,7 @@ $(document).ready(function() {
 
 	        function win(returned)
 	        {
+
 	        	$.ajax({
 				  url: App.Manager.serverURL + '/editBlock',
 				  dataType : 'jsonp',
