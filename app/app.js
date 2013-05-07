@@ -1,24 +1,7 @@
-//document.addEventListener('deviceready', function() {
-//	console.log("deviceReady");
-//	if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
-//	if (typeof CDV == 'undefined') alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
-//	if (typeof FB == 'undefined') alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
-//
-//	// handshake the facebook API
-//	try {
-//		FB.init({ appId: "425907780826832", nativeInterface: CDV.FB, useCachedDialogs: false });
-//	} catch (e) {
-//		alert(e);
-//	}
-//
-//}, false);
+document.addEventListener('deviceready', function() {
 
 
-// offline
-// <div style="top:0;bottom: 0;left: 0;right: 0;position: absolute;background: rgba(0,0,0,0.7);z-index: 99999999999999999999999999999;padding-top: 130px;text-align: center;font-size: 24px;">Please wait why we try to reconnect to the internet</div>
-//
 
-$(document).ready(function() {
 	
 	alert("starting ...");
 	if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
@@ -2796,4 +2779,4 @@ $(document).ready(function() {
 
 	
 
- });
+}, false);
