@@ -23,7 +23,8 @@
     <feature name="http://api.phonegap.com/1.0/camera"/>
 
     <gap:plugin name="FacebookConnect">
-        <param name="APP_ID" value="465374093524857" />
+        <param name="APP_ID" value="425907780826832" />
+        
     </gap:plugin>
 
     <gap:plugin name="ChildBrowser" />
