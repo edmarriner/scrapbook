@@ -1,12 +1,11 @@
 document.addEventListener('deviceready', function() {
-	
+	console.log("deviceReady");
 	if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
 	if (typeof CDV == 'undefined') alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
 	if (typeof FB == 'undefined') alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
 
 	// handshake the facebook API
 	try {
-		alert("init");
 		FB.init({ appId: "425907780826832", nativeInterface: CDV.FB, useCachedDialogs: false });
 	} catch (e) {
 		alert(e);
@@ -21,7 +20,7 @@ document.addEventListener('deviceready', function() {
 
 $(document).ready(function() {
 	
-	alert("ready");
+	console.log("documentReady");
 	//FB.Event.subscribe('auth.login', function(response) {
     //	alert('auth.login event'); 
    	//});
