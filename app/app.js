@@ -20,6 +20,12 @@ document.addEventListener('deviceready', function() {
 
 $(document).ready(function() {
 	
+	try {
+		FB.init({ appId: "425907780826832", nativeInterface: CDV.FB, useCachedDialogs: false });
+	} catch (e) {
+		alert(e);
+	}
+	
 	console.log("documentReady");
 	//FB.Event.subscribe('auth.login', function(response) {
     //	alert('auth.login event'); 
