@@ -6,6 +6,7 @@ document.addEventListener('deviceready', function() {
 
 	// handshake the facebook API
 	try {
+		alert("init");
 		FB.init({ appId: "425907780826832", nativeInterface: CDV.FB, useCachedDialogs: false });
 	} catch (e) {
 		alert(e);
@@ -19,7 +20,8 @@ document.addEventListener('deviceready', function() {
 //
 
 $(document).ready(function() {
-
+	
+	alert("ready");
 	//FB.Event.subscribe('auth.login', function(response) {
     //	alert('auth.login event'); 
    	//});
