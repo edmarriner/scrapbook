@@ -4,6 +4,8 @@
         id        = "com.phonegap.example"
         versionCode="10" 
         version   = "1.0.0">
+        
+    <preference name="DisallowOverscroll" value="true" />
 
     <!-- versionCode is optional and Android only -->
 
@@ -14,7 +16,7 @@
     </description>
 
     <author href="https://build.phonegap.com" email="support@phonegap.com">
-        Hardeep Shoker 
+        Edward Marriner 
     </author>
 
     <feature name="http://api.phonegap.com/1.0/file"/>
