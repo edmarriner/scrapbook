@@ -1,5 +1,5 @@
-//$(document).ready(function(){
-document.addEventListener('deviceready', function() {
+$(document).ready(function(){
+//document.addEventListener('deviceready', function() {
 	
 	document.addEventListener("offline", goneOffline, false);
 	document.addEventListener("online", goneOnline, false);
@@ -534,6 +534,7 @@ document.addEventListener('deviceready', function() {
 		  title: "Scrapbook Title",
 		  pages: 0,
 		  description: "Description of the scrapbook",
+		  colour: 'red',
 		},
 
 	});
