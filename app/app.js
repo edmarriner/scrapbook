@@ -1,6 +1,5 @@
-//$(document).ready(function(){
-//navigator.splashscreen.show();
-document.addEventListener('deviceready', function() {
+$(document).ready(function(){
+//document.addEventListener('deviceready', function() {
 	
 	document.addEventListener("offline", goneOffline, false);
 	document.addEventListener("online", goneOnline, false);
@@ -889,6 +888,8 @@ document.addEventListener('deviceready', function() {
 	            var view = new App.Views.Scrapbook({ model: tempScrapbook });
 	            this.$el.append(view.render().el);
 	        }, this);
+
+	        $('.centerTitle').fitText()
 
 	        return this;
 	    }

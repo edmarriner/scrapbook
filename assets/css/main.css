@@ -726,10 +726,8 @@ body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleB
   border-bottom: 2px solid #fff; }
 
 .centerTitle {
-  font-size: 15px;
-  margin-top: -10px;
   position: relative;
-  top: 50%;
+  top: 33%;
   font-family: 'Roboto Light';
   color: #666;
   text-align: center;
