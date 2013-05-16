@@ -2642,6 +2642,7 @@ document.addEventListener('deviceready', function() {
 
 	    	App.Manager.loginView = new App.Views.Login;
 	        $('body').html(App.Manager.loginView.render().el);
+	        navigator.splashscreen.hide();
 	    },
 
 	    logout: function(){
@@ -2780,7 +2781,7 @@ document.addEventListener('deviceready', function() {
 
 	})
 
-	navigator.splashscreen.hide();
+	
 	
 	// Startup backbone...
 	App.router = new App.Router;
