@@ -1,0 +1,39 @@
+.picker
+{
+	width:80px;
+	height:50px;
+	margin-right:10px;
+	float:left;
+	display:block;
+	box-sizing:border-box;
+}
+
+
+.colourSelected
+{
+	border:5px dotted rgba(0,0,0,0.5);
+}
+.colourPickBlue
+{
+	background-color: #88dcf7;
+}
+
+.colourPickRed
+{
+	background-color: #fd5547;
+}
+
+.colourPickGold
+{
+	background-color: #ffe454;
+}
+
+.colourPickGreen
+{
+	background-color: #adff61;
+}
+
+.colourPickPink
+{
+	background-color: #ffc5cf;
+}

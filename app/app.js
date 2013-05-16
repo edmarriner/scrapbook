@@ -1,5 +1,5 @@
-//$(document).ready(function(){
-document.addEventListener('deviceready', function() {
+$(document).ready(function(){
+//document.addEventListener('deviceready', function() {
 	
 	document.addEventListener("offline", goneOffline, false);
 	document.addEventListener("online", goneOnline, false);
@@ -584,7 +584,8 @@ document.addEventListener('deviceready', function() {
 		events: {
 
 			"click #createScrapbookButton" : "createScrapbook",
-			'click #chooseFriends' : 'chooseFriends'
+			'click #chooseFriends' : 'chooseFriends',
+			"click .picker": "colourPicker"
 		},
 
 		// Cache the template function for a single item.
@@ -596,6 +597,14 @@ document.addEventListener('deviceready', function() {
 	    },
 
 	    friendPicker: null,
+
+	    colourPicker: function(e)
+	    {
+	    	$('.picker').removeClass('colourSelected');
+	    	//console.log($('#' + e.target.id))
+	    	$('#' + e.target.id).addClass('colourSelected');
+	    	//console.log(e);
+	    },
 
 	    chooseFriends: function()
 	    {
@@ -619,7 +628,8 @@ document.addEventListener('deviceready', function() {
 
 	    	var title = $('#createScrapbookTitle').val();
 	    	var description = $('#createScrapbookDescription').val();
-
+	    	var colour = ($('.colourSelected').css('backgroundColor'));
+	    	
 	    	
 			var newScrapbook = new App.Models.Scrapbook;
 
@@ -629,6 +639,7 @@ document.addEventListener('deviceready', function() {
 			newScrapbook.set("title", title);
 			newScrapbook.set("description", description);
 			newScrapbook.set("status", "open");
+			newScrapbook.set("colour", colour)
 
 			var data = newScrapbook.toJSON();
 			data.user = App.Manager.user.get('id');
@@ -868,6 +879,23 @@ document.addEventListener('deviceready', function() {
 	    setCoverSizes: function()
 	    {
 			$('.box span').css('font-size', ($('.box').width()/11));
+
+			$('.centerTitle').fitText();
+
+	        $('.tile').css('backgroundColor', function(){
+	        	return 'rgba(255,255,255,' + Math.random() +')';
+			});
+
+			$('.boxInner').css('background', function(){
+	        	return 'rgb(' + (Math.floor(Math.random() * 256)) + ','
+           		 + (Math.floor(Math.random() * 256)) + ','
+            		+ (Math.floor(Math.random() * 256)) + ')'; +')';
+			});
+
+
+	        
+            
+
 	    },
 
 	    insertNewShortcut: function()
@@ -889,10 +917,17 @@ document.addEventListener('deviceready', function() {
 	            this.$el.append(view.render().el);
 	        }, this);
 
-	        $('.centerTitle').fitText()
+	        $('.centerTitle').fitText();
+
+	        $('.tile').css('backgroundColor', function(){
+	        	return 'rgba(' + (Math.floor(Math.random() * 256)) + ','
+            + (Math.floor(Math.random() * 256)) + ','
+            + (Math.floor(Math.random() * 256)) + ','
+            + '0.' + (Math.floor(Math.random() * 100)) + ')'});
 
 	        return this;
 	    }
+
 	});
 
 	App.Views.FriendPicker = Backbone.View.extend({

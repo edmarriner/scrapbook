@@ -25,7 +25,7 @@
     {
        position: absolute;
        overflow: hidden;
-       height: 100%;
+       height: 99%;
        width: 100%;
     }
     body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleBox {
@@ -66,7 +66,7 @@
       display: block;
       float:left;
       width:25%;
-      background: #ccc;
+      background: #fff;
       height: 25%;
     }
     
@@ -82,6 +82,7 @@
       box-sizing: border-box;
        border-top:2px solid #fff;
         border-bottom:2px solid #fff;
+        background-color: rgba(255,255,255,0.8) !important;
 
     }
       .centerTitle
@@ -89,68 +90,69 @@
         //font-size:15px;
         //margin-top:-10px; //half the font-size (or (font-size*number of lines)/2)
         position: relative;
-        top: 33%;
+        top: 10%;
         font-family: 'Roboto Light';
         color: #666;
         text-align: center;
         display: block;
+
       }
 
     .t1
     {
-      background: #ffbfbf;
+      //background: #ffbfbf;
       box-sizing: border-box;
       border-right:2px solid #fff;
     }
     
     .t2
     {
-      background: #ffa4a4;
+      //background: #ffa4a4;
       box-sizing: border-box;
       border-right:2px solid #fff;
     }
     
     .t3
     {
-      background: #ff9999;
+      //background: #ff9999;
       box-sizing: border-box;
       border-right:2px solid #fff;
     }    
 
     .t4
     {
-      background: #ff8787;
+      //background: #ff8787;
     }    
 
     .t5
     {
-      background: #ffa9a9;
+      //background: #ffa9a9;
       box-sizing: border-box;
       border-right:2px solid #fff;
     }    
 
     .t6
     {
-      background: #f16c6c;
+      //background: #f16c6c;
       box-sizing: border-box;
       border-right:2px solid #fff;
     }
 
     .t7
     {
-      background: #ffbfbf;
+      //background: #ffbfbf;
       box-sizing: border-box;
       border-right:2px solid #fff;
     }
     
     .t8
     {
-      background: #ffa4a4;
+      //background: #ffa4a4;
     }
     
     .t9
     {
-      background: #ff9999;
+      //background: #ff9999;
       border-top:2px solid #fff;
       box-sizing: border-box;
       border-right:2px solid #fff;
@@ -158,7 +160,7 @@
 
     .t10
     {
-      background: #ff8787;
+      //background: #ff8787;
       border-top:2px solid #fff;
       box-sizing: border-box;
       border-right:2px solid #fff;
@@ -166,7 +168,7 @@
 
     .t11
     {
-      background: #ffa9a9;
+      //background: #ffa9a9;
       box-sizing: border-box;
       border-top:2px solid #fff;
       border-right:2px solid #fff;
@@ -175,7 +177,7 @@
     .t12
     {
       border-top:2px solid #fff;
-      background: #f16c6c;
+      //background: #f16c6c;
     }
 
 
