@@ -1,12 +1,18 @@
-document.addEventListener('deviceready', function() {
+$(document).ready(function(){
+//document.addEventListener('deviceready', function() {
 
 
-
+	window.test = function()
+	{
+		App.Manager.user = new App.Models.User;
+		App.Manager.user.set('id', '1835446356')
+		App.router.navigate("", {trigger: true, replace: true});
+	} 
 	
 	
-	if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
-	if (typeof CDV == 'undefined') alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
-	if (typeof FB == 'undefined') alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
+	//if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
+	//if (typeof CDV == 'undefined') alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
+	//if (typeof FB == 'undefined') alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
 	
 	try {
 		
@@ -2780,3 +2786,4 @@ document.addEventListener('deviceready', function() {
 	
 
 }, false);
+
