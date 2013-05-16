@@ -17,6 +17,19 @@ body {
     width: 100%;
 }
 
+.noConnection
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 9999999999999;
+    padding-top: 93px;
+    text-align: center;
+}
+
 #page
 {
     position: absolute;

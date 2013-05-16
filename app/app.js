@@ -2,7 +2,16 @@
 //navigator.splashscreen.show();
 document.addEventListener('deviceready', function() {
 	
-	
+	document.addEventListener("offline", goneOffline, false);
+	document.addEventListener("online", goneOnline, false);
+
+	function goneOffline() {
+	    $('#viewport').prepend("<div class='noConnection'>No internet connection. Attemping to reconnect...</div>");
+	}
+
+	function goneOnline() {
+	    $('.noConnection').remove();
+	}
 
 	window.test = function()
 	{
