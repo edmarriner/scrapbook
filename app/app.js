@@ -1,6 +1,7 @@
 //$(document).ready(function(){
 document.addEventListener('deviceready', function() {
 
+	
 
 	window.test = function()
 	{
@@ -2778,6 +2779,8 @@ document.addEventListener('deviceready', function() {
 	    },
 
 	})
+
+	navigator.splashscreen.hide();
 	
 	// Startup backbone...
 	App.router = new App.Router;
