@@ -746,11 +746,11 @@ document.addEventListener('deviceready', function() {
 		   	{
 		        if(blocks[i].type == 'image')
 		        {
-		          theContent[i] = "<img src='' style='width:100%; height: 100%; background-sizing:cover; background: url(http://scrapbook.uk.to/files/"+ blocks[i].content + ")' />";
+		          theContent[i] = "<img src='' style='width:100%; height: 100%; background-size:cover; background: url(http://scrapbook.uk.to/files/"+ blocks[i].content + ")' />";
 		        }
 		        else if (blocks[i].type == 'text')
 		        {
-		          theContent[i] = "<div style='width:100%; height: 100%;'>" + blocks[i].content + "</div>";
+		          theContent[i] = "<div style='width:100%; height: 100%; font-size:18px; text-align: center;'>" + blocks[i].content + "</div>";
 		        }
 		        else if (blocks[i].type == 'colour')
 		        {
