@@ -734,6 +734,9 @@ body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleB
   text-align: center;
   display: block; }
 
+.centerTitle:first-letter {
+  text-transform: uppercase; }
+
 .t1 {
   box-sizing: border-box;
   border-right: 2px solid #fff; }

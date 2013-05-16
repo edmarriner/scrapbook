@@ -886,16 +886,6 @@ document.addEventListener('deviceready', function() {
 	        	return 'rgba(255,255,255,' + Math.random() +')';
 			});
 
-			$('.boxInner').css('background', function(){
-	        	return 'rgb(' + (Math.floor(Math.random() * 256)) + ','
-           		 + (Math.floor(Math.random() * 256)) + ','
-            		+ (Math.floor(Math.random() * 256)) + ')'; +')';
-			});
-
-
-	        
-            
-
 	    },
 
 	    insertNewShortcut: function()
