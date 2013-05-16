@@ -1,5 +1,5 @@
 //$(document).ready(function(){
-navigator.splashscreen.show();
+//navigator.splashscreen.show();
 document.addEventListener('deviceready', function() {
 	
 	
