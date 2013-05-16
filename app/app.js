@@ -1,5 +1,5 @@
-$(document).ready(function(){
-//document.addEventListener('deviceready', function() {
+//$(document).ready(function(){
+document.addEventListener('deviceready', function() {
 	
 	document.addEventListener("offline", goneOffline, false);
 	document.addEventListener("online", goneOnline, false);
@@ -629,7 +629,7 @@ $(document).ready(function(){
 	    	var title = $('#createScrapbookTitle').val();
 	    	var description = $('#createScrapbookDescription').val();
 	    	var colour = ($('.colourSelected').css('backgroundColor'));
-	    	
+
 	    	
 			var newScrapbook = new App.Models.Scrapbook;
 
