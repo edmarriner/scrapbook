@@ -1,5 +1,5 @@
-$(document).ready(function(){
-//document.addEventListener('deviceready', function() {
+//$(document).ready(function(){
+document.addEventListener('deviceready', function() {
 
 
 	window.test = function()
