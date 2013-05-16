@@ -1,4 +1,5 @@
 //$(document).ready(function(){
+ navigator.splashscreen.show();
 document.addEventListener('deviceready', function() {
 
 	
@@ -2639,10 +2640,10 @@ document.addEventListener('deviceready', function() {
 	    },
 
 	    login: function(){
-	    	alert("login started")
+	    	//alert("login started")
 	    	App.Manager.loginView = new App.Views.Login;
 	        $('body').html(App.Manager.loginView.render().el);
-	        alert("about to turn off")
+	        //alert("about to turn off")
 	        navigator.splashscreen.hide();
 	    },
 
