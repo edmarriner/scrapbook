@@ -21,6 +21,8 @@
 
     <gap:splash src="splash.png" />
 
+    <preference name="auto-hide-splash-screen" value="false" />
+
     <author href="https://build.phonegap.com" email="support@phonegap.com">
         Edward Marriner 
     </author>

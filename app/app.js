@@ -1,7 +1,6 @@
 //$(document).ready(function(){
- navigator.splashscreen.show();
 document.addEventListener('deviceready', function() {
-
+	navigator.splashscreen.show();
 	
 
 	window.test = function()
