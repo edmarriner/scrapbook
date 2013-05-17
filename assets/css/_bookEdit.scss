@@ -187,7 +187,9 @@
 
 		.settingsButton
 		{
-			width:100px;
+			width:100% !important;
+			height:50px !important;
+			line-height: 50px;
 			text-align: center;
 			background: #5A6B73;
 			height: 34px;
