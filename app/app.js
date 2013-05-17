@@ -1075,6 +1075,7 @@ $(document).ready(function(){
 		initialize: function()
 		{
 			console.log(this.$el)
+			alert("dialog")
 		},
 
 	    render: function()
