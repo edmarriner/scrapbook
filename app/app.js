@@ -974,29 +974,50 @@ document.addEventListener('deviceready', function() {
 	        $('.dialog .inner').html("<div class='friendPicker'></div>")
 	        this.alwaysCenter();
 
-	        FB.api('/fql', { q:{"query1":"SELECT uid , first_name, last_name, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1"} },
+    		//FB.api('/fql', { q:{"query1":"SELECT uid , first_name, last_name, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1"} },
+			//	function(response)
+			//	{
+			//		for(var i = 0; i < response.data[0].fql_result_set.length; i++)
+			//		{
+			//			var facebookFriend = {}
+			//			facebookFriend.firstName = 'carys';
+			//			//facebookFriend.firstName = response.data[0].fql_result_set[i].first_name;
+			//			facebookFriend.lastName = 'morgan';
+			//			//facebookFriend.lastName = response.data[0].fql_result_set[i].last_name;
+			//			facebookFriend.picture = 'pic.jpg'
+			//			facebookFriend.id = '123'
+			//			//facebookFriend.picture = response.data[0].fql_result_set[i].pic_square;
+			//			var myView = new App.Views.FriendObject({ model: facebookFriend });
+			//			$('.dialog .inner .friendPicker').append(myView.render().el);
+			//	    }
+//
+			//	    for(var i = 0; i < App.Manager.currentView.friendsAdded.length; i++)
+			//		{
+			//			//alert($('.dialog #' + App.Manager.currentView.friendsAdded[i]))
+			//			$('.dialog #' + App.Manager.currentView.friendsAdded[i]).addClass('activeFriend');
+			//		}
+    		// 	}
+ 				//);
+
+			FB.api('/fql', { q:{"query1":"SELECT uid , first_name, last_name, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1"} },
 				function(response)
 				{
 					for(var i = 0; i < response.data[0].fql_result_set.length; i++)
-					{
-						var facebookFriend = {}
-						facebookFriend.firstName = 'carys';
-						//facebookFriend.firstName = response.data[0].fql_result_set[i].first_name;
-						facebookFriend.lastName = 'morgan';
-						//facebookFriend.lastName = response.data[0].fql_result_set[i].last_name;
-						facebookFriend.picture = 'pic.jpg'
-						facebookFriend.id = '123'
-						//facebookFriend.picture = response.data[0].fql_result_set[i].pic_square;
-						var myView = new App.Views.FriendObject({ model: facebookFriend });
-						$('.dialog .inner .friendPicker').append(myView.render().el);
-				    }
+						{
+							var facebookFriend = {}
+							facebookFriend.firstName = response.data[0].fql_result_set[i].first_name;
+							facebookFriend.lastName = response.data[0].fql_result_set[i].last_name;
+							facebookFriend.picture = response.data[0].fql_result_set[i].pic_square;
+							var myView = new App.Views.FriendObject({ model: facebookFriend });
+							$('.dialog .inner .friendPicker').append(myView.render().el);
+					    }
 
-				    for(var i = 0; i < App.Manager.currentView.friendsAdded.length; i++)
+					    for(var i = 0; i < App.Manager.currentView.friendsAdded.length; i++)
 					{
 						//alert($('.dialog #' + App.Manager.currentView.friendsAdded[i]))
 						$('.dialog #' + App.Manager.currentView.friendsAdded[i]).addClass('activeFriend');
 					}
-		     	}
+		      	}
    	 		);
 			
 			//$('.dialog .header').html('Pick Friends')
