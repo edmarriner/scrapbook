@@ -1770,9 +1770,9 @@ document.addEventListener('deviceready', function() {
 			$('.dialog .inner').html(this.template_text(block))
 		},
 
-		hasColour: function(block)
+		hasColour: function()
 		{
-			$('.dialog .inner').html(this.template_colour(block))
+			$('.dialog .inner').html(this.template_new_colour())
 		},
 
 		hasMap: function(block)
@@ -1787,7 +1787,10 @@ document.addEventListener('deviceready', function() {
 		
 		saveColourBlock: function(e)
 		{
+			alert("saving colour");
 			var context = this;
+			alert("colour is..");
+			alert($('#' + e.target.id).id);
 			var colour = $('#' + e.target.id).id;
 			$.ajax({
 				  url: App.Manager.serverURL + '/editBlock',
@@ -2078,7 +2081,7 @@ document.addEventListener('deviceready', function() {
 
 		removeElement: function()
 		{
-
+			alert(App.Manager.currentView.blockId)
 			$.ajax({
 			  url: App.Manager.serverURL + '/removeBlock',
 			  dataType : 'jsonp',
@@ -2088,6 +2091,7 @@ document.addEventListener('deviceready', function() {
 				}
 
 				}).success(function(result){
+					alert("deleted block!");
 					$('div[data-block-id='+ App.Manager.currentView.blockId +']').html("<div style='width:100%; height:100%;'></div>");
 					//$('div[data-block-id='+ App.Manager.currentView.blockId +']').data('content', '');
 					$('div[data-block-id='+ App.Manager.currentView.blockId +']').attr('data-block-type', '');
