@@ -1069,7 +1069,8 @@ $(document).ready(function(){
 			'click .tpl6': 'selectTemplate6',
 			'click .deletePageRequest':'deletePageRequest',
 			'click .deleteScrapbookRequest': 'deleteRequest',
-			'click .updateNewDetails': 'updateNewDetails'
+			'click .updateNewDetails': 'updateNewDetails',
+			'click .blockColourOption': 'selectColourOption'
 		},
 
 		initialize: function()
@@ -1783,6 +1784,12 @@ $(document).ready(function(){
 		{
 			$('.dialog .inner').html(this.template_new_colour())
 		},
+
+		selectColourOption: function(e)
+		{
+			$('.blockColourOption').removeClass('colourSelected');
+	    	$('#' + e.target.id).addClass('colourSelected');
+		},
 		
 		saveColourBlock: function()
 		{
@@ -1794,7 +1801,7 @@ $(document).ready(function(){
 				  	{
 				  		id: App.Manager.currentView.blockId,
 				  		type: 'colour',
-				  		content: $('#colourChoice').val()
+				  		content: $('.colourSelected').id
 					}
 
 					})

@@ -553,6 +553,28 @@ nav img {
   z-index: 8;
   background-color: rgba(0, 0, 0, 0.7); }
 
+.blockColourOption {
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  float: left; }
+
+.blockColourRed {
+  background: red; }
+
+.blockColourblue {
+  background: blue; }
+
+.blockColourGreen {
+  background: green; }
+
+.blockColourBlack {
+  background: black; }
+
+.blockColourGrey {
+  background: grey; }
+
 .friendPicker .information:nth-child(2) {
   min-height: 150px; }
 .friendPicker .friend {
