@@ -1123,7 +1123,7 @@ document.addEventListener('deviceready', function() {
 				var params = {
 				    method: 'feed',
 				    name: "" + result.title,
-				    link: 'http://scrapbook.uk.to/website/index.php/generate/' + scrapbook,
+				    link: 'http://scrapbooka.com/scrapbook/' + scrapbook,
 				    caption: 'Check out my new scrapbook!',
 				    picture: 'http://fbrell.com/f8.jpg',
 				    description: "" + result.description
