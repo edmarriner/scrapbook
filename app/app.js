@@ -1,5 +1,5 @@
-//$(document).ready(function(){
-document.addEventListener('deviceready', function() {
+$(document).ready(function(){
+//document.addEventListener('deviceready', function() {
 	
 	document.addEventListener("offline", goneOffline, false);
 	document.addEventListener("online", goneOnline, false);
@@ -2263,10 +2263,17 @@ document.addEventListener('deviceready', function() {
 				options.hasContent = true,
 				options.contentType = this.blockType
 			}
-
+			alert("testing")
 			// open the dialog
+			try{
 			var dialog = new App.Views.Dialog(options);
 			dialog.render();
+			}
+			catch(e)
+			{
+				alert(e)
+				alert("errr")
+			}
 	    },
 
 	    settings: function(e)
