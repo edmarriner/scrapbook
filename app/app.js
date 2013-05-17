@@ -1,5 +1,5 @@
-$(document).ready(function(){
-//document.addEventListener('deviceready', function() {
+//$(document).ready(function(){
+document.addEventListener('deviceready', function() {
 	
 	document.addEventListener("offline", goneOffline, false);
 	document.addEventListener("online", goneOnline, false);
@@ -1772,7 +1772,8 @@ $(document).ready(function(){
 
 		hasColour: function(block)
 		{
-			$('.dialog .inner').html(this.template_colour(block))
+			$('.dialog .inner').html(this.template_colour(block));
+
 		},
 
 		hasMap: function(block)
