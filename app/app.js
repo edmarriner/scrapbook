@@ -754,7 +754,7 @@ document.addEventListener('deviceready', function() {
 		        }
 		        else if (blocks[i].type == 'colour')
 		        {
-		          theContent[i] = "<div style='width:100%; height:100%; background:#" + blocks[i].content +";'></div>";
+		          theContent[i] = "<div style='width:100%; height:100%; background:" + blocks[i].content +";'></div>";
 		        }
 		        else if (blocks[i].type == 'map')
 		        {
@@ -1805,7 +1805,7 @@ document.addEventListener('deviceready', function() {
 					})
 					.success(function(result){
 						
-						$('div[data-block-id='+ App.Manager.currentView.blockId +']').html("<div style='width:100%; height: 100%;background: " + "#000" + "'></div>")
+						$('div[data-block-id='+ App.Manager.currentView.blockId +']').html("<div style='width:100%; height: 100%;background: " + colour + "'></div>")
 						
 						$('div[data-block-id='+ App.Manager.currentView.blockId +']').attr('data-block-type', 'colour');
 						//$('div[data-block-id='+ App.Manager.currentView.blockId +']').data('pageId', App.Manager.currentView.pageId);
