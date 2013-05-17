@@ -2236,7 +2236,7 @@ document.addEventListener('deviceready', function() {
 						App.Manager.activeCollections.pages.fetch({
 							data: {
 								scrapbook: App.Manager.scrapbookId,
-								user: App.Manager.user.id
+								user: App.Manager.user.get('id')
 							},
 							dataType : 'jsonp',
 							success: function(collection)
