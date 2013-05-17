@@ -1790,8 +1790,8 @@ document.addEventListener('deviceready', function() {
 			alert("saving colour");
 			var context = this;
 			alert("colour is..");
-			alert($('#' + e.target.id).id);
-			var colour = $('#' + e.target.id).id;
+			alert($('#' + e.target.id).attr('id'));
+			var colour = $('#' + e.target.id).attr('id');
 			$.ajax({
 				  url: App.Manager.serverURL + '/editBlock',
 				  dataType : 'jsonp',
