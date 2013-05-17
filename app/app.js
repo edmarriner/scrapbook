@@ -1051,7 +1051,7 @@ document.addEventListener('deviceready', function() {
 			'click .takePhoto' : 'takePhoto',
 			'click .library': 'libraryPhoto',
 			'click .saveTextEle': 'saveText',
-			'click .saveNewColour': 'saveColourBlock',
+			'click .blockColourOption': 'saveColourBlock',
 			'click .writeText' : 'newText',
 			'click .colour' : 'colourBlock',
 			'click .changeTemplate': 'changeTemplate',
@@ -1785,9 +1785,10 @@ document.addEventListener('deviceready', function() {
 			$('.dialog .inner').html(this.template_new_colour())
 		},
 		
-		saveColourBlock: function()
+		saveColourBlock: function(e)
 		{
 			var context = this;
+			var colour = $('#' + e.target.id).id;
 			$.ajax({
 				  url: App.Manager.serverURL + '/editBlock',
 				  dataType : 'jsonp',
@@ -1795,7 +1796,7 @@ document.addEventListener('deviceready', function() {
 				  	{
 				  		id: App.Manager.currentView.blockId,
 				  		type: 'colour',
-				  		content: '000'
+				  		content: colour
 					}
 
 					})
@@ -1810,7 +1811,7 @@ document.addEventListener('deviceready', function() {
 						alert("2")
 						var blocks = pageModel.get('blocks');
 						alert("3")
-						blocks[ App.Manager.currentView.blockNumber - 1].content =  '#000';
+						blocks[ App.Manager.currentView.blockNumber - 1].content =  colour;
 						alert("4")
 						blocks[ App.Manager.currentView.blockNumber - 1].type = 'colour';
 						alert("5")
