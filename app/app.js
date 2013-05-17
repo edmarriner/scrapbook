@@ -1794,6 +1794,8 @@ document.addEventListener('deviceready', function() {
 		
 		saveColourBlock: function()
 		{
+			alert($('.colourSelected').id)
+			alert("colourssss")
 			var context = this
 			$.ajax({
 				  url: App.Manager.serverURL + '/editBlock',
