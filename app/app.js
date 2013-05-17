@@ -1,5 +1,5 @@
-//$(document).ready(function(){
-document.addEventListener('deviceready', function() {
+$(document).ready(function(){
+//document.addEventListener('deviceready', function() {
 	
 	document.addEventListener("offline", goneOffline, false);
 	document.addEventListener("online", goneOnline, false);
@@ -1772,8 +1772,7 @@ document.addEventListener('deviceready', function() {
 
 		hasColour: function(block)
 		{
-			$('.dialog .inner').html(this.template_colour(block));
-
+			$('.dialog .inner').html(this.template_colour(block))
 		},
 
 		hasMap: function(block)
@@ -1788,14 +1787,15 @@ document.addEventListener('deviceready', function() {
 
 		selectColourOption: function(e)
 		{
-			$('.blockColourOption').removeClass('colourSelected');
+			 $('.blockColourOption').removeClass('colourSelected');
+	    	//console.log($('#' + e.target.id))
 	    	$('#' + e.target.id).addClass('colourSelected');
 		},
 		
 		saveColourBlock: function()
 		{
-			alert($('.colourSelected').id)
-			alert("colourssss")
+			
+
 			var context = this
 			$.ajax({
 				  url: App.Manager.serverURL + '/editBlock',
@@ -1804,9 +1804,8 @@ document.addEventListener('deviceready', function() {
 				  	{
 				  		id: App.Manager.currentView.blockId,
 				  		type: 'colour',
-				  		content: $('.colourSelected').id
+				  		content: $('#colourChoice').val()
 					}
-
 					})
 					.success(function(result){
 						
