@@ -990,7 +990,7 @@ document.addEventListener('deviceready', function() {
 			//			var myView = new App.Views.FriendObject({ model: facebookFriend });
 			//			$('.dialog .inner .friendPicker').append(myView.render().el);
 			//	    }
-//
+			//
 			//	    for(var i = 0; i < App.Manager.currentView.friendsAdded.length; i++)
 			//		{
 			//			//alert($('.dialog #' + App.Manager.currentView.friendsAdded[i]))
@@ -1008,11 +1008,12 @@ document.addEventListener('deviceready', function() {
 							facebookFriend.firstName = response.data[0].fql_result_set[i].first_name;
 							facebookFriend.lastName = response.data[0].fql_result_set[i].last_name;
 							facebookFriend.picture = response.data[0].fql_result_set[i].pic_square;
+							facebookFriend.id = response.data[0].fql_result_set[i].uid;
 							var myView = new App.Views.FriendObject({ model: facebookFriend });
 							$('.dialog .inner .friendPicker').append(myView.render().el);
 					    }
 
-					    for(var i = 0; i < App.Manager.currentView.friendsAdded.length; i++)
+					for(var i = 0; i < App.Manager.currentView.friendsAdded.length; i++)
 					{
 						//alert($('.dialog #' + App.Manager.currentView.friendsAdded[i]))
 						$('.dialog #' + App.Manager.currentView.friendsAdded[i]).addClass('activeFriend');
