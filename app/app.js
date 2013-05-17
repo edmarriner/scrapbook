@@ -1772,7 +1772,7 @@ document.addEventListener('deviceready', function() {
 
 		hasColour: function()
 		{
-			$('.dialog .inner').html(this.template_new_colour())
+			$('.dialog .inner').html(this.template_has_colour())
 		},
 
 		hasMap: function(block)

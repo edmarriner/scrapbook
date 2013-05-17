@@ -554,8 +554,8 @@ nav img {
   background-color: rgba(0, 0, 0, 0.7); }
 
 .blockColourOption {
-  width: 180px;
-  height: 180px;
+  width: 60px;
+  height: 60px;
   margin-right: 10px;
   margin-bottom: 10px;
   float: left;
@@ -575,6 +575,15 @@ nav img {
 
 .blockColourGrey {
   background: grey; }
+
+.blockColourYellow {
+  background: yellow; }
+
+.blockColourOrange {
+  background: orange; }
+
+.blockColourBrown {
+  background: brown; }
 
 .friendPicker .information:nth-child(2) {
   min-height: 150px; }
