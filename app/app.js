@@ -750,7 +750,7 @@ document.addEventListener('deviceready', function() {
 		        }
 		        else if (blocks[i].type == 'text')
 		        {
-		          theContent[i] = "<div style='width:100%; height: 100%; font-size:30px; colour:#333; text-align: center;'>" + blocks[i].content + "</div>";
+		          theContent[i] = "<div style='width:100%; height: 100%; font-size:30px; colour:#333; padding:20px; box-sizing:border-box; text-align: center;'>" + blocks[i].content + "</div>";
 		        }
 		        else if (blocks[i].type == 'colour')
 		        {
@@ -1168,6 +1168,22 @@ document.addEventListener('deviceready', function() {
 				alert("Error saving details!");
 			});
 
+		},
+
+		refreshPages: function()
+		{
+			var myPage = App.Manager.activeCollections.pages.findWhere({'pageNumber': ''+App.Manager.currentView.currentPage+''});
+			var PageNumber = myPage.get('pageNumber');
+			var PageID = myPage.get('id');
+
+			var view = new App.CollectionViews.Pages({ collection: collection });
+			App.Manager.setView(view);
+			$('#bb-bookblock').append("<div class='bb-item' style='display: none;'><div class='topPage'><div class='newPage' style='color: #999; font-size: 33px;text-align: center;padding-top: 43%; height: 57%;'>tap to start new page</div></div></div>")
+			$('#page_1').show();
+			view.animate();
+			view.setBookSizes();
+			App.Manager.PageTurn.jump(PageNumber)
+			App.Manager.currentView.currentPage = PageNumber;
 		},
 
 		selectTemplate1: function()
@@ -1831,6 +1847,7 @@ document.addEventListener('deviceready', function() {
 								block = block[i]
 							}
 						}
+						context.refreshPages();
 						context.close();
 					})
 					.error(function(result, error) // bad request to scrapbook sever
@@ -1881,6 +1898,7 @@ document.addEventListener('deviceready', function() {
 								block = block[i]
 							}
 						}
+						context.refreshPages();
 						context.close();
 					})
 					.error(function(result, error) // bad request to scrapbook sever
