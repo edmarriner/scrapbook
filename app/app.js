@@ -1,5 +1,5 @@
-$(document).ready(function(){
-//document.addEventListener('deviceready', function() {
+//$(document).ready(function(){
+document.addEventListener('deviceready', function() {
 	
 	document.addEventListener("offline", goneOffline, false);
 	document.addEventListener("online", goneOnline, false);
