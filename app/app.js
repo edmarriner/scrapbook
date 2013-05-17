@@ -750,7 +750,7 @@ document.addEventListener('deviceready', function() {
 		        }
 		        else if (blocks[i].type == 'text')
 		        {
-		          theContent[i] = "<div style='width:100%; height: 100%; font-size:18px; text-align: center;'>" + blocks[i].content + "</div>";
+		          theContent[i] = "<div style='width:100%; height: 100%; font-size:30px; colour:#333; text-align: center;'>" + blocks[i].content + "</div>";
 		        }
 		        else if (blocks[i].type == 'colour')
 		        {
@@ -1028,7 +1028,7 @@ document.addEventListener('deviceready', function() {
 
 		template_select_options: _.template($('#template-dialog-options').html()),
 
-		template_colour: _.template($('#template-dialog-has-colour').html()),
+		template_has_colour: _.template($('#template-dialog-has-colour').html()),
 		template_new_colour: _.template($('#template-dialog-new-colour').html()),
 		template_map: _.template($('#template-dialog-has-map').html()),
 		template_text: _.template($('#template-dialog-has-text').html()),
