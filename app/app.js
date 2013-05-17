@@ -1,5 +1,5 @@
-//$(document).ready(function(){
-document.addEventListener('deviceready', function() {
+$(document).ready(function(){
+//document.addEventListener('deviceready', function() {
 	
 	document.addEventListener("offline", goneOffline, false);
 	document.addEventListener("online", goneOnline, false);
@@ -750,11 +750,15 @@ document.addEventListener('deviceready', function() {
 		        }
 		        else if (blocks[i].type == 'text')
 		        {
-		          theContent[i] = "<div style='width:100%; height: 100%; font-size:18px; text-align: center;'>" + blocks[i].content + "</div>";
+		          theContent[i] = "<div style='width:100%; height: 100%; colour: #333; font-size:18px; text-align: center;'>" + blocks[i].content + "</div>";
 		        }
 		        else if (blocks[i].type == 'colour')
 		        {
 		          theContent[i] = "<div style='width:100%; height:100%; background:#" + blocks[i].content +";'></div>";
+		        }
+		        else if (blocks[i].type == 'map')
+		        {
+		          theContent[i] = "<img src='' style='width:100%; height: 100%; background-size:cover; background: url(http://scrapbook.uk.to/files/"+ blocks[i].content + ")' />";
 		        }
 		        else
 		        {
@@ -891,7 +895,7 @@ document.addEventListener('deviceready', function() {
 
 	    insertNewShortcut: function()
 	    {
-	    	this.$el.prepend("<div class='box' style='height:16px;'><a href='#/create' class='boxInner'><div class='homeCreateScrapbook'>+</div></a><div>");
+	    	this.$el.prepend("<div class='box' style=''><a href='#/create' class='boxInner'><div class='homeCreateScrapbook'>+</div></a><div>");
 	    },
 
 	    initialize: function()
@@ -1790,7 +1794,7 @@ document.addEventListener('deviceready', function() {
 				  	{
 				  		id: App.Manager.currentView.blockId,
 				  		type: 'colour',
-				  		content: '000'
+				  		content: $('#colourChoice').val()
 					}
 
 					})
@@ -1802,15 +1806,14 @@ document.addEventListener('deviceready', function() {
 						//$('div[data-block-id='+ App.Manager.currentView.blockId +']').data('pageId', App.Manager.currentView.pageId);
 
 						var pageModel = App.Manager.currentView.collection.findWhere({id: App.Manager.currentView.pageId});
-						alert("2")
+					
 						var blocks = pageModel.get('blocks');
-						alert("3")
+					
 						blocks[ App.Manager.currentView.blockNumber - 1].content =  '#000';
-						alert("4")
+						
 						blocks[ App.Manager.currentView.blockNumber - 1].type = 'colour';
-						alert("5")
+						
 						pageModel.set('blocks', blocks);
-						alert("6")
 
 						var pageModel2 = App.Manager.currentView.collection.get(App.Manager.currentView.pageId)
 
@@ -1823,6 +1826,7 @@ document.addEventListener('deviceready', function() {
 							}
 						}
 						context.close();
+						alert("saved!")
 					})
 					.error(function(result, error) // bad request to scrapbook sever
 					{
