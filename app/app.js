@@ -1,5 +1,5 @@
-//$(document).ready(function(){
-document.addEventListener('deviceready', function() {
+$(document).ready(function(){
+//document.addEventListener('deviceready', function() {
 	
 	document.addEventListener("offline", goneOffline, false);
 	document.addEventListener("online", goneOnline, false);
@@ -2517,9 +2517,9 @@ document.addEventListener('deviceready', function() {
 				// set the model upto date
 				pageModel.set('blocks', blocks);
 
-				pageModel.set('scrapbook', App.Manager.scrapbookId);
-				pageModel.set('user', App.Manager.user.get('id'));
-				pageModel.set('pageNumber', App.Manager.currentView.currentPage);
+				//pageModel.set('scrapbook', App.Manager.scrapbookId);
+				//pageModel.set('user', App.Manager.user.get('id'));
+				//pageModel.set('pageNumber', App.Manager.currentView.currentPage);
 
 				// save the model back to the server
 				pageModel.save({}, {
