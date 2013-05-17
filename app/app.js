@@ -1,5 +1,5 @@
-$(document).ready(function(){
-//document.addEventListener('deviceready', function() {
+//$(document).ready(function(){
+document.addEventListener('deviceready', function() {
 	
 	document.addEventListener("offline", goneOffline, false);
 	document.addEventListener("online", goneOnline, false);
@@ -1787,7 +1787,7 @@ $(document).ready(function(){
 		
 		saveColourBlock: function()
 		{
-			var context = this
+			var context = this;
 			$.ajax({
 				  url: App.Manager.serverURL + '/editBlock',
 				  dataType : 'jsonp',
