@@ -153,6 +153,7 @@ document.addEventListener('deviceready', function() {
 
 		updateTimeline: function (collection)
 		{
+			alert("updating timeline")
 			collection.each(function(tempTimeline)
 	        {
 	            var view = new App.Views.Timeline({ model: tempTimeline });
@@ -2234,7 +2235,8 @@ document.addEventListener('deviceready', function() {
 						App.Manager.activeCollections.pages = new App.Collections.Pages;
 						App.Manager.activeCollections.pages.fetch({
 							data: {
-								scrapbook: App.Manager.scrapbookId
+								scrapbook: App.Manager.scrapbookId,
+								user: App.Manager.user.id
 							},
 							dataType : 'jsonp',
 							success: function(collection)
@@ -2759,6 +2761,20 @@ document.addEventListener('deviceready', function() {
 					error: function(collection, error)
 					{
 					    alert("There was an error with fetching the collection of scrapbooks.");
+					    console.log(error)
+					}
+				});
+
+				App.Manager.activeCollections.timeline = new App.Collections.Timeline;
+				App.Manager.activeCollections.timeline.fetch({
+					dataType : 'jsonp',
+					success: function(collection)
+					{
+						App.Manager.appView.updateTimeline(collection)
+					},
+					error: function(collection, error)
+					{
+					    alert("There was an error with fetching the collection of timeline events.");
 					    console.log(error)
 					}
 				});
