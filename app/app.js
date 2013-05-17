@@ -750,7 +750,7 @@ document.addEventListener('deviceready', function() {
 		        }
 		        else if (blocks[i].type == 'text')
 		        {
-		          theContent[i] = "<div style='width:100%; height: 100%; font-size:30px; colour:#333 !important; padding:20px; box-sizing:border-box; text-align: center;'>" + blocks[i].content + "</div>";
+		          theContent[i] = "<div style='width:100%; height: 100%; font-size:30px; color:#333 !important; padding:20px; box-sizing:border-box; text-align: center;'>" + blocks[i].content + "</div>";
 		        }
 		        else if (blocks[i].type == 'colour')
 		        {
@@ -1872,7 +1872,7 @@ document.addEventListener('deviceready', function() {
 					})
 					.success(function(result){
 						//ref
-						$('div[data-block-id='+ App.Manager.currentView.blockId +']').html("<div style='width:100%; height: 100%; font-size:30px; colour:#333 !important; padding:20px; box-sizing:border-box; text-align: center;'>" + $('#blockTextElement').val() + "</div>")
+						$('div[data-block-id='+ App.Manager.currentView.blockId +']').html("<div style='width:100%; height: 100%; font-size:30px; color:#333 !important; padding:20px; box-sizing:border-box; text-align: center;'>" + $('#blockTextElement').val() + "</div>")
 						
 						$('div[data-block-id='+ App.Manager.currentView.blockId +']').attr('data-block-type', 'text');
 						//$('div[data-block-id='+ App.Manager.currentView.blockId +']').data('pageId', App.Manager.currentView.pageId);
@@ -1964,7 +1964,7 @@ document.addEventListener('deviceready', function() {
 					})
 					.success(function(result){
 
-						$('img[data-block-id='+ App.Manager.currentView.blockId +']').css('background-image', 'url(http://scrapbook.uk.to/files/' + filename + '.jpeg)');
+						$('div[data-block-id='+ App.Manager.currentView.blockId +']').html("<img src='' style='width:100%; height: 100%; background-size:cover; background: url(http://scrapbook.uk.to/files/"+ filename + ".jpeg)' />")
 						$('div[data-block-id='+ App.Manager.currentView.blockId +']').attr('data-block-type', 'image');
 						var pageModel = App.Manager.currentView.collection.findWhere({id: App.Manager.currentView.pageId});
 						alert("2")
