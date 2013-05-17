@@ -2517,6 +2517,10 @@ document.addEventListener('deviceready', function() {
 				// set the model upto date
 				pageModel.set('blocks', blocks);
 
+				pageModel.set('scrapbook', App.Manager.scrapbookId);
+				pageModel.set('user', App.Manager.user.get('id'));
+				pageModel.set('pageNumber', App.Manager.currentView.currentPage);
+
 				// save the model back to the server
 				pageModel.save({}, {
 				    success: function (model, response) {
