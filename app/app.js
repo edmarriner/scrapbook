@@ -1145,7 +1145,7 @@ document.addEventListener('deviceready', function() {
 				var params = {
 				    method: 'feed',
 				    name: "" + result.title,
-				    link: 'http://scrapbooka.com/scrapbooks/' + scrapbook,
+				    link: 'http://scrapbooka.com/scrapbook/' + scrapbook,
 				    caption: 'Check out my new scrapbook!',
 				    picture: 'http://fbrell.com/f8.jpg',
 				    description: "" + result.description
