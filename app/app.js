@@ -148,12 +148,12 @@ document.addEventListener('deviceready', function() {
 
 		swiped: function()
 		{
-			alert("swiped!")
+			//alert("swiped!")
 		},
 
 		updateTimeline: function (collection)
 		{
-			alert("updating timeline")
+			//alert("updating timeline")
 			collection.each(function(tempTimeline)
 	        {
 	            var view = new App.Views.Timeline({ model: tempTimeline });
@@ -470,7 +470,7 @@ document.addEventListener('deviceready', function() {
 
 	    	App.Manager.user.save({}, {
 			    success: function (model, response) {
-			        alert("Saved!")
+			        //alert("Saved!")
 			    },
 			    error: function (model, response) {
 			        alert("There was an error saving your profile...")
@@ -993,7 +993,7 @@ document.addEventListener('deviceready', function() {
 
 				    for(var i = 0; i < App.Manager.currentView.friendsAdded.length; i++)
 					{
-						alert($('.dialog #' + App.Manager.currentView.friendsAdded[i]))
+						//alert($('.dialog #' + App.Manager.currentView.friendsAdded[i]))
 						$('.dialog #' + App.Manager.currentView.friendsAdded[i]).addClass('activeFriend');
 					}
 		     	}
@@ -1070,13 +1070,14 @@ document.addEventListener('deviceready', function() {
 			'click .tpl6': 'selectTemplate6',
 			'click .deletePageRequest':'deletePageRequest',
 			'click .deleteScrapbookRequest': 'deleteRequest',
-			'click .updateNewDetails': 'updateNewDetails'
+			'click .updateNewDetails': 'updateNewDetails',
+			'click .dialog .header': 'close'
 		},
 
 		initialize: function()
 		{
 			console.log(this.$el)
-			alert("dialog")
+			//alert("dialog")
 		},
 
 	    render: function()
@@ -1128,7 +1129,7 @@ document.addEventListener('deviceready', function() {
 				    description: "" + result.description
 				  };
 				console.log(params);
-				alert(window.FB)
+				//alert(window.FB)
 			    window.FB.ui(params, function(obj) { console.log(obj);});
 			})
 			.error(function(result, error) // bad request to scrapbook sever
@@ -1782,7 +1783,7 @@ document.addEventListener('deviceready', function() {
 
 		hasText: function(block)
 		{
-			alert("text!")
+			//alert("text!")
 			$('.dialog .inner').empty()
 			$('.dialog .inner').html(this.template_text(block))
 		},
@@ -1804,10 +1805,10 @@ document.addEventListener('deviceready', function() {
 		
 		saveColourBlock: function(e)
 		{
-			alert("saving colour");
+			//alert("saving colour");
 			var context = this;
-			alert("colour is..");
-			alert($('#' + e.target.id).attr('id'));
+			//alert("colour is..");
+			//alert($('#' + e.target.id).attr('id'));
 			var colour = $('#' + e.target.id).attr('id');
 			$.ajax({
 				  url: App.Manager.serverURL + '/editBlock',
@@ -1836,7 +1837,7 @@ document.addEventListener('deviceready', function() {
 						blocks[ App.Manager.currentView.blockNumber - 1].type = 'colour';
 						//alert("5")
 						pageModel.set('blocks', blocks);
-						alert("saved")
+						//alert("saved")
 
 						var pageModel2 = App.Manager.currentView.collection.get(App.Manager.currentView.pageId)
 
@@ -1887,7 +1888,7 @@ document.addEventListener('deviceready', function() {
 						blocks[ App.Manager.currentView.blockNumber - 1].type = 'text';
 						//alert("5")
 						pageModel.set('blocks', blocks);
-						alert("saved")
+						//alert("saved")
 
 						var pageModel2 = App.Manager.currentView.collection.get(App.Manager.currentView.pageId)
 
@@ -1968,15 +1969,15 @@ document.addEventListener('deviceready', function() {
 						$('div[data-block-id='+ App.Manager.currentView.blockId +']').html("<img src='' style='width:100%; height: 100%; background-size:cover; background: url(http://scrapbook.uk.to/files/"+ filename + ".jpeg)' />")
 						$('div[data-block-id='+ App.Manager.currentView.blockId +']').attr('data-block-type', 'image');
 						var pageModel = App.Manager.currentView.collection.findWhere({id: App.Manager.currentView.pageId});
-						alert("2")
+						//alert("2")
 						var blocks = pageModel.get('blocks');
-						alert("3")
+						//alert("3")
 						blocks[ App.Manager.currentView.blockNumber - 1].content =  filename + '.jpeg';
-						alert("4")
+						//alert("4")
 						blocks[ App.Manager.currentView.blockNumber - 1].type = 'image';
-						alert("5")
+						//alert("5")
 						pageModel.set('blocks', blocks);
-						alert("6")
+						//alert("6")
 
 						var pageModel2 = App.Manager.currentView.collection.get(App.Manager.currentView.pageId)
 
@@ -2103,7 +2104,7 @@ document.addEventListener('deviceready', function() {
 
 		removeElement: function()
 		{
-			alert(App.Manager.currentView.blockId)
+			//alert(App.Manager.currentView.blockId)
 			$.ajax({
 			  url: App.Manager.serverURL + '/removeBlock',
 			  dataType : 'jsonp',
@@ -2113,7 +2114,7 @@ document.addEventListener('deviceready', function() {
 				}
 
 				}).success(function(result){
-					alert("deleted block!");
+					//alert("deleted block!");
 					$('div[data-block-id='+ App.Manager.currentView.blockId +']').html("<div style='width:100%; height:100%;'></div>");
 					//$('div[data-block-id='+ App.Manager.currentView.blockId +']').data('content', '');
 					$('div[data-block-id='+ App.Manager.currentView.blockId +']').attr('data-block-type', '');
@@ -2218,7 +2219,7 @@ document.addEventListener('deviceready', function() {
 			App.Manager.newPageFlag = true;
 
 			var context = this
-			alert("new page")
+			//alert("new page")
 
 			$.ajax({
 				  url: App.Manager.serverURL + '/addPage',
@@ -2231,7 +2232,7 @@ document.addEventListener('deviceready', function() {
 
 					})
 					.success(function(result){
-						alert("success")
+						//alert("success")
 						App.Manager.activeCollections.pages = new App.Collections.Pages;
 						App.Manager.activeCollections.pages.fetch({
 							data: {
@@ -2241,7 +2242,7 @@ document.addEventListener('deviceready', function() {
 							dataType : 'jsonp',
 							success: function(collection)
 							{
-								alert("colletion time")
+								//alert("colletion time")
 								var collectionPageView = new App.CollectionViews.Pages({ collection: collection });
 								App.Manager.setView(collectionPageView);
 								$('#bb-bookblock').append("<div class='bb-item' style='display: none;'><div class='topPage'><div class='newPage' style='color: #999; font-size: 33px;text-align: center;padding-top: 43%; height: 57%;'>tap to start new page</div></div></div>")
@@ -2292,7 +2293,7 @@ document.addEventListener('deviceready', function() {
 				options.hasContent = true,
 				options.contentType = this.blockType
 			}
-			alert("testing")
+			//alert("testing")
 			// open the dialog
 			try{
 			var dialog = new App.Views.Dialog(options);
@@ -2301,7 +2302,7 @@ document.addEventListener('deviceready', function() {
 			catch(e)
 			{
 				alert(e)
-				alert("errr")
+				alert("error starting dialog box")
 			}
 	    },
 
@@ -2533,7 +2534,7 @@ document.addEventListener('deviceready', function() {
 				    }
 				});
 
-				alert("saved!")
+				//alert("saved!")
 	        }
 
 	        function fail(error)
@@ -2608,7 +2609,7 @@ document.addEventListener('deviceready', function() {
 				pageModel.save({}, {
 				    success: function (model, response) {
 				        console.log("success");
-				        alert(JSON.stringify(response))
+				        //alert(JSON.stringify(response))
 				    },
 				    error: function (model, response) {
 				        console.log("error..");
@@ -2616,7 +2617,7 @@ document.addEventListener('deviceready', function() {
 				    }
 				});
 
-				alert("saved!")
+				//alert("saved!")
 	        }
 
 	        function fail(error)
